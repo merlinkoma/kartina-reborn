@@ -1,0 +1,74 @@
+@import "variables";
+
+div.sales {
+    font-family     : Oswald;
+    background-color: #dad6da;
+    color           : $color-dark;
+    width           : 100%;
+    display         : flex;
+    flex-direction  : column;
+    justify-content : space-around;
+    align-items     : center;
+    padding         : 1px;
+
+    div.pagetitle {
+        font-size  : 2.2em;
+        font-weight: 900;
+        text-align : center;
+        margin     : 1%;
+    }
+
+    div.ligne {
+        width     : 20%;
+        margin    : 1% auto 5%;
+        border-top: 2px solid $color-dark;
+    }
+
+    div.tables-bloc {
+        display        : flex;
+        flex-direction : row;
+        justify-content: space-around;
+        width          : 100%;
+        margin-bottom  : 3%;
+
+        div.sales-tables {
+            width         : 50%;
+            display       : flex;
+            flex-direction: column;
+            align-items   : center;
+
+            div.title {
+                font-weight: 700;
+                font-size  : 2em;
+            }
+
+            div.ligne {
+                width     : 60%;
+                margin    : 2% 0;
+                border-top: 2px solid $color-dark;
+            }
+
+            table.table {
+                width          : 80%;
+                border         : 1px solid $color-dark;
+                border-collapse: collapse;
+
+                th,
+                td {
+                    border : 1px solid $color-dark;
+                    padding: 1%;
+                }
+            }
+        }
+    }
+
+    a.comeback {
+        margin         : 2% 0;
+        text-decoration: none;
+        color          : inherit;
+
+        &:hover {
+            color: $color-light;
+        }
+    }
+}

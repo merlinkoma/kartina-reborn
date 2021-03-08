@@ -1,0 +1,203 @@
+// @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap');
+
+a {
+    text-decoration: none;
+    color          : inherit;
+}
+
+ul li {
+    list-style: none;
+}
+
+div.container-panier {
+    background-color: #EDE4BE;
+    font-family     : 'Cinzel', serif;
+    height          : 100%;
+
+    div.titre {
+        width      : 20%;
+        margin-left: 10px;
+
+        p {
+            font-size: 40px;
+        }
+    }
+
+    div.main {
+        display         : flex;
+        background-color: #9bb9be; //#EDD2A9;
+        width           : 99%;
+        justify-content : space-evenly;
+        margin          : 10px;
+        // border: 1px solid black;
+        border-radius   : 6px;
+        box-shadow      : 0 2px 2px 0 rgb(0 0 0 / 14%),
+            0 10px 1px -2px rgb(0 0 0 / 20%),
+            0 10px 5px 0 rgb(0 0 0 / 12%);
+        box-sizing: border-box;
+
+        div.pic {
+            display        : flex;
+            align-items    : center;
+            justify-content: center;
+            width          : 15%;
+            padding        : 20px;
+
+
+            img {
+                width : 100%;
+                height: auto;
+            }
+        }
+
+        div.infos {
+            width: 25%;
+        }
+
+        div.caracteristiques {
+            width: 25%;
+        }
+
+        div.quantiter {
+            width: 20%;
+
+            input {
+                width      : 20%;
+                margin-left: 3px;
+            }
+
+            div {
+
+                button {
+                    margin-top      : 20px;
+                    border          : none;
+                    background-color: #9bb9be;
+
+                    a {
+                        display: block;
+                    }
+
+                }
+            }
+        }
+
+        div.prix {
+            width      : 10%;
+            display    : flex;
+            align-items: center;
+        }
+    }
+
+    div.finalisation {
+        display        : flex;
+        justify-content: space-between;
+        width          : 99%;
+        margin         : 10px;
+        height         : 400px;
+
+        div.back {
+
+            button {
+                border          : none;
+                background-color: #EDE4BE;
+                border-bottom   : solid 1px;
+
+                a {
+                    display: block;
+                }
+
+            }
+        }
+
+        div.payement {
+            width: 35%;
+
+            div.promo {
+                // border: 1px solid black;
+                height                 : 25%;
+                display                : flex;
+                align-items            : center;
+                background-color       : #9bb9be;
+                padding-left           : 10px;
+                padding-right          : 10px;
+                border-top-left-radius : 6px;
+                border-top-right-radius: 6px;
+                justify-content        : center;
+            }
+
+            div.pfinal {
+                display         : flex;
+                justify-content : space-between;
+                border-top      : solid 1px black;
+                height          : 25%;
+                align-items     : center;
+                background-color: #9bb9be;
+                padding-left    : 10px;
+                padding-right   : 10px;
+                box-shadow      : 0 2px 2px 0 rgb(0 0 0 / 14%),
+                    0 10px 1px -2px rgb(0 0 0 / 20%),
+                    0 10px 5px 0 rgb(0 0 0 / 12%);
+                border-bottom-left-radius : 6px;
+                border-bottom-right-radius: 6px;
+
+                div {
+                    display        : flex;
+                    flex-direction : column;
+                    align-items    : flex-end;
+                    justify-content: space-evenly;
+
+                }
+
+                div.finalprix {
+
+                    h2,
+                    p {
+                        margin: 5px;
+                    }
+                }
+            }
+
+            div {
+
+                button {
+                    width           : 100%;
+                    height          : 40px;
+                    background-color: rgb(248, 50, 50);
+                    color           : white;
+                    margin-top      : 20px;
+                    border          : none;
+                    border-radius   : 6px;
+
+
+                    a {
+                        display: block;
+                    }
+                }
+            }
+
+            div.securise {
+
+                p {
+                    width      : 100%;
+                    align-items: center;
+                    text-align : center;
+                }
+            }
+
+            div.typepayement {
+                display        : flex;
+                justify-content: space-evenly;
+                border-bottom  : solid 1px black;
+
+                div {
+
+                    img {
+                        width : 50px;
+                        height: 50px;
+                    }
+                }
+            }
+        }
+    }
+}

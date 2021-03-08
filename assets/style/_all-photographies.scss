@@ -1,0 +1,109 @@
+@import 'variables';
+
+div.all-photographies {
+    background-color: $color-back;
+    color           : $color-dark;
+    font-family     : Oswald;
+    display         : flex;
+    flex-direction  : row;
+    width           : 100vw;
+    box-sizing      : border-box;
+
+    aside.filtrage {
+        width         : 20%;
+        border-right  : 1px solid $color-light;
+        display       : flex;
+        flex-direction: column;
+        padding       : 1%;
+
+        h2 {
+            text-align : center;
+            font-weight: 300;
+            font-size  : 2em;
+            margin     : 1% auto;
+        }
+
+        div.filter {
+            padding: 5% 3%;
+
+            div.filter-title {
+                font-size  : 1.8em;
+                font-weight: 700;
+
+                div.line {
+                    width     : 100%;
+                    border-top: solid 1px $color-dark;
+                    margin    : 3% 0 3% 0;
+                }
+            }
+
+            a {
+                text-decoration: none;
+                color          : inherit;
+
+                &:hover {
+                    color: $color-darkyellow;
+                }
+            }
+
+            div.line-link {
+                width     : 60%;
+                border-top: solid 1px $color-darkyellow;
+                margin    : 5% 0;
+            }
+
+            div.choice {
+                display       : flex;
+                flex-direction: row;
+                margin        : 5% 0;
+                color         : #515961;
+
+                label {
+                    font-weight: 600;
+                    font-size  : 1.2em;
+                }
+            }
+
+            div.line {
+                width     : 60%;
+                border-top: solid 1px $color-darkyellow;
+                margin    : 1% 0;
+            }
+        }
+    }
+
+    div.results-bloc {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        div.category {
+            h3 {
+                text-transform: uppercase;
+                font-weight   : 300;
+                font-size     : 2em;
+                text-align    : center;
+                margin        : 1% auto;
+            }
+            p.presentation {
+                font-size  : 1.3em;
+                font-weight: 300;
+                text-align : center;
+            }
+        }
+
+        div.results{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div.pagination{
+            margin: 2% auto;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

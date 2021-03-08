@@ -1,0 +1,236 @@
+@import 'variables';
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap');
+
+footer {
+    background-color: $color-yellow;
+    margin          : 0;
+    padding         : 0;
+    width           : 100%;
+    font-family     : Cinzel;
+
+    div.find-gallery {
+        width      : 90%;
+        //bug si width à 100%, pourquoi ??
+        padding    : 15px;
+        display    : flex;
+        font-weight: 700;
+        font-size  : 30px;
+        color      : $color-font;
+
+        @media(max-width: 1024px) {
+            flex-direction: column;
+            align-items   : center;
+        }
+
+        img {
+            max-width: 250px;
+            height   : auto;
+            margin   : 15px;
+        }
+
+        form {
+            display        : flex;
+            flex-direction : column;
+            justify-content: center;
+
+            input#find-gallery-field {
+                background-color: $color-yellow;
+                border          : none;
+                border-left     : 1px solid;
+                margin-left     : 3px;
+                padding-left    : 5px;
+                height          : 30px;
+            }
+
+        }
+    }
+
+    div.ligne {
+        border-top: 1px solid #000;
+        width     : 100%;
+        margin-top: 15px;
+    }
+
+    div.blocs {
+        display        : flex;
+        width          : 100%;
+        justify-content: space-around;
+        margin         : 0;
+        padding        : 0;
+
+        @media(max-width: 1024px) {
+            flex-direction: column;
+            align-items   : center;
+        }
+
+        div.columns {
+            margin : 0;
+            padding: 0;
+
+            @media(max-width: 1024px) {
+                width: 50%;
+            }
+
+            h3 {
+                color      : $color-font;
+                font-weight: 700;
+            }
+
+            div.liste-col-photographies {
+                display: flex;
+            }
+
+            ul {
+                list-style-type: none;
+                margin         : 0;
+                padding        : 0;
+
+                li {
+                    margin-right: 25px;
+
+                    a {
+                        text-decoration: none;
+                        color          : black;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    div.newsetmedia {
+        display        : flex;
+        justify-content: space-between;
+
+        @media(max-width: 1024px) {
+            flex-direction: column;
+            align-items   : center;
+        }
+
+        div.newsletterinscription {
+            padding-left: 100px;
+
+            @media(max-width: 1024px) {
+                padding: 0;
+            }
+
+            h3 {
+                color: $color-font;
+            }
+
+            form {
+                display: flex;
+
+                input.nlEmail {
+                    background-color: $color-yellow;
+                    border          : solid black 0.2px;
+                    border-right    : none;
+                    padding-left    : 5px;
+                    height          : 30px;
+                }
+
+                button.nl-input-form {
+                    background-color: $color-yellow;
+                    border          : solid black 0.2px;
+                    padding-left    : 5px;
+                    height          : 34px;
+
+                }
+            }
+        }
+
+        div.socialmedia {
+            padding-right : 100px;
+            color         : $color-dark;
+            display       : flex;
+            flex-direction: column;
+
+            @media(max-width: 1024px) {
+                padding: 0;
+            }
+
+            h3 {
+                color: $color-font;
+            }
+
+            div.socialmediaicons {
+                div.social {
+                    display        : flex;
+                    justify-content: space-around;
+
+                    i {
+                        padding: 0 15px 0 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    div.language {
+        @media(max-width: 1024px){
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        h3 {
+            color       : $color-font;
+            font-weight : 700;
+            padding-left: 100px;
+            @media(max-width: 1024px){
+                padding: 0;
+            }
+        }
+
+        ul {
+            display        : flex;
+            justify-content: center;
+            @media(max-width: 1024px){
+                flex-direction: column;
+                align-items: center;
+                width: 60%;
+                padding: 0;
+            }
+
+            li {
+                list-style: none;
+                padding: 0 5% 0 5%;
+                @media(max-width: 1024px){
+                    padding: 5px 0 5px 0;
+                }
+
+                img {
+                    width : 15px;
+                    margin: 2px;
+                }
+
+                a {
+                    text-decoration: none;
+                    color          : $color-dark;
+                }
+            }
+
+        }
+    }
+
+    div.legal {
+        display        : flex;
+        justify-content: center;
+        padding-top    : 15px;
+        padding-bottom: 15px;
+        @media(max-width: 1024px){
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;
+        }
+
+        a {
+            text-decoration: none;
+            color          : $color-dark;
+            padding        : 0 15px 0 15px;
+        }
+    }
+}
