@@ -1,0 +1,328 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul li {
+  list-style: none;
+}
+
+body {
+  color: black;
+  margin: 0;
+  padding: 0;
+<<<<<<< HEAD
+  font-weight: bold;
+}
+
+body .container header {
+  background-color: #EDE4BE;
+  font-family: 'Cinzel', serif;
+  -webkit-box-shadow: 7px 7px 13px 0px rgba(0, 0, 0, 0.54);
+          box-shadow: 7px 7px 13px 0px rgba(0, 0, 0, 0.54);
+}
+
+body .container header div {
+  text-align: center;
+}
+
+body .container header div div.titre {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 60px;
+  padding: 0;
+  margin: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+=======
+}
+body .container header {
+  background-color: #EDE4BE;
+  font-family: "Cinzel", serif;
+}
+body .container header div {
+  display: flex;
+  justify-content: space-between;
+}
+body .container header div div.titre {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  font-size: 0.7em;
+  width: 30%;
+}
+>>>>>>> Alexandre
+body .container header div div.titre h1 {
+  color: #479698;
+  text-shadow: 10px;
+  font-weight: bold;
+  margin: 5px;
+<<<<<<< HEAD
+  font-size: 25px;
+}
+
+@media screen and (min-width: 1024px) {
+  body .container header div div.titre h1 {
+    font-size: 3em;
+  }
+}
+
+body .container header div div.titre p {
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  body .container header div div.titre {
+    width: 30%;
+    display: block;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
+    height: 100px;
+  }
+}
+
+body .container header div div.barrerecherche form input {
+  background-color: #EDE4BE;
+  border: none;
+  border-bottom: solid 1px;
+  border-left: solid 1px;
+}
+
+@media screen and (min-width: 1024px) {
+  body .container header div div.barrerecherche form input {
+    width: 80%;
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body .container header div div.barrerecherche form {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body .container header div div.barrerecherche {
+    width: 44%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+body .container header div div.info {
+  font-size: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 5px;
+}
+
+body .container header div div.info img {
+  width: 15px;
+  height: 15px;
+}
+
+body .container header div div.info div form select {
+  background-color: #EDE4BE;
+  border: none;
+  border-bottom: solid 1px;
+}
+
+@media screen and (min-width: 1024px) {
+  body .container header div div.info {
+    width: 25%;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-align: initial;
+        -ms-flex-align: initial;
+            align-items: initial;
+    margin-top: 5px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body .container header div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+body .container header div.navigation ul {
+  padding: 0;
+  margin: 0;
+}
+
+body .container header div.navigation ul li {
+  font-size: 15px;
+  border-bottom: 1px solid black;
+  min-width: 190px;
+}
+
+body .container header div.navigation ul li a {
+  display: block;
+}
+
+@media screen and (min-width: 1024px) {
+  body .container header div.navigation ul li {
+    border-bottom: none;
+    border-right: 1px solid black;
+    padding-right: 5px;
+    font-size: 16px;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body .container header div.navigation ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 60%;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body .container header div.navigation {
+    height: 30px;
+  }
+}
+
+=======
+  font-size: 50px;
+  width: 100%;
+}
+body .container header div div.barrerecherche {
+  width: 44%;
+  min-width: 50px;
+  max-width: 1500px;
+}
+body .container header div div.barrerecherche form {
+  width: 190px;
+  margin: 15px;
+}
+body .container header div div.barrerecherche form input {
+  display: flex;
+  justify-content: start;
+  height: 30px;
+  background-color: #EDE4BE;
+  border: none;
+  border-left: 1px solid;
+  margin-top: 15px;
+}
+body .container header div img {
+  width: 20px;
+  height: 20px;
+}
+body .container header div div.info {
+  display: flex;
+  margin-top: 5px;
+  margin-right: 10px;
+  justify-content: space-evenly;
+  width: 25%;
+  align-items: baseline;
+}
+body .container header div.navigation ul {
+  display: flex;
+  padding: 0px;
+  margin-left: 10px;
+  justify-content: space-between;
+  width: 50%;
+  font-size: bold;
+  padding-left: 0px;
+  height: 10px;
+  align-items: center;
+}
+body .container header div.navigation ul li {
+  border-right: 1px solid;
+  padding-right: 10px;
+  font-size: 1em;
+}
+body .container header div.navigation ul li a {
+  width: 100%;
+}
+>>>>>>> Alexandre
+body #trait {
+  border-top: 1px solid #000;
+  width: 100%;
+}
+<<<<<<< HEAD
+
+body input::-webkit-input-placeholder {
+  color: black;
+  font-size: 12px;
+}
+
+body input:-ms-input-placeholder {
+  color: black;
+  font-size: 12px;
+}
+
+body input::-ms-input-placeholder {
+  color: black;
+  font-size: 12px;
+}
+
+body input::placeholder {
+  color: black;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 1024px) {
+  body input::-webkit-input-placeholder {
+    font-size: 15px;
+  }
+  body input:-ms-input-placeholder {
+    font-size: 15px;
+  }
+  body input::-ms-input-placeholder {
+    font-size: 15px;
+  }
+  body input::placeholder {
+    font-size: 15px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
+=======
+body input::placeholder {
+  color: black;
+  font-size: 1.2em;
+}
+
+/*# sourceMappingURL=style.css.map */
+>>>>>>> Alexandre
