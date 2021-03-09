@@ -1,21 +1,29 @@
 @import 'variables';
 
-div.ariane{
-    height: 5vh;
-    margin: 0;
-    padding: 0;
-    background-color: $color-dark;
-    color: $color-back;
-    font-size: 1.5em;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    a{
-        text-decoration: none;
-        color: inherit;
+div.ariane {
+    height          : 6vh;
+    margin          : 0;
+    padding         : 0;
+    background-color: $color-light;
+    color           : $color-back;
+    font-size       : 1.5em;
+    display         : flex;
+    flex-direction  : row;
+    align-items     : center;
+
+    img {
+        width      : 1vw;
         margin-left: 2%;
+        height     : auto;
     }
-    i{
+
+    a {
+        text-decoration: none;
+        color          : inherit;
+        margin-left    : 2%;
+    }
+
+    i {
         margin-left: 1%;
     }
 }
