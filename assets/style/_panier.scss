@@ -86,6 +86,10 @@ div.container-panier {
             width      : 10%;
             display    : flex;
             align-items: center;
+
+            h2 {
+                border-bottom: 1px solid;
+            }
         }
     }
 
@@ -151,7 +155,10 @@ div.container-panier {
 
                 div.finalprix {
 
-                    h2,
+                    h2 {
+                        border-bottom: 1px solid;
+                    }
+
                     p {
                         margin: 5px;
                     }

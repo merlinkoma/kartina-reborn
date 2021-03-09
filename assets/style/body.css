@@ -1408,6 +1408,9 @@ div.container-panier div.main div.prix {
   display: flex;
   align-items: center;
 }
+div.container-panier div.main div.prix h2 {
+  border-bottom: 1px solid;
+}
 div.container-panier div.finalisation {
   display: flex;
   justify-content: space-between;
@@ -1456,7 +1459,9 @@ div.container-panier div.finalisation div.payement div.pfinal div {
   align-items: flex-end;
   justify-content: space-evenly;
 }
-div.container-panier div.finalisation div.payement div.pfinal div.finalprix h2,
+div.container-panier div.finalisation div.payement div.pfinal div.finalprix h2 {
+  border-bottom: 1px solid;
+}
 div.container-panier div.finalisation div.payement div.pfinal div.finalprix p {
   margin: 5px;
 }
