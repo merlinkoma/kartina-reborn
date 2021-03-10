@@ -109,18 +109,19 @@ var pay = function(stripe, card) {
       }
     })
     .then(function(result) {
-      return result.text();
+      
+      return result.json();
     })
     .then(function(paymentData) {
       if (paymentData.requiresAction) {
         // Request authentication
-        handleAction(JSON.parse(paymentData.clientSecret));
+        handleAction(paymentData.clientSecret);
       } else if (paymentData.error) {
         showError(paymentData.error);
       } else {
         console.log(paymentData);
-        console.log(JSON.parse(paymentData).clientSecret);
-        orderComplete(JSON.parse(paymentData).clientSecret);
+        console.log(paymentData.clientSecret);
+        orderComplete(paymentData.clientSecret);
       }
     });
 };
