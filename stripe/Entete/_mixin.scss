@@ -27,26 +27,19 @@
     text-shadow: 10px;
     font-weight: bold;
     margin: 5px;
-<<<<<<< HEAD
-    font-size: 25px;
-=======
     font-size: 50px;
->>>>>>> Alexandre
+
 }
 
 @mixin slogan {
     align-items: center;
     display: flex;
-<<<<<<< HEAD
-    // justify-content: center; align en horizontal
-    flex-wrap: wrap;
-    text-align: center;
-=======
+
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
     font-size: 0.7em;
->>>>>>> Alexandre
+
 }
 
 @mixin logo {
@@ -66,10 +59,7 @@
 
 @mixin barredenav {
     display : flex;
-<<<<<<< HEAD
-    // flex-wrap: wrap;
-=======
->>>>>>> Alexandre
+
     padding: 0px;
     margin-left: 10px;
     justify-content: space-between;
