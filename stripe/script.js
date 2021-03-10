@@ -27,7 +27,7 @@ fetch("/stripe-key.php")
   });
 
 var setupElements = function(data) {
-  console.log(data);
+
   stripe = Stripe(data.publishableKey);
   /* ------- Set up Stripe Elements to use in checkout form ------- */
   var elements = stripe.elements();
@@ -109,7 +109,7 @@ var pay = function(stripe, card) {
       }
     })
     .then(function(result) {
-      
+
       return result.json();
     })
     .then(function(paymentData) {
@@ -119,8 +119,6 @@ var pay = function(stripe, card) {
       } else if (paymentData.error) {
         showError(paymentData.error);
       } else {
-        console.log(paymentData);
-        console.log(paymentData.clientSecret);
         orderComplete(paymentData.clientSecret);
       }
     });

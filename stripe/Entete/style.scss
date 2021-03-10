@@ -214,28 +214,24 @@ body {
                         justify-content: space-evenly;
                         align-items: center;
                         text-align: center;
+                        @include barredenav;
+                        height: 10px;
+                        li {
+                            border-right: 1px solid;
+                            padding-right: 10px;
+                            font-size: 1em;
+    
+                            a {
+                                width: 100%;
+                            }
                     }
 
                 }
 
                 @media screen and (min-width : 1024px) {
                     height: 30px;
-=======
-                    @include barredenav;
-                    height: 10px;
-                    align-items: center;
 
-                    li {
-                        border-right: 1px solid;
-                        padding-right: 10px;
-                        font-size: 1em;
 
-                        a {
-                            width: 100%;
-                        }
-
-                    }
->>>>>>> Alexandre
                 }
             }
         }
