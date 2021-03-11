@@ -9,15 +9,18 @@ $firstname = $_POST['firstname'] ?? '';
 $email = $_POST['email'] ?? '';
 $phone = $_POST['phone'] ?? '';
 $subject = $_POST['subject'] ?? '';
+$message = $_POST['message'] ?? '';
 
 $errors = [];
 
+
+
 if (!empty($_POST)) {
-    if (iconv_strlen($lastname) <= 2) {
+    if (iconv_strlen($lastname) < 2) {
         $errors['lastname'] = 'Le nom est trop court';
     }
 
-    if (iconv_strlen($firstname) <= 2) {
+    if (iconv_strlen($firstname) < 2) {
         $errors['firstname'] = 'Le prénom est trop court';
     }
 
@@ -32,13 +35,23 @@ if (!empty($_POST)) {
     if (iconv_strlen($message) < 15) {
         $errors['message'] = 'Le message est trop court';
     }
+
+    if (empty($errors)) {
+        header('Location: validation.php');
+        exit();
+    }
+
+    // if (is_numeric($phone)) {
+    //     $errors['phone'] = 'Ce n\'est pas des numéros';
+    // }
 }
+
 ?>
 
 <div class="container-aide">
     <div class="container">
         <div class="formulaire">
-            <form action="./validation.php" method="POST" name="formulaire">
+            <form action="" method="POST" name="formulaire">
                 <section>
 
                     <section>
@@ -56,6 +69,9 @@ if (!empty($_POST)) {
                             </div>
                             <div>
                                 <input type="text" name="lastname" id="lastname" class="write <?= isset($errors['lastname']) ? 'invalid' : ''; ?>" required placeholder="Votre nom" value="<?= $lastname; ?>">
+                                <?php if (isset($errors['lastname'])) {
+                                    echo '<div style="color: red">' . $errors['lastname'] . '</div>';
+                                } ?>
                             </div>
                         </div>
                     </section>
@@ -67,6 +83,9 @@ if (!empty($_POST)) {
                             </div>
                             <div>
                                 <input type="text" name="firstname" id="firstname" class="write <?= isset($errors['firstname']) ? 'invalid' : ''; ?>" required placeholder="Votre prénom" value="<?= $firstname; ?>">
+                                <?php if (isset($errors['firstname'])) {
+                                    echo '<div style="color: red">' . $errors['firstname'] . '</div>';
+                                } ?>
                             </div>
                         </div>
                     </section>
@@ -78,6 +97,9 @@ if (!empty($_POST)) {
                             </div>
                             <div>
                                 <input type="email" name="email" id="email" class="write <?= isset($errors['email']) ? 'invalid' : ''; ?>" required placeholder="Votre Email" value="<?= $email; ?>">
+                                <?php if (isset($errors['email'])) {
+                                    echo '<div style="color: red">' . $errors['email'] . '</div>';
+                                } ?>
                             </div>
                         </div>
                     </section>
@@ -110,6 +132,9 @@ if (!empty($_POST)) {
                                     <option value="probleme" <?= $subject === 'probleme' ? 'selected' : ''; ?>>Problème technique</option>
                                     <option value="autres" <?= $subject === 'autres' ? 'selected' : ''; ?>>Autres sujets</option>
                                 </select>
+                                <?php if (isset($errors['subject'])) {
+                                    echo '<div style="color: red">' . $errors['subject'] . '</div>';
+                                } ?>
                             </div>
                         </div>
                     </section>
@@ -117,6 +142,9 @@ if (!empty($_POST)) {
                     <section>
                         <div>
                             <textarea name="message" id="message" cols="30" rows="10" maxlength="1000" class="<?= isset($errors['message']) ? 'invalid' : ''; ?>" required placeholder="Votre requête... (1000 lettres max)"></textarea>
+                            <?php if (isset($errors['message'])) {
+                                echo '<div style="color: red">' . $errors['message'] . '</div>';
+                            } ?>
                         </div>
                     </section>
 
@@ -134,6 +162,7 @@ if (!empty($_POST)) {
         </div>
     </div>
 </div>
+
 
 
 <?php require_once './partials/footer.php'; ?>
