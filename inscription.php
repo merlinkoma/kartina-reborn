@@ -3,9 +3,16 @@ require './partials/header.php';
 ?>
 <style>
 #form{
-    margin-left: 42%;
+    margin-left: 45%;
     width: 150px;
-    display: inline-block;
+    display: block;
+    }
+    label{
+        width: 90px;
+        display: block;
+    }
+    input{
+        width: 100px ;
     }
 </style>
 <body>
@@ -19,6 +26,10 @@ require './partials/header.php';
 <input type="number">
 <label>date Naissance</label>
 <input type="date">
+<label>Mot de passe</label>
+<input type="password">
+<label>Repeter mot de passe</label>
+<input type="password">
 </div>
 </form>
 </body>
