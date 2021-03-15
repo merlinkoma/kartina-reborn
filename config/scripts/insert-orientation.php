@@ -19,3 +19,13 @@ foreach ($formats as $format){
     echo '<br/>'.$format[0].' -> '.$format[1];
 }
 
+// INSERT INTO user (firstname, surname, artist_name) VALUES ('Maïlys', 'Edard', 'Maïlys');
+// INSERT INTO user (firstname, surname, artist_name) VALUES ('Ambre', 'Arrivé', 'Ambre Arv');
+// INSERT INTO user (firstname, surname, artist_name) VALUES ('Vincent', 'Schricke', 'Vincent Schricke');
+// INSERT INTO user (firstname, surname, artist_name) VALUES ('Cátia', 'Matos', 'Cátia Matos');
+// INSERT INTO user (firstname, surname, artist_name) VALUES ('Eberhard', 'Grossgasteiger', 'Eberhard Grossgasteiger');
+// INSERT INTO user (firstname, surname, artist_name) VALUES ('Everaldo', 'Coelho', 'Everaldo Coelho');
+// INSERT INTO user (firstname, surname, artist_name) VALUES ('Lumen', 'Lumen', 'Lum3n');
+// INSERT INTO user (firstname, surname, artist_name) VALUES ('Valor', 'Kopeny', 'Valor Kopeny');
+// INSERT INTO user (firstname, surname, artist_name) VALUES ('Yi', 'Wu', 'Wu Yi');
+
