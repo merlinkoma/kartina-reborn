@@ -27,7 +27,7 @@ fetch("/stripe-key.php")
   });
 
 var setupElements = function(data) {
-
+  console.log(data);
   stripe = Stripe(data.publishableKey);
   /* ------- Set up Stripe Elements to use in checkout form ------- */
   var elements = stripe.elements();

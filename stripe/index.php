@@ -15,7 +15,7 @@
   </head>
 
   <body>
-  	<h1>Kartina</h1>
+  	
     <div class="sr-root">
       <div class="sr-main">
         <form id="payment-form" class="sr-payment-form">
