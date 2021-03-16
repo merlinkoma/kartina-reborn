@@ -58,7 +58,7 @@ require_once './partials/ariane.php';
                 <h3><label for="quantity">Quantité</label></h3>
             </div>
             <div>
-                <input type="number" name="quantite" id="quantity">
+                <input type="number" name="quantite" id="quantity" value="1">
             </div>
             <div>
                 <button type="reset"><a href="">Supprimer</a></button>
@@ -89,7 +89,7 @@ require_once './partials/ariane.php';
                 </div>
                 <div class="finalprix">
                     <h2 id="fcalcul" data-prix="110.00">110,00€</h2>
-                    <p id="tva">dont tva 20% : 18,32€</p>
+                    <p id="tva">dont tva 20% : 22,00€</p>
                 </div>
             </div>
 

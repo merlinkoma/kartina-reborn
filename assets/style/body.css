@@ -31,6 +31,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap");
 span.required {
   color: #a5434a;
   font-weight: bold;
@@ -421,6 +424,10 @@ div.ligne {
   border-top: 1px solid #333A42;
 }
 
+.invalid {
+  border: solid 1px red;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -437,91 +444,84 @@ div.container-aide {
   margin: 0 auto;
   background-color: #EDE4BE;
   font-family: "Cinzel", serif;
-  background-image: url("../icons/bgc-aide.jpg");
+  background-image: url("../banqueimg/bgc-aide2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
-div.container-aide .container {
+div.container-aide .bloc {
   margin: auto;
-  width: 90%;
   background-color: #9bb9be;
   width: 40%;
   border-radius: 6px;
   box-shadow: 17px 15px 30px 20px rgba(0, 0, 0, 0.54);
 }
 @media screen and (min-width: 1024px) and (max-width: 1380px) {
-  div.container-aide .container {
+  div.container-aide .bloc {
     width: 60%;
   }
 }
-div.container-aide .container div.titre {
-  text-align: center;
-}
-div.container-aide .container div.titre h1 {
-  padding-top: 25px;
-}
-div.container-aide .container div.formulaire {
+div.container-aide .bloc div.formulaire {
   height: 800px;
 }
-div.container-aide .container div.formulaire form section {
+div.container-aide .bloc div.formulaire form section {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
-div.container-aide .container div.formulaire form section section {
+div.container-aide .bloc div.formulaire form section section {
   width: 100%;
   margin: 20px;
 }
-div.container-aide .container div.formulaire form section section div div input.write {
+div.container-aide .bloc div.formulaire form section section div div input.write {
   width: 500px;
   border: none;
   border-bottom: solid 1px;
   background-color: #9bb9be;
 }
 @media screen and (max-width: 1024px) {
-  div.container-aide .container div.formulaire form section section div div input.write {
+  div.container-aide .bloc div.formulaire form section section div div input.write {
     width: 100%;
   }
 }
-div.container-aide .container div.formulaire form section section div div select {
+div.container-aide .bloc div.formulaire form section section div div select {
   width: 500px;
   border: none;
   border-bottom: solid 1px;
   background-color: #9bb9be;
 }
 @media screen and (max-width: 1024px) {
-  div.container-aide .container div.formulaire form section section div div select {
+  div.container-aide .bloc div.formulaire form section section div div select {
     width: 100%;
   }
 }
-div.container-aide .container div.formulaire form section section div textarea {
+div.container-aide .bloc div.formulaire form section section div textarea {
   width: 500px;
 }
 @media screen and (max-width: 1024px) {
-  div.container-aide .container div.formulaire form section section div textarea {
+  div.container-aide .bloc div.formulaire form section section div textarea {
     width: 100%;
     height: 70px;
   }
 }
-div.container-aide .container div.formulaire form section section div button {
+div.container-aide .bloc div.formulaire form section section div button {
   width: 500px;
   background-color: #EDE4BE;
   border-radius: 10px;
   border: solid 1px;
 }
 @media screen and (max-width: 1024px) {
-  div.container-aide .container div.formulaire form section section div button {
+  div.container-aide .bloc div.formulaire form section section div button {
     width: 100%;
   }
 }
 @media screen and (max-width: 1024px) {
-  div.container-aide .container div.formulaire form section section div {
+  div.container-aide .bloc div.formulaire form section section div {
     width: 100%;
   }
 }
 @media screen and (max-width: 1024px) {
-  div.container-aide .container div.formulaire form section {
+  div.container-aide .bloc div.formulaire form section {
     width: 100%;
   }
 }
@@ -679,6 +679,7 @@ footer {
   padding: 0;
   width: 100%;
   font-family: Cinzel;
+  border-top: 1px solid black;
 }
 footer div.find-gallery {
   width: 90%;
@@ -941,7 +942,12 @@ div.container-header header div div.titre h1 {
 div.container-header header div div.titre p {
   font-size: 12px;
   padding: 0;
-  margin: 0;
+  margin: 15px;
+}
+@media screen and (min-width: 1024px) {
+  div.container-header header div div.titre p {
+    margin: 0;
+  }
 }
 @media screen and (min-width: 1024px) {
   div.container-header header div div.titre {
@@ -1003,6 +1009,9 @@ div.container-header header div div.info div form select {
     display: flex;
   }
 }
+div.container-header header div.navigation {
+  border-bottom: 1px solid black;
+}
 div.container-header header div.navigation ul {
   padding: 0;
   margin: 0;
@@ -1027,7 +1036,6 @@ div.container-header header div.navigation ul li a {
 @media screen and (min-width: 1024px) {
   div.container-header header div.navigation ul {
     display: flex;
-    width: 60%;
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
@@ -1360,6 +1368,7 @@ div.container-panier div.titre {
 }
 div.container-panier div.titre p {
   font-size: 40px;
+  margin: auto;
 }
 div.container-panier div.main {
   display: flex;
@@ -1415,7 +1424,7 @@ div.container-panier div.finalisation {
   display: flex;
   justify-content: space-between;
   width: 99%;
-  margin: 10px;
+  margin: auto;
   height: 400px;
 }
 div.container-panier div.finalisation div.back button {
@@ -1565,6 +1574,43 @@ div.sales a.comeback {
 }
 div.sales a.comeback:hover {
   color: #687079;
+}
+
+span.required {
+  color: #a5434a;
+  font-weight: bold;
+  padding: 1%;
+}
+
+div.ligne {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #333A42;
+}
+
+div.container-message {
+  background-color: #EDE4BE;
+  display: flex;
+  justify-content: center;
+}
+div.container-message .bloc {
+  background-color: #9bb9be;
+  width: 60%;
+  border-radius: 6px;
+  box-shadow: 17px 15px 30px 20px rgba(0, 0, 0, 0.54);
+  margin: auto;
+  height: auto;
+  margin: 30px;
+  padding: 15px;
+}
+div.container-message .bloc .titre h1 {
+  margin: auto;
+}
+div.container-message .bloc section h3.souligner {
+  text-decoration: underline;
+}
+div.container-message .bloc section p.souligner {
+  text-decoration: underline;
 }
 
 span.required {

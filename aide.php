@@ -49,7 +49,7 @@ if (!empty($_POST)) {
 ?>
 
 <div class="container-aide">
-    <div class="container">
+    <div class="bloc">
         <div class="formulaire">
             <form action="" method="POST" name="formulaire">
                 <section>

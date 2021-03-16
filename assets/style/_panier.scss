@@ -21,6 +21,7 @@ div.container-panier {
 
         p {
             font-size: 40px;
+            margin: auto;
         }
     }
 
@@ -97,7 +98,7 @@ div.container-panier {
         display        : flex;
         justify-content: space-between;
         width          : 99%;
-        margin         : 10px;
+        margin         : auto;
         height         : 400px;
 
         div.back {
