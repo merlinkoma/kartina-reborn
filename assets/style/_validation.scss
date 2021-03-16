@@ -1,0 +1,42 @@
+@import 'variables';
+@import 'mixin';
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+
+div.container-message {
+    background-color: #EDE4BE;
+    display         : flex;
+    justify-content : center;
+
+    .bloc {
+        background-color: #9bb9be;
+        width           : 60%;
+        border-radius   : 6px;
+        box-shadow      : 17px 15px 30px 20px rgba(0, 0, 0, 0.54);
+        margin          : auto;
+        height          : auto;
+        margin          : 30px;
+        padding         : 15px;
+
+        .titre {
+
+            h1 {
+                margin: auto;
+            }
+        }
+
+        section {
+            h3.souligner {
+                text-decoration: underline;
+            }
+        }
+
+        section {
+
+            p.souligner {
+                text-decoration: underline;
+            }
+        }
+    }
+
+}
