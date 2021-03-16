@@ -1,6 +1,6 @@
 cc_kartina.pdf
-.css
-.css.map
+*.css
+*.css.map
 
 # Created by https://www.toptal.com/developers/gitignore/api/composer,node,sass,vscode
 # Edit at https://www.toptal.com/developers/gitignore?templates=composer,node,sass,vscode
