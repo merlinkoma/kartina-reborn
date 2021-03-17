@@ -21,6 +21,7 @@ div.container-panier {
 
         p {
             font-size: 40px;
+            margin: auto;
         }
     }
 
@@ -86,6 +87,10 @@ div.container-panier {
             width      : 10%;
             display    : flex;
             align-items: center;
+
+            h2 {
+                border-bottom: 1px solid;
+            }
         }
     }
 
@@ -93,7 +98,7 @@ div.container-panier {
         display        : flex;
         justify-content: space-between;
         width          : 99%;
-        margin         : 10px;
+        margin         : auto;
         height         : 400px;
 
         div.back {
@@ -151,7 +156,10 @@ div.container-panier {
 
                 div.finalprix {
 
-                    h2,
+                    h2 {
+                        border-bottom: 1px solid;
+                    }
+
                     p {
                         margin: 5px;
                     }

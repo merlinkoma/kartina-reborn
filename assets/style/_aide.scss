@@ -3,7 +3,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 
-
+.invalid {
+    border: solid 1px red;
+}
 
 a {
     @include liens;
@@ -19,15 +21,13 @@ div.container-aide {
     margin: 0 auto;
     background-color: #EDE4BE;
     font-family: 'Cinzel', serif;
-    background-image: url('../icons/bgc-aide.jpg');
+    background-image: url('../banqueimg/bgc-aide2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 
-    .container {
-        // ! 2 width 
+    .bloc {
         margin: auto;
-        width: 90%;
         background-color: #9bb9be;
         width: 40%;
         border-radius: 6px;
@@ -35,18 +35,6 @@ div.container-aide {
 
         @media screen and (min-width : 1024px) and (max-width : 1380px) {
           width: 60%;  
-        }
-
-        
-
-        div.titre {
-            text-align: center;
-
-            @media screen and (max-width : 1024px) {}
-
-            h1 {
-                padding-top: 25px;
-            }
         }
 
         div.formulaire {
