@@ -2,7 +2,9 @@
 require './partials/header.php';
 if( !empty($_POST)){
     if (!empty($_POST['name'])&& !empty($_POST['firstname']) && !empty($_POST['age'])&& !empty($_POST['motDePasse'])){
-
+            if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
+                    echo 'l\'adresse email est validée' ; 
+            }
     }
 
 }
@@ -33,6 +35,8 @@ input{
 <input type="text" name="name" required>
 <label>Prenom</label>
 <input type="text" name="firstname" required>
+<label>email</label>
+<input type="email" name="email">
 <label>age</label>
 <input type="number" name="age">
 <label>date Naissance</label>
