@@ -1,7 +1,9 @@
 <?php
 
-require __DIR__.'/../../config/database.php';
+//chemin pour la connexion à la BDD
+require __DIR__.'/../../config/database.php'; 
 
+//insersion des tables fixes
 $orientations = ['portrait', 'paysage', 'carré', 'panoramique'];
 $formats = [['classique', 1.3], ['grand', 2.6], ['géant', 4], ['collector', 10]];
 $finitions = [['passe-partout noir', 1], ['tirage papier', 1], ['passe-partout blanc', 1.4], ['aluminium', 2.6], ['acrylique', 3.35]];
@@ -9,6 +11,7 @@ $cadres = [['sans cadre', 1], ['aluminium noir', 1], ['aluminium blanc', 1], ['a
 
 $artists = [['Mélissa', 'Ameye', 'Merlink', 'CC'], ['Maïlys', 'Edard', 'Maïlys', 'CC'], ['Ambre', 'Arrivé', 'Ambre Arv', 'CC'], ['Vincent', 'Schricke', 'Vincent Schricke', 'CC'], ['Cátia', 'Matos', 'Cátia Matos', 'pexels'], ['Eberhard', 'Grossgasteiger', 'Eberhard Grossgasteiger', 'unsplash'], ['Everaldo', 'Coelho', 'Everaldo Coelho', 'unsplash'], ['Lumen', 'Lumen', 'Lum3n', 'unsplash'], ['Valor', 'Kopeny', 'Valor Kopeny', 'unsplash'], ['Yi', 'Wu', 'Wu Yi', 'pexels']];
 
+//vidage de la table, désactivation des clefs étrangères, truncate pour remettre les ID à 0, réactivation des clefs étrangères.
 $db->query('SET FOREIGN_KEY_CHECKS = 0');
 $db->query('TRUNCATE orientation');
 $db->query('TRUNCATE format');
@@ -41,4 +44,7 @@ foreach ($artists as $artist){
     $db->query("INSERT INTO user (firstname, surname, artist_name, role, licence) VALUES ('$artist[0]', '$artist[1]', '$artist[2]', 'artist', '$artist[3]')");
     echo '<br/>'.$artist[0].' '.$artist[1].' -> '.$artist[2].' '.$artist[3];
 }
+
+
+
 
