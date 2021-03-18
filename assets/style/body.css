@@ -61,9 +61,11 @@ main.mainaccueil div.homebanner {
 }
 main.mainaccueil div.homebanner h1 {
   font-family: Cinzel;
+  text-shadow: 1px 1px 2px #333A42;
 }
 main.mainaccueil div.homebanner p {
   font-family: Cinzel;
+  text-shadow: 1px 1px 2px #333A42;
 }
 main.mainaccueil div.homebanner img.background-header {
   width: 100%;

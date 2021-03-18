@@ -3,7 +3,7 @@ $title = 'accueil';
 require_once './partials/header.php';
 require_once './partials/ariane.php';
 
-$randompictures = $db->query('SELECT * FROM picture ORDER BY RAND() LIMIT 6')->fetchAll();
+$randompictures = $db->query('SELECT * FROM picture INNER JOIN user ON picture.user_iduser = user.iduser ORDER BY RAND() LIMIT 6')->fetchAll();
 $randombanner = $db->query('SELECT * FROM picture WHERE orientation_idorientation = 2 ORDER BY RAND() LIMIT 1')->fetch();
 $randomquatros = $db->query('SELECT * FROM picture WHERE orientation_idorientation = 3 ORDER BY RAND() LIMIT 4')->fetchAll();
 
@@ -36,7 +36,7 @@ $randomquatros = $db->query('SELECT * FROM picture WHERE orientation_idorientati
                     <div class="image"><img src="./assets/banqueimg/<?=$randompicture['cover']?>" alt=""></div>
                     <figcaption class="legendeimg">
                         <div class="legendeimg1">
-                            <p><a href="./page-artiste.php"><?=$randompicture['user_iduser']?></a></p>
+                            <p><a href="./page-artiste.php?id=<?=$randompicture['user_iduser']?>"><?=$randompicture['artist_name']?></a></p>
                             <p><?=$randompicture['title']?></p>
                             <p>Edition limitée</p>
                         </div>

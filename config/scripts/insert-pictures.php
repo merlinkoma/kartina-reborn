@@ -135,6 +135,7 @@ foreach ($pictures as $picture){
     $cover = str_replace('ö', 'o', $cover);
     $cover = str_replace("'", '-', $cover);
     $cover = str_replace(' ', '-', $cover);
+    $cover = str_replace('…', 'x', $cover);
     $cover = strtolower($cover).'.jpg';
 
     $db->query("INSERT INTO picture (title, creation_date, user_iduser, price, quantity, orientation_idorientation, cover) VALUES ('$picture[0]', '$picture[1]', $picture[2], $picture[3], $picture[4], $picture[5], '$cover')");
