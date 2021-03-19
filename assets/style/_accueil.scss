@@ -51,6 +51,12 @@ main.mainaccueil {
             }
         }
 
+        div.legend{
+            color: $color-dark;
+            font-size: 0.6em;
+            margin-left: 1%;
+        }
+
 
         a.newcoll {
             text-decoration : none;
@@ -261,30 +267,6 @@ main.mainaccueil {
                         font-size: 4vw;
                     }
                 }
-            }
-
-            div.quatro1 {
-                background         : url("../banqueimg/filrouge30.jpg");
-                background-size    : cover;
-                background-position: center;
-            }
-
-            div.quatro2 {
-                background         : url("../banqueimg/filrouge3.jpg");
-                background-size    : cover;
-                background-position: bottom;
-            }
-
-            div.quatro3 {
-                background         : url("../banqueimg/filrouge62.jpg");
-                background-size    : cover;
-                background-position: center;
-            }
-
-            div.quatro4 {
-                background         : url("../banqueimg/filrouge83.jpg");
-                background-size    : cover;
-                background-position: bottom;
             }
         }
     }
