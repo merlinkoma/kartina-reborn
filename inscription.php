@@ -2,14 +2,21 @@
 require './partials/header.php';
 if( !empty($_POST)){
     if (!empty($_POST['name'])&& !empty($_POST['firstname']) && !empty($_POST['age'])&& !empty($_POST['motDePasse'])){
-            if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
-                    echo 'l\'adresse email est validée' ; 
                 $password=$_POST['motDePasse'];
+                $cf_password=$_POST['cf_password'];
                 $email=$_POST['email'];
                 $prenom=$_POST['firstname'];
                 $nom=$_POST['nom'];
 
-               
+                if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
+                    $errors['email']="l'email n'est pas valide";
+                }
+                if(strlen($password)<6){
+                    $errors['motDePasse']="le mot de passe est trop court ";
+                }
+                if($password!=$cf_password){
+                    $errors['erreurequalpassword']="les mots de passes sont différent ";
+                }
                 $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
                 $query =$db->prepare('INSERT INTO user (email ,prenom , nom , password) VALUES (:email , :prenom, :nom,:password)');
                 $query->bindValue(':password', password_hash($password,PASSWORD_DEFAULT));
@@ -17,12 +24,13 @@ if( !empty($_POST)){
                 $query->bindValue(':prenom',$prenom);
                 $query->bindValue(':nom' , $nom);
                 $query->execute();
-                }
-                else{
-                $errors['email']="l'email n'est pas valide";
-                }
 
     }
+    echo '<ul>';
+    foreach($errors as $error){
+        echo '<li>'.$error.'</li>';
+    }
+    echo '</ul>'
 
 }
 ?>
@@ -61,7 +69,7 @@ input{
         <label>Mot de passe</label>
         <input type="password" name="motDePasse">
         <label>Repeter mot de passe</label>
-        <input type="password" name="motDePasse">
+        <input type="password" name="cf_password">
         <br>
         <button type="submit">Envoyer</button>
 </div>
