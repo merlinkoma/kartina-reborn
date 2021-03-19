@@ -7,6 +7,7 @@ if( !empty($_POST)){
                 $password=$_POST['motDePasse'];
                 $email=$_POST['email'];
                 $prenom=$_POST['firstname'];
+                $nom=$_POST['nom'];
 
                
                 $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
@@ -14,6 +15,8 @@ if( !empty($_POST)){
                 $query->bindValue(':password', password_hash($password,PASSWORD_DEFAULT));
                 $query->bindValue(':email',$email);
                 $query->bindValue(':prenom',$prenom);
+                $query->bindValue(':nom' , $nom);
+                $query->execute();
                 }
                 else{
                 $errors['email']="l'email n'est pas valide";
