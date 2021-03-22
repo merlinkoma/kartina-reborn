@@ -73,7 +73,7 @@ main.mainaccueil div.homebanner img.background-header {
 }
 main.mainaccueil div.homebanner div.header-titles {
   position: absolute;
-  top: 100px;
+  top: 150px;
   padding: 5vw;
 }
 @media (max-width: 1024px) {
@@ -609,6 +609,10 @@ div.all-photographies div.results-bloc div.results {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+div.all-photographies div.results-bloc div.results div.picture img {
+  height: 10vh;
+  width: auto;
 }
 div.all-photographies div.results-bloc div.pagination {
   margin: 2% auto;
@@ -1351,6 +1355,39 @@ div.artiste div.galerie figure figcaption {
 }
 div.artiste div.galerie figure figcaption div.price {
   font-weight: 400;
+}
+
+div.presentation {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #687079;
+  color: #e7e7e7;
+  font-family: Oswald;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+div.presentation div.bloc {
+  height: 40vh;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 3%;
+  padding: 1%;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px #333A42;
+}
+div.presentation img {
+  height: 90%;
+  width: auto;
+}
+div.presentation a {
+  font-size: 1.5em;
+  font-weight: 200;
 }
 
 a {

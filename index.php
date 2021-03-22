@@ -18,7 +18,7 @@ $randomquatros = $db->query('SELECT * FROM picture WHERE orientation_idorientati
             <p>La légendaire collection Everest</p>
             <a href="" class="newcoll">Explorer la nouvelle collection ></a>
         </div>
-        <div class="legend"><?= $randombanner['title'] ?> - <a href="./page-artiste.php?id=<?= $randombanner['user_iduser'] ?>"><?= $randombanner['artist_name'] ?></a></div>
+        <div class="legend"><a href="./page-artiste.php?id=<?= $randombanner['user_iduser'] ?>"><?= $randombanner['title'] ?> - <?= $randombanner['artist_name'] ?></a></div>
     </div>
 
     <!-- SECTION 2 PHOTO D'ART -->
