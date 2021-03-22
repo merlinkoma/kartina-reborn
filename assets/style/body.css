@@ -1189,19 +1189,32 @@ div.container {
 div.container div.leftprevisualisation {
   width: 45%;
 }
-div.container div.leftprevisualisation img {
+div.container div.leftprevisualisation div.context {
+  display: flex;
+  flex-direction: row;
   width: 100%;
 }
-div.container div.leftprevisualisation h2 {
+div.container div.leftprevisualisation div.context figure {
+  width: 50%;
+  border: 1px black solid;
+}
+div.container div.leftprevisualisation div.context figure img {
+  width: 100%;
+  height: auto;
+}
+div.container div.leftprevisualisation div.choice img {
+  width: 100%;
+}
+div.container div.leftprevisualisation div.choice h2 {
   font-size: 2.5rem;
   margin: 0;
   font-family: Cinzel, serif;
 }
-div.container div.leftprevisualisation p#picturename {
+div.container div.leftprevisualisation div.choice p#picturename {
   color: #687079;
   margin: 3px 0 10px 0;
 }
-div.container div.leftprevisualisation div.authordescription {
+div.container div.leftprevisualisation div.choice div.authordescription {
   color: #333A42;
   text-align: justify;
 }

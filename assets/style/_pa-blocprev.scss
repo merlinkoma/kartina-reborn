@@ -14,24 +14,40 @@ div.container {
     div.leftprevisualisation {
         width: 45%;
 
-        img {
+        div.context{
+            display: flex;
+            flex-direction: row;
             width: 100%;
+            figure{
+                width: 50%;
+                border: 1px black solid;
+                img{
+                    width: 100%;
+                    height: auto;
+                }
+            }
         }
 
-        h2 {
-            font-size  : 2.5rem;
-            margin     : 0;
-            font-family: Cinzel, serif;
-        }
+        div.choice {
+            img {
+                width: 100%;
+            }
 
-        p#picturename {
-            color : $color-light;
-            margin: 3px 0 10px 0;
-        }
+            h2 {
+                font-size  : 2.5rem;
+                margin     : 0;
+                font-family: Cinzel, serif;
+            }
 
-        div.authordescription {
-            color     : $color-dark;
-            text-align: justify;
+            p#picturename {
+                color : $color-light;
+                margin: 3px 0 10px 0;
+            }
+
+            div.authordescription {
+                color     : $color-dark;
+                text-align: justify;
+            }
         }
     }
 

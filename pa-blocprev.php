@@ -2,28 +2,48 @@
 $title = 'parcours';
 require_once './partials/header.php';
 require_once './partials/ariane.php';
+$id = $_GET['id'];
+
+$query = $db->prepare('SELECT * FROM picture INNER JOIN user ON picture.user_iduser = user.iduser WHERE idpicture = :id');
+$query->execute([':id' => $id]);
+$picture = $query->fetch();
 ?>
 
 
 <div class="container">
     <div class="leftprevisualisation">
 
-        <img src="./assets/banqueimg/filrouge17.jpg" alt="prévisualisation">
-
-        <h2>Marie Martin</h2>
-
-        <p id="picturename">Black&White bridge</p>
-
-        <div class="authordescription">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem repellendus facere est temporibus,
-            aspernatur et! Molestias rem quaerat cumque, nostrum, molestiae accusantium, inventore labore voluptas
-            quasi vero nulla fugiat possimus.
-            Exercitationem aperiam nesciunt asperiores necessitatibus magnam, at doloremque error recusandae
-            accusantium? Officiis debitis, consequuntur veniam doloremque vero dolor ipsum cumque, animi rerum modi
-            soluta harum at sequi quo laudantium accusantium.
-            Vitae deleniti molestiae neque nulla saepe fugiat atque sit, dolorem corporis ipsum ad sint nisi quis
-            dicta deserunt expedita omnis non culpa nam, architecto vero iusto at? Tempore, error rerum?
+        <div class="context">
+            <figure>
+            <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="image seule">
+                <figcaption>Image seule</figcaption>
+            </figure>
+            <figure>
+                <img src="./assets/banqueimg/salon-test.jpg" alt="image dans un salon">
+                <figcaption>Vue dans un salon</figcaption>
+            </figure>
         </div>
+
+        <div class="choice">
+
+            <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>">
+
+            <h2><?= $picture['artist_name'] ?></h2>
+
+            <p id="picturename"><?= $picture['title'] ?></p>
+
+            <div class="authordescription">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem repellendus facere est temporibus,
+                aspernatur et! Molestias rem quaerat cumque, nostrum, molestiae accusantium, inventore labore voluptas
+                quasi vero nulla fugiat possimus.
+                Exercitationem aperiam nesciunt asperiores necessitatibus magnam, at doloremque error recusandae
+                accusantium? Officiis debitis, consequuntur veniam doloremque vero dolor ipsum cumque, animi rerum modi
+                soluta harum at sequi quo laudantium accusantium.
+                Vitae deleniti molestiae neque nulla saepe fugiat atque sit, dolorem corporis ipsum ad sint nisi quis
+                dicta deserunt expedita omnis non culpa nam, architecto vero iusto at? Tempore, error rerum?
+            </div>
+        </div>
+
 
     </div>
 

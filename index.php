@@ -43,7 +43,7 @@ $randomquatros = $db->query('SELECT * FROM picture WHERE orientation_idorientati
                         </div>
                         <div class="legendeimg2">
                             <p>à partir de</p>
-                            <p><a href="./pa-blocprev.php"><?= $randompicture['price'] ?> €</a></p>
+                            <p><a href="./pa-blocprev.php?id=<?= $randompicture['idpicture'] ?>"><?= $randompicture['price'] ?> €</a></p>
                         </div>
                     </figcaption>
                 </figure>
