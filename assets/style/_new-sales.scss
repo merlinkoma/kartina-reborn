@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap');
+
+a {
+    text-decoration: none;
+    color          : inherit;
+}
+
+ul li {
+    list-style: none;
+}
+
+input {
+    background-color: #9bb9be;
+    border          : none;
+    border-bottom   : 1px solid black;
+    width           : 500px;
+}
+
+div.container-new-sales {
+    background-color: #EDE4BE;
+    font-family     : 'Cinzel', serif;
+    height          : 900px;
+    margin          : auto;
+
+
+    .titre {
+        width      : auto;
+        margin-left: 10px;
+
+        h1 {
+            margin: auto;
+            font-size: 40px;
+        }
+    }
+
+    .formulaire {
+        display         : flex;
+        background-color: #9bb9be;
+        width           : 40%;
+        justify-content : center;
+        margin          : auto;
+        // border: 1px solid black;
+        border-radius   : 6px;
+        box-shadow      : 17px 15px 30px 20px rgba(0, 0, 0, 0.54);
+        box-sizing      : border-box;
+        height          : 800px;
+
+        form {
+            display        : flex;
+            flex-direction : column;
+            justify-content: space-between;
+            margin         : auto;
+            height         : 90%;
+
+            div.title {
+
+                div {
+
+                    label {}
+                }
+
+                div {
+
+                    input {}
+                }
+            }
+
+            div.cover {
+
+                div {
+
+                    label {}
+                }
+
+                div {
+
+                    input {}
+                }
+            }
+
+            div.format {
+
+                div {
+
+                    label {}
+                }
+
+                div.radio {
+                    border-bottom: 1px solid;
+
+                    input {
+                        width: 20px;
+                    }
+                }
+            }
+
+            div.price {
+
+                div {
+
+                    label {}
+                }
+
+                div {
+
+                    input {}
+                }
+
+            }
+
+            div.quantity {
+
+                div {
+
+                    label {}
+                }
+
+                div {
+
+                    input {}
+                }
+            }
+
+            div.tag {
+
+                div {
+                    label {}
+                }
+
+                div {
+                    input {}
+                }
+            }
+
+            div.validation {
+                button {
+                    width           : 500px;
+                    background-color: #EDE4BE;
+                    border-radius   : 10px;
+                    border          : solid 1px;
+                }
+            }
+        }
+    }
+}

@@ -53,12 +53,13 @@ if (!empty($_POST)) {
         <div class="formulaire">
             <form action="" method="POST" name="formulaire">
                 <section>
-
                     <section>
                         <div>
                             <label for="gender">Civilité :</label>
-                            <label for="Monsieur">M.</label><input type="radio" name="gender" id="gender" value="Monsieur" value="<?= $gender; ?>" checked>
-                            <label for="Madame">Mme.</label><input type="radio" name="gender" id="gender" value="Madame" value="<?= $gender; ?>">
+                            <label for="Monsieur">M.</label>
+                            <input type="radio" name="gender" id="gender" class="gender" value="Monsieur" value="<?= $gender; ?>" checked>
+                            <label for="Madame">Mme.</label>
+                            <input type="radio" name="gender" id="gender" class="gender" value="Madame" value="<?= $gender; ?>">
                         </div>
                     </section>
 
