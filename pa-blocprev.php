@@ -12,20 +12,21 @@ $picture = $query->fetch();
 
 <div class="container">
     <div class="context">
-        <figure id="alone">
-            <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="image seule" id="alonepict">
+        <figure>
+            <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="image seule">
             <figcaption>Image seule</figcaption>
         </figure>
         <figure id="room">
-            <img src="./assets/banqueimg/salon-test.jpg" alt="image dans un salon" id="roompict">
+            <img src="./assets/banqueimg/salon-test.jpg" alt="image dans un salon">
             <figcaption>Vue dans un salon</figcaption>
         </figure>
     </div>
 
     <div class="leftprevisualisation">
-        <div class="choice" id="bigprev">
-
-            <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>">
+        <div class="choice">
+        <div class="mockup">
+        </div>
+            <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="sansmockup">
 
             <h2><?= $picture['artist_name'] ?></h2>
 
@@ -95,14 +96,17 @@ $picture = $query->fetch();
 
 <script>
     function changeContext() {
-        let alone = document.getElementById('alonepict');
-        alone.addEventListener('click', e => {
-            document.getElementById('bigprev').innerHTML = "<img src='./assets/banqueimg/salon-test.jpg' alt=''>";
+        let room = document.querySelector('#room');
+        room.addEventListener('click', e => {
+            console.log('coucou');
+            document.querySelector('#sansmockup').style="position: absolute; top: 220px; left: 420px;  height: 200px; width: auto; box-shadow: 0 0 20px #333A42;";
+            document.querySelector('.mockup').innerHTML = '<img src="./assets/banqueimg/salon-test.jpg" alt="">'
         });
     }
+    changeContext();
 
     function changeBorder() {
-        document.getElementById('divtest').style = "border: solid 3px #aca06c";
+        document.querySelector('#divtest').style = "border: solid 3px #aca06c";
     }
 
     function changeFormat() {
