@@ -11,20 +11,19 @@ $picture = $query->fetch();
 
 
 <div class="container">
+    <div class="context">
+        <figure id="alone">
+            <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="image seule" id="alonepict">
+            <figcaption>Image seule</figcaption>
+        </figure>
+        <figure id="room">
+            <img src="./assets/banqueimg/salon-test.jpg" alt="image dans un salon" id="roompict">
+            <figcaption>Vue dans un salon</figcaption>
+        </figure>
+    </div>
+
     <div class="leftprevisualisation">
-
-        <div class="context">
-            <figure>
-            <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="image seule">
-                <figcaption>Image seule</figcaption>
-            </figure>
-            <figure>
-                <img src="./assets/banqueimg/salon-test.jpg" alt="image dans un salon">
-                <figcaption>Vue dans un salon</figcaption>
-            </figure>
-        </div>
-
-        <div class="choice">
+        <div class="choice" id="bigprev">
 
             <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>">
 
@@ -95,6 +94,13 @@ $picture = $query->fetch();
 <?php require_once './partials/footer.php'; ?>
 
 <script>
+    function changeContext() {
+        let alone = document.getElementById('alonepict');
+        alone.addEventListener('click', e => {
+            document.getElementById('bigprev').innerHTML = "<img src='./assets/banqueimg/salon-test.jpg' alt=''>";
+        });
+    }
+
     function changeBorder() {
         document.getElementById('divtest').style = "border: solid 3px #aca06c";
     }

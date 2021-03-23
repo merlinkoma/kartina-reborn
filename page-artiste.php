@@ -62,7 +62,7 @@ if (isset($id) && $id != '') {
     //var_dump($allartists);
 ?> <div class="presentation"> <?php
     foreach ($allartists as $artist) { 
-        $cover = $db->query('SELECT * FROM picture WHERE user_iduser = '.$artist['iduser'].' LIMIT 1')->fetch();
+        $cover = $db->query('SELECT * FROM picture WHERE user_iduser = '.$artist['iduser'].' ORDER BY RAND()')->fetch();
         ?>    
             <div class="bloc">
                 <img src="./assets/banqueimg/<?= $cover['cover'] ?>" alt="">

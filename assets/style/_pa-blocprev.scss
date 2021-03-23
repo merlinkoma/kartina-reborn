@@ -11,23 +11,24 @@ div.container {
     display         : flex;
     justify-content : space-around;
 
-    div.leftprevisualisation {
-        width: 45%;
 
-        div.context{
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            figure{
-                width: 50%;
-                border: 1px black solid;
-                img{
-                    width: 100%;
-                    height: auto;
-                }
+    div.context{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width  : 15vw;
+        figure{
+            width: 80%;
+            border: 1px black solid;
+            img{
+                width: 100%;
+                height: auto;
             }
         }
+    }
 
+    div.leftprevisualisation {
+        width: 40vw;
         div.choice {
             img {
                 width: 100%;
@@ -52,7 +53,7 @@ div.container {
     }
 
     div.rightpersonnalisation {
-        width  : 50%;
+        width  : 40vw;
         padding: 10px;
 
         h2 {

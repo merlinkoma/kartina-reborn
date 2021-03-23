@@ -1190,21 +1190,22 @@ div.container {
   display: flex;
   justify-content: space-around;
 }
-div.container div.leftprevisualisation {
-  width: 45%;
-}
-div.container div.leftprevisualisation div.context {
+div.container div.context {
   display: flex;
-  flex-direction: row;
-  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  width: 15vw;
 }
-div.container div.leftprevisualisation div.context figure {
-  width: 50%;
+div.container div.context figure {
+  width: 80%;
   border: 1px black solid;
 }
-div.container div.leftprevisualisation div.context figure img {
+div.container div.context figure img {
   width: 100%;
   height: auto;
+}
+div.container div.leftprevisualisation {
+  width: 40vw;
 }
 div.container div.leftprevisualisation div.choice img {
   width: 100%;
@@ -1223,7 +1224,7 @@ div.container div.leftprevisualisation div.choice div.authordescription {
   text-align: justify;
 }
 div.container div.rightpersonnalisation {
-  width: 50%;
+  width: 40vw;
   padding: 10px;
 }
 div.container div.rightpersonnalisation h2 {
