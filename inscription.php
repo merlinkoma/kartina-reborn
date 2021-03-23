@@ -2,6 +2,7 @@
 require './partials/header.php';
 if( !empty($_POST)){
     if (!empty($_POST['name'])&& !empty($_POST['firstname']) && !empty($_POST['age'])&& !empty($_POST['motDePasse'])){
+                $errors=[];
                 $password=$_POST['motDePasse'];
                 $cf_password=$_POST['cf_password'];
                 $email=$_POST['email'];
@@ -10,12 +11,15 @@ if( !empty($_POST)){
 
                 if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
                     $errors['email']="l'email n'est pas valide";
+                    echo $errors['email'];
                 }
                 if(strlen($password)<6){
                     $errors['motDePasse']="le mot de passe est trop court ";
+                    echo $errors['motDePasse'];
                 }
                 if($password!=$cf_password){
                     $errors['erreurequalpassword']="les mots de passes sont différent ";
+                    echo $errors['erreurequalpassword'];
                 }
                 $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
                 $query =$db->prepare('INSERT INTO user (email ,prenom , nom , password) VALUES (:email , :prenom, :nom,:password)');
@@ -30,7 +34,7 @@ if( !empty($_POST)){
     foreach($errors as $error){
         echo '<li>'.$error.'</li>';
     }
-    echo '</ul>'
+    echo '</ul>' ;
 
 }
 ?>
