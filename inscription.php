@@ -9,6 +9,7 @@ if( !empty($_POST)){
                 $prenom=$_POST['firstname'];
                 $age=$_POST['age'];
                 $nom=$_POST['name'];
+                $adresse=$_POST['adresse'];
 
                 if(!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
                     $errors['email']="l'email n'est pas valide";
@@ -24,11 +25,12 @@ if( !empty($_POST)){
                 }
                 try{
                 $db = new PDO('mysql:host=localhost;dbname=kartina;charset=utf8', 'root', '');
-                $query =$db->prepare('INSERT INTO user (email ,firstname , lastname , password) VALUES (:email , :firstname, :lastname,:password)');
+                $query =$db->prepare('INSERT INTO client (email ,firstname , lastname ,adresse, password) VALUES (:email , :firstname, :lastname,:adress:password)');
                 $query->bindValue(':password', password_hash($password,PASSWORD_DEFAULT));
                 $query->bindValue(':email',$email);
                 $query->bindValue(':firstname',$prenom);
                 $query->bindValue(':lastname' , $nom);
+                $query->bindValue(':adress', $adresse);
                 $query->execute();
                 }
                 catch(Exception $e){
@@ -46,7 +48,7 @@ if( !empty($_POST)){
 ?>
 <style>
 #form{
-    margin-left: 45%;
+    margin-left: 40%;
     width: 200px;
     display: block;
     height: auto;
@@ -56,11 +58,11 @@ if( !empty($_POST)){
     color: #e7e7e7;
     }
 label{
-        width: 90px;
+        width: 100px;
         display: block;
     }
 input{
-        width: 100px ;
+        width: 120px ;
     }
 </style>
 <body>
@@ -72,6 +74,8 @@ input{
         <input type="text" name="firstname">
         <label>email</label>
         <input type="email" name="email">
+        <label>adresse</label>
+        <input type="text" name="adresse">
         <label>age</label>
         <input type="number" name="age">
         <label>Mot de passe</label>
