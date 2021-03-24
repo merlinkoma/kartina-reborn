@@ -19,6 +19,12 @@ if( !empty($_POST)){
                     $errors['motDePasse']="le mot de passe est trop court ";
                     echo $errors['motDePasse'];
                 }
+                if(strlen($prenom)<3){
+                    $errors['prenom']="le prenom est trop court";
+                }
+                if(strlen($nom)<3){
+                    $errors['nom']="le nom est trop court";
+                }
                 if($password!=$cf_password){
                     $errors['erreurequalpassword']="les mots de passes sont différent ";
                     echo $errors['erreurequalpassword'];
@@ -68,3 +74,5 @@ if( !empty($_POST)){
     
 </form>
 </body>
+<?php
+require './partials/footer.php';
