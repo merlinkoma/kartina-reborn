@@ -8,9 +8,9 @@ if( !empty($_POST)){
                 $email=$_POST['email'];
                 $prenom=$_POST['firstname'];
                 $age=$_POST['age'];
-                $nom=$_POST['nom'];
+                $nom=$_POST['name'];
 
-                if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
+                if(!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
                     $errors['email']="l'email n'est pas valide";
                     echo $errors['email'];
                 }
@@ -22,13 +22,18 @@ if( !empty($_POST)){
                     $errors['erreurequalpassword']="les mots de passes sont différent ";
                     echo $errors['erreurequalpassword'];
                 }
+                try{
                 $db = new PDO('mysql:host=localhost;dbname=kartina;charset=utf8', 'root', '');
-                $query =$db->prepare('INSERT INTO user (email ,prenom , nom , password) VALUES (:email , :prenom, :nom,:password)');
+                $query =$db->prepare('INSERT INTO user (email ,firstname , lastname , password) VALUES (:email , :firstname, :lastname,:password)');
                 $query->bindValue(':password', password_hash($password,PASSWORD_DEFAULT));
                 $query->bindValue(':email',$email);
-                $query->bindValue(':prenom',$prenom);
-                $query->bindValue(':nom' , $nom);
+                $query->bindValue(':firstname',$prenom);
+                $query->bindValue(':lastname' , $nom);
                 $query->execute();
+                }
+                catch(Exception $e){
+                    echo $e->getMessage();
+                }
 
     }
     echo '<ul>';
@@ -59,7 +64,7 @@ input{
     }
 </style>
 <body>
-<form action="">
+<form action="" method="POST">
 <div id="form">
     <label>Nom</label>
         <input type="text" name="name" >
