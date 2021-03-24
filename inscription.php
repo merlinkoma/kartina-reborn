@@ -7,6 +7,7 @@ if( !empty($_POST)){
                 $cf_password=$_POST['cf_password'];
                 $email=$_POST['email'];
                 $prenom=$_POST['firstname'];
+                $age=$_POST['age'];
                 $nom=$_POST['nom'];
 
                 if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
@@ -21,7 +22,7 @@ if( !empty($_POST)){
                     $errors['erreurequalpassword']="les mots de passes sont différent ";
                     echo $errors['erreurequalpassword'];
                 }
-                $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+                $db = new PDO('mysql:host=localhost;dbname=kartina;charset=utf8', 'root', '');
                 $query =$db->prepare('INSERT INTO user (email ,prenom , nom , password) VALUES (:email , :prenom, :nom,:password)');
                 $query->bindValue(':password', password_hash($password,PASSWORD_DEFAULT));
                 $query->bindValue(':email',$email);
@@ -68,8 +69,6 @@ input{
         <input type="email" name="email">
         <label>age</label>
         <input type="number" name="age">
-        <label>date Naissance</label>
-        <input type="date" name="birthday">
         <label>Mot de passe</label>
         <input type="password" name="motDePasse">
         <label>Repeter mot de passe</label>
