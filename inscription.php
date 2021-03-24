@@ -51,17 +51,17 @@ if( !empty($_POST)){
     <label>Nom</label>
         <input type="text" name="name" >
         <label>Prenom</label>
-        <input type="text" name="firstname">
+        <input type="text" name="firstname" required>
         <label>email</label>
-        <input type="email" name="email">
+        <input type="email" name="email" required>
         <label>adresse</label>
-        <input type="text" name="adresse">
+        <input type="text" name="adresse" required>
         <label>age</label>
-        <input type="number" name="age">
+        <input type="number" name="age" required>
         <label>Mot de passe</label>
-        <input type="password" name="motDePasse">
+        <input type="password" name="motDePasse" required>
         <label>Répeter mot de passe</label>
-        <input type="password" name="cf_password">
+        <input type="password" name="cf_password" required>
         <br>
         <button type="submit">Envoyer</button>
 </div>
