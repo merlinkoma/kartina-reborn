@@ -24,8 +24,7 @@ if( !empty($_POST)){
                     echo $errors['erreurequalpassword'];
                 }
                 try{
-                $db = new PDO('mysql:host=localhost;dbname=kartina;charset=utf8', 'root', '');
-                $query =$db->prepare('INSERT INTO client (email ,firstname , lastname ,adresse, password) VALUES (:email , :firstname, :lastname,:adress:password)');
+                $query =$db->prepare('INSERT INTO client (email ,firstname , lastname ,adresse, password) VALUES (:email , :firstname, :lastname,:adress,:password)');
                 $query->bindValue(':password', password_hash($password,PASSWORD_DEFAULT));
                 $query->bindValue(':email',$email);
                 $query->bindValue(':firstname',$prenom);
@@ -46,25 +45,6 @@ if( !empty($_POST)){
 
 }
 ?>
-<style>
-#form{
-    margin-left: 40%;
-    width: 200px;
-    display: block;
-    height: auto;
-    width: 100%;
-     font-family: Oswald;
-     font-size: 1.5em;
-    color: #e7e7e7;
-    }
-label{
-        width: 100px;
-        display: block;
-    }
-input{
-        width: 120px ;
-    }
-</style>
 <body>
 <form action="" method="POST">
 <div id="form">
@@ -80,7 +60,7 @@ input{
         <input type="number" name="age">
         <label>Mot de passe</label>
         <input type="password" name="motDePasse">
-        <label>Repeter mot de passe</label>
+        <label>Répeter mot de passe</label>
         <input type="password" name="cf_password">
         <br>
         <button type="submit">Envoyer</button>

@@ -1578,5 +1578,22 @@ body {
   margin: 0;
   padding: 0;
 }
-
+/*page inscription */
+#form{
+  margin-left: 40%;
+  width: 200px;
+  display: block;
+  height: auto;
+  width: 100%;
+   font-family: Oswald;
+   font-size: 1.5em;
+  color: #e7e7e7;
+  }
+label{
+      width: 100px;
+      display: block;
+  }
+input{
+      width: 120px ;
+  }
 /*# sourceMappingURL=body.css.map */
