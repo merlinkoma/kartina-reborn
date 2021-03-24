@@ -1580,8 +1580,8 @@ body {
 }
 /*page inscription */
 #form{
-  margin-left: 40%;
-  width: 200px;
+  margin-left: 43.5%;
+  width: 230px;
   display: block;
   height: auto;
   width: 100%;
@@ -1590,7 +1590,7 @@ body {
   color: #e7e7e7;
   }
 label{
-      width: 100px;
+      width: 150px;
       display: block;
   }
 input{

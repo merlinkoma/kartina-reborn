@@ -1,5 +1,6 @@
 <?php
 require './partials/header.php';
+require './config/database.php';
 if( !empty($_POST)){
     if (!empty($_POST['name'])&& !empty($_POST['firstname']) && !empty($_POST['age'])&& !empty($_POST['motDePasse'])){
                 $errors=[];
@@ -21,9 +22,11 @@ if( !empty($_POST)){
                 }
                 if(strlen($prenom)<3){
                     $errors['prenom']="le prenom est trop court";
+                    echo $errors['prenom'];
                 }
                 if(strlen($nom)<3){
                     $errors['nom']="le nom est trop court";
+                    echo $errors['nom'];
                 }
                 if($password!=$cf_password){
                     $errors['erreurequalpassword']="les mots de passes sont différent ";
