@@ -1239,6 +1239,20 @@ div.container div.rightpersonnalisation div.step ul {
   flex-direction: row;
   justify-content: space-around;
 }
+div.container div.rightpersonnalisation div.step ul div.choix {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+div.container div.rightpersonnalisation div.step ul div.choix div.border {
+  padding: 10% 20%;
+  margin: 5%;
+  border: solid black 0.5px;
+  border-radius: 50%;
+}
+div.container div.rightpersonnalisation div.step ul div.choix button {
+  margin: 2%;
+}
 div.container div.rightpersonnalisation div.typesupport {
   display: flex;
   flex-direction: column;

@@ -24,8 +24,8 @@ $picture = $query->fetch();
 
     <div class="leftprevisualisation">
         <div class="choice">
-        <div class="mockup">
-        </div>
+            <div class="mockup">
+            </div>
             <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="sansmockup">
 
             <h2><?= $picture['artist_name'] ?></h2>
@@ -54,16 +54,26 @@ $picture = $query->fetch();
 
         <div class="step">
             <ul>
-
-                <button>
-                    <li id="Format" onclick="changeFormat()">Format</li>
-                </button>
-                <button>
-                    <li id="finitions" onclick="changeFinition()">Finition</li>
-                </button>
-                <button>
-                    <li id="leCadre" onclick="changeCadre()">Cadre</li>
-                </button>
+                <div class="choix">
+                    <div class="border">
+                        <label for="">1</label>
+                    </div>
+                    <button>
+                        <li id="Format" onclick="changeFormat()">Format</li>
+                    </button>
+                </div>
+                <div class="choix">
+                    <label for="">2</label>
+                    <button>
+                        <li id="finitions" onclick="changeFinition()">Finition</li>
+                    </button>
+                </div>
+                <div class="choix">
+                    <label for="">3</label>
+                    <button>
+                        <li id="leCadre" onclick="changeCadre()">Cadre</li>
+                    </button>
+                </div>
             </ul>
         </div>
 
@@ -99,7 +109,7 @@ $picture = $query->fetch();
         let room = document.querySelector('#room');
         room.addEventListener('click', e => {
             console.log('coucou');
-            document.querySelector('#sansmockup').style="position: absolute; top: 220px; left: 420px;  height: 200px; width: auto; box-shadow: 0 0 20px #333A42;";
+            document.querySelector('#sansmockup').style = "position: absolute; top: 220px; left: 420px;  height: 200px; width: auto; box-shadow: 0 0 20px #333A42;";
             document.querySelector('.mockup').innerHTML = '<img src="./assets/banqueimg/salon-test.jpg" alt="">'
         });
     }
