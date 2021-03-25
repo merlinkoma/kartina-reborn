@@ -3,7 +3,7 @@
 $ariane = '<div class="ariane"><a href="./index.php">Accueil</a>';
 
 if ($title == 'artiste'){
-    echo $ariane.' <img src="./assets/icons/caret_right" alt=">"> <a href="./page-artiste.php">Artiste</a></div>'; //modifier ensuite "Artiste" avec le nom de l'artiste selon le choix du client
+    echo $ariane.' <img src="./assets/icons/caret_right" alt=">"> <a href="./page-artiste.php">Artistes</a></div>'; //modifier ensuite "Artiste" avec le nom de l'artiste selon le choix du client
 }
 
 if($title == 'aide'){

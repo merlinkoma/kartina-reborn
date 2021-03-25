@@ -11,32 +11,49 @@ div.container {
     display         : flex;
     justify-content : space-around;
 
+
+    div.context{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width  : 15vw;
+        figure{
+            width: 80%;
+            border: 1px black solid;
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
     div.leftprevisualisation {
-        width: 45%;
+        width: 40vw;
+        div.choice {
+            img {
+                width: 100%;
+            }
 
-        img {
-            width: 100%;
-        }
+            h2 {
+                font-size  : 2.5rem;
+                margin     : 0;
+                font-family: Cinzel, serif;
+            }
 
-        h2 {
-            font-size  : 2.5rem;
-            margin     : 0;
-            font-family: Cinzel, serif;
-        }
+            p#picturename {
+                color : $color-light;
+                margin: 3px 0 10px 0;
+            }
 
-        p#picturename {
-            color : $color-light;
-            margin: 3px 0 10px 0;
-        }
-
-        div.authordescription {
-            color     : $color-dark;
-            text-align: justify;
+            div.authordescription {
+                color     : $color-dark;
+                text-align: justify;
+            }
         }
     }
 
     div.rightpersonnalisation {
-        width  : 50%;
+        width  : 40vw;
         padding: 10px;
 
         h2 {
@@ -54,6 +71,20 @@ div.container {
                 display        : flex;
                 flex-direction : row;
                 justify-content: space-around;
+                div.choix{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    div.border{
+                        padding: 10% 20%;
+                        margin: 5%;
+                        border : solid black 0.5px;
+                        border-radius: 50%;
+                    }
+                    button{
+                        margin : 2%;
+                    }
+                }
             }
         }
 

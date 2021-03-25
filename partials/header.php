@@ -1,3 +1,6 @@
+<?php
+    require __DIR__.'/../config/database.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,9 +62,9 @@
         <!-- Navigation dans le site -->
         <div class="navigation">
             <ul>
-                <li><a href="lien vers les photo">Photographies</a></li>
+                <li><a href="./all-photographies.php">Photographies</a></li>
                 <li><a href="liens vers les nouveautés">Nouveautés</a></li>
-                <li><a href="liens vers les artistes">Artistes</a></li>
+                <li><a href="./page-artiste.php">Artistes</a></li>
                 <li><a href="liens vers les derniers exemplaires">Derniers exemplaires</a></li>
             </ul>
         </div>

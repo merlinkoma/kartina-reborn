@@ -27,10 +27,12 @@ main.mainaccueil {
 
         h1 {
             font-family: Cinzel;
+            text-shadow: 1px 1px 2px $color-dark;
         }
 
         p {
             font-family: Cinzel;
+            text-shadow: 1px 1px 2px $color-dark;
         }
 
         img.background-header {
@@ -40,13 +42,19 @@ main.mainaccueil {
 
         div.header-titles {
             position: absolute;
-            top     : 100px;
+            top     : 150px;
             padding : 5vw;
 
             @media(max-width: 1024px) {
                 font-size: 2vw;
                 top: 210px;
             }
+        }
+
+        div.legend{
+            color: $color-dark;
+            font-size: 0.6em;
+            margin-left: 1%;
         }
 
 
@@ -259,30 +267,6 @@ main.mainaccueil {
                         font-size: 4vw;
                     }
                 }
-            }
-
-            div.quatro1 {
-                background         : url("../banqueimg/filrouge30.jpg");
-                background-size    : cover;
-                background-position: center;
-            }
-
-            div.quatro2 {
-                background         : url("../banqueimg/filrouge3.jpg");
-                background-size    : cover;
-                background-position: bottom;
-            }
-
-            div.quatro3 {
-                background         : url("../banqueimg/filrouge62.jpg");
-                background-size    : cover;
-                background-position: center;
-            }
-
-            div.quatro4 {
-                background         : url("../banqueimg/filrouge83.jpg");
-                background-size    : cover;
-                background-position: bottom;
             }
         }
     }
