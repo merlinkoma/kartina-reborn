@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 ob_start();
 
 $title = 'panier';
@@ -10,11 +11,19 @@ global $db;
 
 $clear = isset($_GET['clear']) ? true : false;
 
-if ($clear) {
-    unset($_SESSION['panier']);
+// if ($clear) {
+//     unset($_SESSION['panier']);
 
-    header('Location: panier.php');
-}
+//     header('Location: panier.php');
+// }
+
+$_SESSION['panier'] = [
+    [
+        'name' => 'Produit 1',
+        'picture' => 'Cover 1',
+        'price' => '1000'
+    ]
+];
 
 function panier()
 {
@@ -28,7 +37,7 @@ function panier()
 <div class="container-panier">
 
     <div class="titre">
-        <p>Votre Panier</p>
+        <p>Votre Panier :</p>
     </div>
 
     <?php if (empty(panier())) { ?>
@@ -41,12 +50,12 @@ function panier()
 
 
                 <div class="pic">
-                    <img src="./assets/icons/try.jpg" alt="photo du panier">
+                    <img src="./assets/icons/<?= $panier['cover']; ?>" alt="photo du panier">
                 </div>
 
                 <div class="infos">
                     <div>
-                        <h2>Nom de l'artiste</h2>
+                        <h2><?= $panier['name']; ?></h2>
                     </div>
                     <div>
                         <p>Description de la photographie</p>
@@ -93,63 +102,64 @@ function panier()
                 </div>
 
                 <div class="prix">
-                    <h2 data-prix="110.00" id="calcul">110,00€</h2>
+                    <h2 data-prix="<?= $panier['price']; ?>" id="calcul"><?= $panier['price']; ?>€</h2>
                 </div>
 
         </div>
-
-        <div class="finalisation">
-
-            <div class="back">
-                <button><a href="">&#8249; Continuer mes achats</a></button>
-            </div>
-
-            <div class="payement">
-                <div class="promo">
-                    <input type="checkbox" name="reduc" id="reduction">
-                    <label for="reduction">J'ai une carte cadeau / un code promo</label>
-                </div>
-
-                <div class="pfinal">
-                    <div>
-                        <h3>Total</h3>
-                    </div>
-                    <div class="finalprix">
-                        <h2 id="fcalcul" data-prix="110.00">110,00€</h2>
-                        <p id="tva">dont tva 20% : 22,00€</p>
-                    </div>
-                </div>
-
-                <div>
-                    <button type="submit"><a href="">Valider ma commande</a></button>
-                </div>
-
-                <div class="securise">
-                    <p>Paiement sécurisé</p>
-                </div>
-
-                <div class="typepayement">
-                    <div>
-                        <img src="./assets/icons/credit-card.svg" alt="CB">
-                    </div>
-                    <div>
-                        <img src="./assets/icons/paypal.svg" alt="paypal">
-                    </div>
-                    <div>
-                        <img src="./assets/icons/visa.svg" alt="visa">
-                    </div>
-                    <div>
-                        <img src="./assets/icons/mastercard.svg" alt="MasterCard">
-                    </div>
-                    <div>
-                        <img src="./assets/icons/american-express.svg" alt="AmericanExpress">
-                    </div>
-                </div>
-            </div>
-        <?php } ?>
-        </div>
-
     <?php } ?>
+
+    <div class="finalisation">
+
+        <div class="back">
+            <button><a href="">&#8249; Continuer mes achats</a></button>
+        </div>
+
+        <div class="payement">
+            <div class="promo">
+                <input type="checkbox" name="reduc" id="reduction">
+                <label for="reduction">J'ai une carte cadeau / un code promo</label>
+            </div>
+
+            <div class="pfinal">
+                <div>
+                    <h3>Total</h3>
+                </div>
+                <div class="finalprix">
+                    <h2 id="fcalcul" data-prix="110.00"><? $panier['price']?>€</h2>
+                    <p id="tva">dont tva 20% : 22,00€</p>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit"><a href="">Valider ma commande</a></button>
+            </div>
+
+            <div class="securise">
+                <p>Paiement sécurisé</p>
+            </div>
+
+            <div class="typepayement">
+                <div>
+                    <img src="./assets/icons/credit-card.svg" alt="CB">
+                </div>
+                <div>
+                    <img src="./assets/icons/paypal.svg" alt="paypal">
+                </div>
+                <div>
+                    <img src="./assets/icons/visa.svg" alt="visa">
+                </div>
+                <div>
+                    <img src="./assets/icons/mastercard.svg" alt="MasterCard">
+                </div>
+                <div>
+                    <img src="./assets/icons/american-express.svg" alt="AmericanExpress">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<?php } ?>
 </div>
 
 <?php require_once './partials/footer.php'; ?>

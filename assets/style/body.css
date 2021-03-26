@@ -793,7 +793,7 @@ footer div.newsetmedia div.newsletterinscription form {
   display: flex;
 }
 footer div.newsetmedia div.newsletterinscription form input.nlEmail {
-  background-color: #EDE4BE;
+  background-color: white;
   border: solid black 0.2px;
   border-right: none;
   padding-left: 5px;
@@ -1439,6 +1439,10 @@ div.container-panier div.titre {
 div.container-panier div.titre p {
   font-size: 40px;
   margin: auto;
+}
+div.container-panier h2 {
+  padding: 50px;
+  margin: 0;
 }
 div.container-panier div.main {
   display: flex;
