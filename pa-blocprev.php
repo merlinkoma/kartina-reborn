@@ -12,39 +12,53 @@ $picture = $query->fetch();
 
 <div class="container">
     <div class="context">
-        <figure>
-            <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="image seule">
-            <figcaption>Image seule</figcaption>
+        <figure id="alone">
+            <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="photo dans un salon">
         </figure>
         <figure id="room">
-            <img src="./assets/banqueimg/salon-test.jpg" alt="image dans un salon">
-            <figcaption>Vue dans un salon</figcaption>
+            <img src="./assets/banqueimg/salon-test.jpg" alt="image d'un un salon">
         </figure>
     </div>
 
     <div class="leftprevisualisation">
         <div class="choice">
-            <div class="mockup">
+            <div class="avecmockup" style="display: block;">
+                <div class="divquimenerve">
+                    <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="photosurlemur" class="<?php
+                    if($picture['orientation_idorientation'] == 1){
+                        echo 'photosurlemur1';
+                    }elseif($picture['orientation_idorientation'] == 2){
+                        echo 'photosurlemur2';
+                    }elseif($picture['orientation_idorientation'] == 3){
+                        echo 'photosurlemur3';
+                    }elseif($picture['orientation_idorientation'] == 4){
+                        echo 'photosurlemur4';
+                    }
+                    ?>">
+                </div>
+                <img src="./assets/banqueimg/salon-test.jpg" alt="image dans un salon" id="salon">
             </div>
-            <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="sansmockup">
 
-            <h2><?= $picture['artist_name'] ?></h2>
-
-            <p id="picturename"><?= $picture['title'] ?></p>
-
-            <div class="authordescription">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem repellendus facere est temporibus,
-                aspernatur et! Molestias rem quaerat cumque, nostrum, molestiae accusantium, inventore labore voluptas
-                quasi vero nulla fugiat possimus.
-                Exercitationem aperiam nesciunt asperiores necessitatibus magnam, at doloremque error recusandae
-                accusantium? Officiis debitis, consequuntur veniam doloremque vero dolor ipsum cumque, animi rerum modi
-                soluta harum at sequi quo laudantium accusantium.
-                Vitae deleniti molestiae neque nulla saepe fugiat atque sit, dolorem corporis ipsum ad sint nisi quis
-                dicta deserunt expedita omnis non culpa nam, architecto vero iusto at? Tempore, error rerum?
+            <div class="sansmockup" style="display: none;">
+                <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="">
             </div>
+
         </div>
 
+        <h2><?= $picture['artist_name'] ?></h2>
 
+        <p id="picturename"><?= $picture['title'] ?></p>
+
+        <div class="authordescription">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem repellendus facere est temporibus,
+            aspernatur et! Molestias rem quaerat cumque, nostrum, molestiae accusantium, inventore labore voluptas
+            quasi vero nulla fugiat possimus.
+            Exercitationem aperiam nesciunt asperiores necessitatibus magnam, at doloremque error recusandae
+            accusantium? Officiis debitis, consequuntur veniam doloremque vero dolor ipsum cumque, animi rerum modi
+            soluta harum at sequi quo laudantium accusantium.
+            Vitae deleniti molestiae neque nulla saepe fugiat atque sit, dolorem corporis ipsum ad sint nisi quis
+            dicta deserunt expedita omnis non culpa nam, architecto vero iusto at? Tempore, error rerum?
+        </div>
     </div>
 
     <div class="rightpersonnalisation">
@@ -106,11 +120,17 @@ $picture = $query->fetch();
 
 <script>
     function changeContext() {
-        let room = document.querySelector('#room');
-        room.addEventListener('click', e => {
-            console.log('coucou');
-            document.querySelector('#sansmockup').style = "position: absolute; top: 220px; left: 420px;  height: 200px; width: auto; box-shadow: 0 0 20px #333A42;";
-            document.querySelector('.mockup').innerHTML = '<img src="./assets/banqueimg/salon-test.jpg" alt="">'
+        let alone = document.getElementById('alone');
+        let room = document.getElementById('room');
+        let sansmockup = document.querySelector('.sansmockup');
+        let avecmockup = document.querySelector('.avecmockup');
+        alone.addEventListener('click', e =>{
+            sansmockup.style = "display : block";
+            avecmockup.style = "display : none";
+        });
+        room.addEventListener('click', e =>{
+            sansmockup.style = "display : none";
+            avecmockup.style = "display : bock";
         });
     }
     changeContext();
