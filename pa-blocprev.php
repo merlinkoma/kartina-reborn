@@ -22,7 +22,7 @@ $picture = $query->fetch();
 
     <div class="leftprevisualisation">
         <div class="choice">
-            <div class="avecmockup" style="display: block;">
+            <div class="avecmockup" style="display: none;">
                 <div class="divquimenerve">
                     <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="photosurlemur" class="<?php
                     if($picture['orientation_idorientation'] == 1){
@@ -39,7 +39,7 @@ $picture = $query->fetch();
                 <img src="./assets/banqueimg/salon-test.jpg" alt="image dans un salon" id="salon">
             </div>
 
-            <div class="sansmockup" style="display: none;">
+            <div class="sansmockup" style="display: block;">
                 <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="">
             </div>
 
