@@ -22,6 +22,11 @@ $_SESSION['panier'] = [
         'name' => 'Produit 1',
         'picture' => 'Cover 1',
         'price' => '1000'
+    ],
+    [
+        'name' => 'Produit 2',
+        'picture' => 'Cover 2',
+        'price' => '2000'
     ]
 ];
 
@@ -45,12 +50,12 @@ function panier()
     <?php } ?>
 
     <?php if (!empty(panier())) { ?>
-        <div class="main">
-            <?php foreach (panier() as $panier) { ?>
+        <?php foreach (panier() as $panier) { ?>
+            <div class="main">
 
 
                 <div class="pic">
-                    <img src="./assets/icons/<?= $panier['cover']; ?>" alt="photo du panier">
+                    <img src="./assets/icons/try.jpg" alt="photo du panier">
                 </div>
 
                 <div class="infos">
@@ -89,12 +94,12 @@ function panier()
                     </div>
                 </div>
 
-                <div class="quantiter">
+                <div class="quantite">
                     <div>
                         <h3><label for="quantity">Quantité</label></h3>
                     </div>
                     <div>
-                        <input type="number" name="quantite" id="quantity" value="1">
+                        <input type="number" class="quantity" name="quantite" value="1">
                     </div>
                     <div>
                         <button type="reset"><a href="">Supprimer</a></button>
@@ -102,93 +107,117 @@ function panier()
                 </div>
 
                 <div class="prix">
-                    <h2 data-prix="<?= $panier['price']; ?>" id="calcul"><?= $panier['price']; ?>€</h2>
+                    <h2 class="totalProductPrice" data-prix="<?= $panier['price']; ?>"><?= $panier['price']; ?>€</h2>
                 </div>
 
+            </div>
+        <?php } ?>
+
+        <div class="finalisation">
+
+            <div class="back">
+                <button><a href="">&#8249; Continuer mes achats</a></button>
+            </div>
+
+            <div class="payement">
+                <div class="promo">
+                    <input type="checkbox" name="reduc" id="reduction">
+                    <label for="reduction">J'ai une carte cadeau / un code promo</label>
+                </div>
+
+                <div class="pfinal">
+                    <div>
+                        <h3>Total</h3>
+                    </div>
+                    <div class="finalprix">
+                        <h2 id="totalPriceElement">
+                            <? $panier['price']?>€
+                        </h2>
+                        <p id="tva">dont tva 20% :
+                            <? $panier['price'] ?>
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit"><a href="">Valider ma commande</a></button>
+                </div>
+
+                <div class="securise">
+                    <p>Paiement sécurisé</p>
+                </div>
+
+                <div class="typepayement">
+                    <div>
+                        <img src="./assets/icons/credit-card.svg" alt="CB">
+                    </div>
+                    <div>
+                        <img src="./assets/icons/paypal.svg" alt="paypal">
+                    </div>
+                    <div>
+                        <img src="./assets/icons/visa.svg" alt="visa">
+                    </div>
+                    <div>
+                        <img src="./assets/icons/mastercard.svg" alt="MasterCard">
+                    </div>
+                    <div>
+                        <img src="./assets/icons/american-express.svg" alt="AmericanExpress">
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     <?php } ?>
-
-    <div class="finalisation">
-
-        <div class="back">
-            <button><a href="">&#8249; Continuer mes achats</a></button>
-        </div>
-
-        <div class="payement">
-            <div class="promo">
-                <input type="checkbox" name="reduc" id="reduction">
-                <label for="reduction">J'ai une carte cadeau / un code promo</label>
-            </div>
-
-            <div class="pfinal">
-                <div>
-                    <h3>Total</h3>
-                </div>
-                <div class="finalprix">
-                    <h2 id="fcalcul" data-prix="110.00"><? $panier['price']?>€</h2>
-                    <p id="tva">dont tva 20% : 22,00€</p>
-                </div>
-            </div>
-
-            <div>
-                <button type="submit"><a href="">Valider ma commande</a></button>
-            </div>
-
-            <div class="securise">
-                <p>Paiement sécurisé</p>
-            </div>
-
-            <div class="typepayement">
-                <div>
-                    <img src="./assets/icons/credit-card.svg" alt="CB">
-                </div>
-                <div>
-                    <img src="./assets/icons/paypal.svg" alt="paypal">
-                </div>
-                <div>
-                    <img src="./assets/icons/visa.svg" alt="visa">
-                </div>
-                <div>
-                    <img src="./assets/icons/mastercard.svg" alt="MasterCard">
-                </div>
-                <div>
-                    <img src="./assets/icons/american-express.svg" alt="AmericanExpress">
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-<?php } ?>
 </div>
 
 <?php require_once './partials/footer.php'; ?>
 
 <script>
-    document.getElementById("quantity").addEventListener('change', function(e) {
+    let productElements = document.getElementsByClassName("main");
+    let quantitiesElement = document.getElementsByClassName("quantity");
+    let totalProductPriceElement = document.getElementsByClassName("totalProductPrice");
+    let totalPriceElement = document.getElementById("totalPriceElement");
+    let tvaElement = document.getElementById("tva");
+    let totalPrice = 0;
 
-        let i = parseFloat(e.target.value);
+    for (let i = 0; i < productElements.length; i++) {
 
-        let calcul = document.getElementById("calcul").getAttribute('data-prix');
-        let prix = parseFloat(calcul);
+        let dataprix = totalProductPriceElement[i].getAttribute('data-prix');
+        let prix = parseFloat(dataprix);
 
-        let fcalcul = document.getElementById("fcalcul").getAttribute('data-prix');
-        let fprix = parseFloat(fcalcul);
+        totalPrice += prix;
 
-        if (i > 0) {
+    }
 
-            prixtotal = i * prix;
-            prixtotal = prixtotal * 1.2
+    let tva = (totalPrice / 100) * 20;
+    totalPrice += tva;
+    totalPriceElement.innerHTML = totalPrice.toFixed(2).replace('.', ',') + '€';
+    tvaElement.innerHTML = 'DONT TVA 20% : ' + tva + '€';
 
-            tva = prixtotal - i * prix;
-            document.getElementById("calcul").innerHTML = (i * prix).toFixed(2).replace('.', ',') + '€';
+    for (let i = 0; i < productElements.length; i++) {
+        quantitiesElement[i].addEventListener('change', function(e) {
+            let quantity = parseFloat(e.target.value);
 
-            document.getElementById("fcalcul").innerHTML = prixtotal.toFixed(2).replace('.', ',') + '€';
+            let dataprix = totalProductPriceElement[i].getAttribute('data-prix');
+            let prix = parseFloat(dataprix) * quantity;
+            totalProductPriceElement[i].innerHTML = prix.toFixed(2).replace('.', ',') + '€';
+            totalPrice = 0;
 
-            document.getElementById("tva").innerHTML = 'DONT TVA 20% : ' + tva + '€';
+            for (let j = 0; j < productElements.length; j++) {
 
-        }
-    })
+                let totalProductPrice = parseFloat(totalProductPriceElement[j].innerHTML.replace('€', '').replace(',', '.'));
+                totalPrice += totalProductPrice;
+
+            }
+
+
+            tva = (totalPrice / 100) * 20;
+            totalPrice += tva;
+            totalPriceElement.innerHTML = totalPrice.toFixed(2).replace('.', ',') + '€';
+            tvaElement.innerHTML = 'DONT TVA 20% : ' + tva + '€';
+        })
+    }
 </script>
 
 </body>

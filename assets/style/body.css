@@ -1471,23 +1471,23 @@ div.container-panier div.main div.infos {
 div.container-panier div.main div.caracteristiques {
   width: 25%;
 }
-div.container-panier div.main div.quantiter {
+div.container-panier div.main div.quantite {
   width: 20%;
 }
-div.container-panier div.main div.quantiter input {
+div.container-panier div.main div.quantite input {
   width: 20%;
   margin-left: 3px;
 }
-div.container-panier div.main div.quantiter div button {
+div.container-panier div.main div.quantite div button {
   margin-top: 20px;
   border: none;
   background-color: #9bb9be;
 }
-div.container-panier div.main div.quantiter div button a {
+div.container-panier div.main div.quantite div button a {
   display: block;
 }
 div.container-panier div.main div.prix {
-  width: 10%;
+  width: 12%;
   display: flex;
   align-items: center;
 }
