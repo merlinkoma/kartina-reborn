@@ -1314,6 +1314,12 @@ div.rightpersonnalisation div.typesupport div {
   padding: 10px;
   border: solid black 1px;
   margin: 2px;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+div.rightpersonnalisation div.typesupport div span {
+  color: #687079;
+  font-weight: 200;
 }
 div.rightpersonnalisation div.beforeafter {
   display: flex;

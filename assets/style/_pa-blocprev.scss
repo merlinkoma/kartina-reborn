@@ -159,6 +159,12 @@ div.rightpersonnalisation {
             padding: 10px;
             border : solid black 1px;
             margin : 2px;
+            font-weight: 700;
+            font-size: 1.2em;
+            span{
+                color: $color-light;
+                font-weight: 200;
+            }
         }
 
     }

@@ -25,16 +25,16 @@ $picture = $query->fetch();
             <div class="avecmockup" style="display: none;">
                 <div class="divquimenerve">
                     <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="photosurlemur" class="<?php
-                    if($picture['orientation_idorientation'] == 1){
-                        echo 'photosurlemur1';
-                    }elseif($picture['orientation_idorientation'] == 2){
-                        echo 'photosurlemur2';
-                    }elseif($picture['orientation_idorientation'] == 3){
-                        echo 'photosurlemur3';
-                    }elseif($picture['orientation_idorientation'] == 4){
-                        echo 'photosurlemur4';
-                    }
-                    ?>">
+                                                                                                                                    if ($picture['orientation_idorientation'] == 1) {
+                                                                                                                                        echo 'photosurlemur1';
+                                                                                                                                    } elseif ($picture['orientation_idorientation'] == 2) {
+                                                                                                                                        echo 'photosurlemur2';
+                                                                                                                                    } elseif ($picture['orientation_idorientation'] == 3) {
+                                                                                                                                        echo 'photosurlemur3';
+                                                                                                                                    } elseif ($picture['orientation_idorientation'] == 4) {
+                                                                                                                                        echo 'photosurlemur4';
+                                                                                                                                    }
+                                                                                                                                    ?>">
                 </div>
                 <img src="./assets/banqueimg/salon-test.jpg" alt="image dans un salon" id="salon">
             </div>
@@ -70,31 +70,66 @@ $picture = $query->fetch();
             <ul>
                 <div class="choix">
                     <div class="border">
-                        <label for="">1</label>
+                        <label for="choix1">1</label>
                     </div>
                     <button>
-                        <li id="Format" onclick="changeFormat()">Format</li>
+                        <li id="Format" name="choix1">Format</li>
                     </button>
                 </div>
                 <div class="choix">
-                    <label for="">2</label>
+                    <div class="border">
+                        <label for="choix2">2</label>
+                    </div>
                     <button>
-                        <li id="finitions" onclick="changeFinition()">Finition</li>
+                        <li id="finitions" name="choix2">Finition</li>
                     </button>
                 </div>
                 <div class="choix">
-                    <label for="">3</label>
+                    <div class="border">
+                        <label for="choix3">3</label>
+                    </div>
                     <button>
-                        <li id="leCadre" onclick="changeCadre()">Cadre</li>
+                        <li id="leCadre" name="choix3">Cadre</li>
                     </button>
                 </div>
             </ul>
         </div>
 
-        <div class="typesupport">
-            <div id="divtest" onclick="changeBorder()">Support type X</div>
-            <div onclick="changeBorder()">Support type Y</div>
-            <div onclick="changeBorder()">Support type Z</div>
+        <div class="format-choice">
+            <div id="divtest">Classique <span>- 20 x 30cm, à partir de ...€</span></div>
+            <div>Grand <span>- 60 x 75cm, à partir de ...€</span></div>
+            <div>Géant <span>- 100 x 125cm, à partir de ...€</span></div>
+            <div>Collector <span>- 120 x 150cm, à partir de ...€</span></div>
+        </div>
+
+        <div class="finition-choice">
+            <div class="finition-choice-1">
+                <div id="divtest">Support aluminium <span>- Tirage contrecollé sur support aluminium</span></div>
+                <div>Support aluminium avec verre acrylique <span>- Tirage contrecollé sur support aluminium avec finition protectrice en verre acrylique accentuant les contrastes et les couleurs</span></div>
+            </div>
+            <div class="finition-choice-2">
+                <div>Tirage sur papier photo <span>- Tirage sur papier photo expédié roulé, à accrocher ou à encadrer</span></div>
+            </div>
+            <div class="finition-choice-3">
+                <div>Passe-partout noir <span>- </span></div>
+                <div>Passe-partout blanc <span>- </span></div>
+            </div>
+        </div>
+
+        <div class="frame-choice">
+            <div class="frame-choice-1">
+                <div id="divtest">Sans encadrement <span>- Format ...</span></div>
+                <div>Encadrement noir satin <span>- Format ...</span></div>
+                <div>Encadrement blanc satin <span>- Format ...</span></div>
+                <div>Encadrement noyer <span>- Format ...</span></div>
+                <div>Encadrement chêne <span>- Format ...</span></div>
+            </div>
+            <div class="frame-choice-2">
+                <div id="divtest">Cadre alumium noir <span>- Format ...</span></div>
+                <div>Bois blanc <span>- Format ...</span></div>
+                <div>Acajou mat <span>- Format ...</span></div>
+                <div>Aluminium brossé <span>- Format ...</span></div>
+            </div>
         </div>
 
         <div class="beforeafter">
@@ -124,48 +159,18 @@ $picture = $query->fetch();
         let room = document.getElementById('room');
         let sansmockup = document.querySelector('.sansmockup');
         let avecmockup = document.querySelector('.avecmockup');
-        alone.addEventListener('click', e =>{
+        alone.addEventListener('click', e => {
             sansmockup.style = "display : block";
             avecmockup.style = "display : none";
         });
-        room.addEventListener('click', e =>{
+        room.addEventListener('click', e => {
             sansmockup.style = "display : none";
             avecmockup.style = "display : bock";
         });
     }
     changeContext();
 
-    function changeBorder() {
-        document.querySelector('#divtest').style = "border: solid 3px #aca06c";
-    }
 
-    function changeFormat() {
-
-        document.querySelector('.typesupport div:nth-child(1)').innerHTML = "Grande";
-        document.querySelector('.typesupport div:nth-child(2)').innerHTML = "Moyenne";
-        document.querySelector('.typesupport div:nth-child(3)').innerHTML = "Petite";
-
-    }
-
-    function changeFinition() {
-        document.querySelector('.typesupport div:nth-child(1)').innerHTML = "Support Aluminium";
-        document.querySelector('.typesupport div:nth-child(2)').innerHTML = "Support aluminium avec acrylique";
-        document.querySelector('.typesupport div:nth-child(3)').innerHTML = "tirage sur papier photo";
-
-    }
-
-    function changeCadre() {
-        document.querySelector('.typesupport div:nth-child(1)').innerHTML = "Sans Encadrement";
-        document.querySelector('.typesupport div:nth-child(2)').innerHTML = "Encadrement noir Satin";
-        document.querySelector('.typesupport div:nth-child(3)').innerHTML = "Encadrement blanc satin";
-
-    }
-    document.querySelector('.typesupport div:nth-child(3)').addEventListener('click', changeTextButton);
-
-    function changeTextButton() {
-        console.log('coucou');
-        document.querySelector('.finalchoice').innerHTML = "Ajouter au Panier";
-    }
 </script>
 
 </body>
