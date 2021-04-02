@@ -1192,18 +1192,17 @@ ul li {
   list-style: none;
 }
 
-input {
-  background-color: #9bb9be;
-  border: none;
-  border-bottom: 1px solid black;
-  width: 500px;
-}
-
 div.container-new-sales {
   background-color: #EDE4BE;
   font-family: "Cinzel", serif;
   height: 900px;
   margin: auto;
+}
+div.container-new-sales input {
+  background-color: #9bb9be;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 500px;
 }
 div.container-new-sales .titre {
   width: auto;
@@ -1440,7 +1439,7 @@ div.container-panier div.titre p {
   font-size: 40px;
   margin: auto;
 }
-div.container-panier h2 {
+div.container-panier h2[name=forPadding] {
   padding: 50px;
   margin: 0;
 }
@@ -1523,11 +1522,16 @@ div.container-panier div.finalisation div.payement div.promo {
   border-top-right-radius: 6px;
   justify-content: center;
 }
+div.container-panier div.finalisation div.payement div.promo input[type=checkbox] {
+  margin: 10px;
+  width: auto;
+}
 div.container-panier div.finalisation div.payement div.pfinal {
   display: flex;
   justify-content: space-between;
   border-top: solid 1px black;
-  height: 25%;
+  min-height: 25%;
+  height: auto;
   align-items: center;
   background-color: #9bb9be;
   padding-left: 10px;
@@ -1544,6 +1548,7 @@ div.container-panier div.finalisation div.payement div.pfinal div {
 }
 div.container-panier div.finalisation div.payement div.pfinal div.finalprix h2 {
   border-bottom: 1px solid;
+  height: auto;
 }
 div.container-panier div.finalisation div.payement div.pfinal div.finalprix p {
   margin: 5px;

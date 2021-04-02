@@ -60,7 +60,7 @@ function panier()
 
                 <div class="infos">
                     <div>
-                        <h2><?= $panier['name']; ?></h2>
+                        <h2 name="forPadding"><?= $panier['name']; ?></h2>
                     </div>
                     <div>
                         <p>Description de la photographie</p>
@@ -107,7 +107,7 @@ function panier()
                 </div>
 
                 <div class="prix">
-                    <h2 class="totalProductPrice" data-prix="<?= $panier['price']; ?>"><?= $panier['price']; ?>€</h2>
+                    <h2 name="forPadding" class="totalProductPrice" data-prix="<?= $panier['price']; ?>"><?= $panier['price']; ?>€</h2>
                 </div>
 
             </div>
@@ -181,6 +181,8 @@ function panier()
     let tvaElement = document.getElementById("tva");
     let totalPrice = 0;
 
+    // JS pour l'initialisation.
+
     for (let i = 0; i < productElements.length; i++) {
 
         let dataprix = totalProductPriceElement[i].getAttribute('data-prix');
@@ -194,6 +196,8 @@ function panier()
     totalPrice += tva;
     totalPriceElement.innerHTML = totalPrice.toFixed(2).replace('.', ',') + '€';
     tvaElement.innerHTML = 'DONT TVA 20% : ' + tva + '€';
+
+    // JS pour les quantitées.
 
     for (let i = 0; i < productElements.length; i++) {
         quantitiesElement[i].addEventListener('change', function(e) {

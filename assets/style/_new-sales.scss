@@ -9,12 +9,6 @@ ul li {
     list-style: none;
 }
 
-input {
-    background-color: #9bb9be;
-    border          : none;
-    border-bottom   : 1px solid black;
-    width           : 500px;
-}
 
 div.container-new-sales {
     background-color: #EDE4BE;
@@ -22,6 +16,12 @@ div.container-new-sales {
     height          : 900px;
     margin          : auto;
 
+    input {
+        background-color: #9bb9be;
+        border          : none;
+        border-bottom   : 1px solid black;
+        width           : 500px;
+    }
 
     .titre {
         width      : auto;
