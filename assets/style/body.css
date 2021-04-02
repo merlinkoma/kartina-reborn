@@ -1304,20 +1304,19 @@ div.rightpersonnalisation div.step ul div.choix div.border {
 div.rightpersonnalisation div.step ul div.choix button {
   margin: 2%;
 }
-div.rightpersonnalisation div.typesupport {
-  display: flex;
-  flex-direction: column;
-}
-div.rightpersonnalisation div.typesupport div {
-  width: 100%;
-  height: 50px;
+div.rightpersonnalisation div.div-choices {
+  min-height: 20vh;
   padding: 10px;
-  border: solid black 1px;
   margin: 2px;
   font-weight: 700;
   font-size: 1.2em;
 }
-div.rightpersonnalisation div.typesupport div span {
+div.rightpersonnalisation div.div-choices div {
+  border: solid #687079 1px;
+  padding: 2%;
+  margin: 1%;
+}
+div.rightpersonnalisation div.div-choices span {
   color: #687079;
   font-weight: 200;
 }
@@ -1332,7 +1331,7 @@ div.rightpersonnalisation div.total {
 div.rightpersonnalisation div.total div {
   margin-left: 50%;
 }
-div.rightpersonnalisation div.finalchoice {
+div.rightpersonnalisation button.finalchoice {
   width: 100%;
   background-color: #a5434a;
   padding: 10px;

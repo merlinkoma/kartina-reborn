@@ -68,64 +68,60 @@ $picture = $query->fetch();
 
         <div class="step">
             <ul>
-                <div class="choix">
+                <div class="choix" id="step1">
                     <div class="border">
-                        <label for="choix1">1</label>
+                        <label>1</label>
                     </div>
-                    <button>
-                        <li id="Format" name="choix1">Format</li>
-                    </button>
+                    <button>Format</button>
                 </div>
-                <div class="choix">
+
+                <div class="choix" id="step2">
                     <div class="border">
-                        <label for="choix2">2</label>
+                        <label>2</label>
                     </div>
-                    <button>
-                        <li id="finitions" name="choix2">Finition</li>
-                    </button>
+                    <button disabled>Finition</button>
                 </div>
-                <div class="choix">
+
+                <div class="choix" id="step3">
                     <div class="border">
-                        <label for="choix3">3</label>
+                        <label>3</label>
                     </div>
-                    <button>
-                        <li id="leCadre" name="choix3">Cadre</li>
-                    </button>
+                    <button disabled>Cadre</button>
                 </div>
             </ul>
         </div>
 
-        <div class="format-choice">
-            <div id="divtest">Classique <span>- 20 x 30cm, à partir de ...€</span></div>
-            <div>Grand <span>- 60 x 75cm, à partir de ...€</span></div>
-            <div>Géant <span>- 100 x 125cm, à partir de ...€</span></div>
-            <div>Collector <span>- 120 x 150cm, à partir de ...€</span></div>
+        <div class="format-choice div-choices">
+            <div class="format-list" value="classique">Classique <span>- 20 x 30cm, à partir de ...€</span></div>
+            <div class="format-list" value="grand">Grand <span>- 60 x 75cm, à partir de ...€</span></div>
+            <div class="format-list" value="geant">Géant <span>- 100 x 125cm, à partir de ...€</span></div>
+            <div class="format-list" value="collector">Collector <span>- 120 x 150cm, à partir de ...€</span></div>
         </div>
 
-        <div class="finition-choice">
-            <div class="finition-choice-1">
-                <div id="divtest">Support aluminium <span>- Tirage contrecollé sur support aluminium</span></div>
+        <div class="finition-choice div-choices" style="display: none;">
+            <div class="finition-choice-1" style="display: none;">
+                <div>Support aluminium <span>- Tirage contrecollé sur support aluminium</span></div>
                 <div>Support aluminium avec verre acrylique <span>- Tirage contrecollé sur support aluminium avec finition protectrice en verre acrylique accentuant les contrastes et les couleurs</span></div>
             </div>
-            <div class="finition-choice-2">
+            <div class="finition-choice-2" style="display: none;">
                 <div>Tirage sur papier photo <span>- Tirage sur papier photo expédié roulé, à accrocher ou à encadrer</span></div>
             </div>
-            <div class="finition-choice-3">
+            <div class="finition-choice-3" style="display: none;">
                 <div>Passe-partout noir <span>- </span></div>
                 <div>Passe-partout blanc <span>- </span></div>
             </div>
         </div>
 
-        <div class="frame-choice">
-            <div class="frame-choice-1">
-                <div id="divtest">Sans encadrement <span>- Format ...</span></div>
+        <div class="frame-choice div-choices" style="display: none;">
+            <div class="frame-choice-1" style="display: none;">
+                <div>Sans encadrement <span>- Format ...</span></div>
                 <div>Encadrement noir satin <span>- Format ...</span></div>
                 <div>Encadrement blanc satin <span>- Format ...</span></div>
                 <div>Encadrement noyer <span>- Format ...</span></div>
                 <div>Encadrement chêne <span>- Format ...</span></div>
             </div>
-            <div class="frame-choice-2">
-                <div id="divtest">Cadre alumium noir <span>- Format ...</span></div>
+            <div class="frame-choice-2" style="display: none;">
+                <div>Cadre alumium noir <span>- Format ...</span></div>
                 <div>Bois blanc <span>- Format ...</span></div>
                 <div>Acajou mat <span>- Format ...</span></div>
                 <div>Aluminium brossé <span>- Format ...</span></div>
@@ -133,8 +129,8 @@ $picture = $query->fetch();
         </div>
 
         <div class="beforeafter">
-            <button>Etape précédente</button>
-            <button>Etape suivante</button>
+            <button id="before-button" style="visibility: hidden;">Etape précédente</button>
+            <button id="after-button">Etape suivante</button>
         </div>
 
         <div class="total">
@@ -142,9 +138,9 @@ $picture = $query->fetch();
             <div class="price">€</div>
         </div>
 
-        <div class="finalchoice">
+        <button class="finalchoice" disabled>
             Choisir cette finition
-        </div>
+        </button>
         <div class="pay">
             <a href="./stripe/public/index.html">PAYER</a>
         </div>
@@ -170,7 +166,22 @@ $picture = $query->fetch();
     }
     changeContext();
 
-
+    function pAchat() {
+        let formats = document.querySelectorAll('.format-list');
+        console.log(formats);
+        choice = '';
+        for (let format of formats){
+            format.addEventListener('click', e =>{
+                choice = format.getAttribute('value');
+                for (let format2 of formats){
+                    format2.style = "border : solid 1px #687079;"
+                }
+                format.style = "border: 2px solid #aca06c";
+                console.log(choice);
+            })
+        }
+    }
+    pAchat();
 </script>
 
 </body>
