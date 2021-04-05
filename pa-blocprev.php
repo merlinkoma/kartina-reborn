@@ -92,10 +92,10 @@ $picture = $query->fetch();
         </div>
 
         <div class="format-choice div-choices">
-            <div class="format-list" value="classique">Classique <span>- 20 x 30cm, à partir de ...€</span></div>
-            <div class="format-list" value="grand">Grand <span>- 60 x 75cm, à partir de ...€</span></div>
-            <div class="format-list" value="geant">Géant <span>- 100 x 125cm, à partir de ...€</span></div>
-            <div class="format-list" value="collector">Collector <span>- 120 x 150cm, à partir de ...€</span></div>
+            <div class="format-list" data-format="classique">Classique <span>- 20 x 30cm, à partir de ...€</span></div>
+            <div class="format-list" data-format="grand">Grand <span>- 60 x 75cm, à partir de ...€</span></div>
+            <div class="format-list" data-format="geant">Géant <span>- 100 x 125cm, à partir de ...€</span></div>
+            <div class="format-list" data-format="collector">Collector <span>- 120 x 150cm, à partir de ...€</span></div>
         </div>
 
         <div class="finition-choice div-choices" style="display: none;">
@@ -141,47 +141,75 @@ $picture = $query->fetch();
         <button class="finalchoice" disabled>
             Choisir cette finition
         </button>
-        <div class="pay">
-            <a href="./stripe/public/index.html">PAYER</a>
-        </div>
+        <div id="testprix"></div>
     </div>
 </div>
 
 <?php require_once './partials/footer.php'; ?>
 
 <script>
-    function changeContext() {
-        let alone = document.getElementById('alone');
-        let room = document.getElementById('room');
-        let sansmockup = document.querySelector('.sansmockup');
-        let avecmockup = document.querySelector('.avecmockup');
-        alone.addEventListener('click', e => {
-            sansmockup.style = "display : block";
-            avecmockup.style = "display : none";
-        });
-        room.addEventListener('click', e => {
-            sansmockup.style = "display : none";
-            avecmockup.style = "display : bock";
-        });
-    }
-    changeContext();
+    // function changeContext() {
+    //     let alone = document.getElementById('alone');
+    //     let room = document.getElementById('room');
+    //     let sansmockup = document.querySelector('.sansmockup');
+    //     let avecmockup = document.querySelector('.avecmockup');
+    //     alone.addEventListener('click', e => {
+    //         sansmockup.style = "display : block";
+    //         avecmockup.style = "display : none";
+    //     });
+    //     room.addEventListener('click', e => {
+    //         sansmockup.style = "display : none";
+    //         avecmockup.style = "display : bock";
+    //     });
+    // }
+    // changeContext();
 
-    function pAchat() {
-        let formats = document.querySelectorAll('.format-list');
-        console.log(formats);
-        choice = '';
-        for (let format of formats){
-            format.addEventListener('click', e =>{
-                choice = format.getAttribute('value');
-                for (let format2 of formats){
-                    format2.style = "border : solid 1px #687079;"
-                }
-                format.style = "border: 2px solid #aca06c";
-                console.log(choice);
-            })
-        }
+    // function pAchat() {
+    //     let formats = document.querySelectorAll('.format-list'); //Récupération de 4 <div class="format-list">
+    //     for (let format of formats) { //boucle pour parcourir le tableau avec les 4 <div>
+    //         format.addEventListener('click', e => { //ajout d'un évènement quand on clique sur une des <div>
+    //             for (let format2 of formats) { //deuxième boucle pour enlever le border de sélection sur toutes les <div>
+    //                 format2.style = "border : solid 1px #687079;";
+    //             }
+    //             format.style = "border: 2px solid #aca06c"; //ajout d'un border de sélection sur la dernière <div> cliquée
+    //             let choice = format.getAttribute('value'); //la variable 'choice' récupère la valeur de la <div> sélectionnée.
+    //             console.log(choice); //le log affiche correctement la valeur voulue.
+    //             return choice; //WTF POURQUOI CA MARCHE PAAAAS ???
+    //         });
+    //     }
+    // }
+
+    let divformats = document.querySelectorAll('.format-list');
+
+
+    const getFormat = (event, divformat) => {
+        const format = event.target.dataset.format;
+        divformat.style = "border: 2px solid #aca06c";
+        priceFormat(50, format);
     }
-    pAchat();
+
+    function priceFormat(unprix, unformat) {
+        let prixduformat = '';
+        if (unformat == 'classique') {
+            prixduformat = unprix * 1.3;
+        } else if (unformat == 'grand') {
+            prixduformat = unprix * 2.6;
+        } else if (unformat == 'geant') {
+            prixduformat = unprix * 5.2;
+        } else if (unformat == 'collector') {
+            prixduformat = unprix * 13;
+        }
+        document.getElementById('testprix').innerHTML = prixduformat;
+    }
+
+    for (index = 0; index < divformats.length; index++) {
+        let divformat = divformats[index];
+        divformat.addEventListener('click', event => {
+            for (let divformat2 of divformats) { 
+                     divformat2.style = "border : solid 1px #687079;";
+                 };
+            getFormat(event, divformat)});
+    }
 </script>
 
 </body>
