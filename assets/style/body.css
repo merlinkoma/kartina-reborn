@@ -31,6 +31,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap");
@@ -1130,7 +1132,7 @@ div.user-login div.blocs div.left-bloc form.connection-bloc input {
   background-color: inherit;
   border: 0.5px solid #333A42;
 }
-div.user-login div.blocs div.left-bloc form.connection-bloc a {
+div.user-login div.blocs div.left-bloc form.connection-bloc a.mailto {
   text-decoration: none;
   color: inherit;
   width: 90%;
@@ -1139,16 +1141,21 @@ div.user-login div.blocs div.left-bloc form.connection-bloc a {
   display: flex;
   align-items: center;
 }
-div.user-login div.blocs div.left-bloc form.connection-bloc a:hover {
-  font-size: 1.1em;
-}
 div.user-login div.blocs div.left-bloc form.connection-bloc button#connect-button {
-  width: 100%;
+  width: 90%;
   height: 50px;
   border: none;
   background-color: #a5434a;
   color: #e7e7e7;
   font-weight: bold;
+}
+div.user-login div.blocs div.left-bloc form.connection-bloc button#connect-button a.connect {
+  text-decoration: none;
+  color: inherit;
+  width: 90%;
+  margin: auto;
+  height: 50px;
+  text-align: center;
 }
 div.user-login div.blocs div.right-bloc {
   background-color: #e7e7e7;
@@ -1158,16 +1165,14 @@ div.user-login div.blocs div.right-bloc {
   margin: 25px;
   padding: 10px;
 }
-div.user-login div.blocs div.right-bloc button#create-account {
-  width: 100%;
+div.user-login div.blocs div.right-bloc button#signup-button {
+  width: 90%;
   height: 50px;
   border: none;
   background-color: #a5434a;
   color: #e7e7e7;
   font-weight: bold;
-}
-div.user-login div.blocs div.right-bloc button#create-account:hover {
-  font-size: 0.85em;
+  margin: 0 auto;
 }
 
 span.required {
@@ -1691,6 +1696,60 @@ div.sales a.comeback {
 }
 div.sales a.comeback:hover {
   color: #687079;
+}
+
+span.required {
+  color: #a5434a;
+  font-weight: bold;
+  padding: 1%;
+}
+
+div.ligne {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #333A42;
+}
+
+div.ligne {
+  width: 80%;
+  margin: 0 auto;
+  border-top: 2px solid #333A42;
+}
+
+div.signup {
+  font-family: Oswald;
+  background-color: #dad6da;
+  width: 100%;
+  height: 100vh;
+  padding-top: 3%;
+  color: #333A42;
+}
+div.signup form.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1px;
+  width: 60%;
+  align-items: center;
+  margin: auto;
+}
+div.signup form.signup label {
+  margin: 2% auto 0;
+  font-size: 1.4em;
+  font-weight: 200;
+}
+div.signup form.signup input {
+  width: 70%;
+  height: 3vh;
+}
+div.signup form.signup button {
+  width: 50%;
+  height: 30px;
+  border: none;
+  background-color: #a5434a;
+  color: #e7e7e7;
+  font-weight: bold;
+  margin: 2% auto;
 }
 
 span.required {
