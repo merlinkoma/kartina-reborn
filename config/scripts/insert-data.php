@@ -9,7 +9,7 @@ $formats = [['classique', 1.3], ['grand', 2.6], ['géant', 4], ['collector', 10]
 $finitions = [['passe-partout noir', 1], ['tirage papier', 1], ['passe-partout blanc', 1.4], ['aluminium', 2.6], ['acrylique', 3.35]];
 $cadres = [['sans cadre', 1], ['aluminium noir', 1], ['aluminium blanc', 1], ['acajou', 1], ['aluminium brossé', 1], ['satin noir', 1.45], ['satin blanc', 1.45], ['noyer', 1.45], ['chêne', 1.45]];
 
-$artists = [['Mélissa', 'Ameye', 'Merlink', 'CC'], ['Maïlys', 'Edard', 'Maïlys', 'CC'], ['Ambre', 'Arrivé', 'Ambre Arv', 'CC'], ['Vincent', 'Schricke', 'Vincent Schricke', 'CC'], ['Cátia', 'Matos', 'Cátia Matos', 'pexels'], ['Eberhard', 'Grossgasteiger', 'Eberhard Grossgasteiger', 'unsplash'], ['Everaldo', 'Coelho', 'Everaldo Coelho', 'unsplash'], ['Lumen', 'Lumen', 'Lum3n', 'unsplash'], ['Valor', 'Kopeny', 'Valor Kopeny', 'unsplash'], ['Yi', 'Wu', 'Wu Yi', 'pexels']];
+$artists = [['Mélissa', 'Ameye', 'Merlink', 'CC'], ['Maïlys', 'Edard', 'Maïlys', 'CC'], ['Ambre', 'Arrivé', 'Ambre Arv', 'CC'], ['Vincent', 'Schricke', 'Vincent Schricke', 'CC'], ['Cátia', 'Matos', 'Cátia Matos', 'pexels'], ['Eberhard', 'Grossgasteiger', 'Eberhard Grossgasteiger', 'unsplash'], ['Everaldo', 'Coelho', 'Everaldo Coelho', 'unsplash'], ['Lumen', 'Lumen', 'Lum3n', 'unsplash'], ['Valor', 'Kopeny', 'Valor Kopeny', 'unsplash'], ['Yi', 'Wu', 'Wu Yi', 'pexels'], ['Louis', 'Ville', 'Louis Ville', 'CC']];
 
 $users = [['Lucas', 'Jules', 'azerty', 'admin', 'CC', 'lucasju@hotmail.fr']];
 

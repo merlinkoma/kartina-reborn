@@ -24,17 +24,18 @@ $picture = $query->fetch();
         <div class="choice">
             <div class="avecmockup" style="display: none;">
                 <div class="divquimenerve">
-                    <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="photosurlemur" class="<?php
-                                                                                                                                    if ($picture['orientation_idorientation'] == 1) {
-                                                                                                                                        echo 'photosurlemur1';
-                                                                                                                                    } elseif ($picture['orientation_idorientation'] == 2) {
-                                                                                                                                        echo 'photosurlemur2';
-                                                                                                                                    } elseif ($picture['orientation_idorientation'] == 3) {
-                                                                                                                                        echo 'photosurlemur3';
-                                                                                                                                    } elseif ($picture['orientation_idorientation'] == 4) {
-                                                                                                                                        echo 'photosurlemur4';
-                                                                                                                                    }
-                                                                                                                                    ?>">
+                    <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="photosurlemur" class="
+                    <?php
+                    if ($picture['orientation_idorientation'] == 1) {
+                        echo 'photosurlemur1';
+                    } elseif ($picture['orientation_idorientation'] == 2) {
+                        echo 'photosurlemur2';
+                    } elseif ($picture['orientation_idorientation'] == 3) {
+                        echo 'photosurlemur3';
+                    } elseif ($picture['orientation_idorientation'] == 4) {
+                        echo 'photosurlemur4';
+                    }
+                    ?>">
                 </div>
                 <img src="./assets/banqueimg/salon-test.jpg" alt="image dans un salon" id="salon">
             </div>
@@ -148,21 +149,21 @@ $picture = $query->fetch();
 <?php require_once './partials/footer.php'; ?>
 
 <script>
-    // function changeContext() {
-    //     let alone = document.getElementById('alone');
-    //     let room = document.getElementById('room');
-    //     let sansmockup = document.querySelector('.sansmockup');
-    //     let avecmockup = document.querySelector('.avecmockup');
-    //     alone.addEventListener('click', e => {
-    //         sansmockup.style = "display : block";
-    //         avecmockup.style = "display : none";
-    //     });
-    //     room.addEventListener('click', e => {
-    //         sansmockup.style = "display : none";
-    //         avecmockup.style = "display : bock";
-    //     });
-    // }
-    // changeContext();
+    function changeContext() {
+        let alone = document.getElementById('alone');
+        let room = document.getElementById('room');
+        let sansmockup = document.querySelector('.sansmockup');
+        let avecmockup = document.querySelector('.avecmockup');
+        alone.addEventListener('click', e => {
+            sansmockup.style = "display : block";
+            avecmockup.style = "display : none";
+        });
+        room.addEventListener('click', e => {
+            sansmockup.style = "display : none";
+            avecmockup.style = "display : bock";
+        });
+    }
+    changeContext();
 
     // function pAchat() {
     //     let formats = document.querySelectorAll('.format-list'); //Récupération de 4 <div class="format-list">
@@ -181,9 +182,8 @@ $picture = $query->fetch();
 
     let divformats = document.querySelectorAll('.format-list');
 
-
     const getFormat = (event, divformat) => {
-        const format = event.target.dataset.format;
+        const format = event.currentTarget.dataset.format;
         divformat.style = "border: 2px solid #aca06c";
         priceFormat(50, format);
     }
@@ -205,10 +205,11 @@ $picture = $query->fetch();
     for (index = 0; index < divformats.length; index++) {
         let divformat = divformats[index];
         divformat.addEventListener('click', event => {
-            for (let divformat2 of divformats) { 
-                     divformat2.style = "border : solid 1px #687079;";
-                 };
-            getFormat(event, divformat)});
+            for (let divformat2 of divformats) {
+                divformat2.style = "border : solid 1px #687079;";
+            };
+            getFormat(event, divformat);
+        });
     }
 </script>
 
