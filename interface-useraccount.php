@@ -1,7 +1,29 @@
 <?php
-$title = 'login';
+$title = 'Login';
+ob_start();
+
 require_once './partials/header.php';
 require_once './partials/ariane.php';
+
+$email = $_POST['email'] ?? '';
+$password = $_POST['password'] ?? '';
+$errors = [];
+
+if (!empty($_POST)) {
+    $query = $db->prepare(
+        'SELECT * FROM '
+    );
+    $query->bindValue(':email', $email);
+    $query->execute();
+    $user = $query->fetch();
+
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['user'] = $user;
+        header('Location: index.php');
+    } else {
+        echo 'Email ou mot de passe incorrect';
+    }
+}
 ?>
 
 <div class="user-login">
