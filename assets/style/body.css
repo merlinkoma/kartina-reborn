@@ -1331,10 +1331,7 @@ div.rightpersonnalisation div.beforeafter {
 }
 div.rightpersonnalisation div.total {
   display: flex;
-  justify-content: flex-end;
-}
-div.rightpersonnalisation div.total div {
-  margin-left: 50%;
+  justify-content: center;
 }
 div.rightpersonnalisation button.finalchoice {
   width: 100%;
