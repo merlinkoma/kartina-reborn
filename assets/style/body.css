@@ -35,6 +35,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap");
 span.required {
   color: #a5434a;
   font-weight: bold;
@@ -1653,6 +1656,43 @@ div.sales a.comeback {
 }
 div.sales a.comeback:hover {
   color: #687079;
+}
+
+span.required {
+  color: #a5434a;
+  font-weight: bold;
+  padding: 1%;
+}
+
+div.ligne {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #333A42;
+}
+
+div.container-validation-compte {
+  background-color: #EDE4BE;
+  display: flex;
+  justify-content: center;
+}
+div.container-validation-compte .bloc {
+  background-color: #9bb9be;
+  width: 60%;
+  border-radius: 6px;
+  box-shadow: 17px 15px 30px 20px rgba(0, 0, 0, 0.54);
+  margin: auto;
+  height: auto;
+  margin: 30px;
+  padding: 15px;
+}
+div.container-validation-compte .bloc .titre h1 {
+  margin: auto;
+}
+div.container-validation-compte .bloc section h3.souligner {
+  text-decoration: underline;
+}
+div.container-validation-compte .bloc section p.souligner {
+  text-decoration: underline;
 }
 
 span.required {

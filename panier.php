@@ -30,6 +30,7 @@ $_SESSION['panier'] = [
     ]
 ];
 
+
 function panier()
 {
     return $_SESSION['panier'] ?? [];
