@@ -173,17 +173,12 @@ div.rightpersonnalisation {
         }
     }
 
-    div.beforeafter {
-        display        : flex;
-        justify-content: space-between;
-    }
-
     div.total {
         display        : flex;
         justify-content: center;
     }
 
-    button.finalchoice {
+    button#stepsbutton {
         width           : 100%;
         background-color: $color-text;
         padding         : 10px;
@@ -191,5 +186,9 @@ div.rightpersonnalisation {
         color           : $color-back;
         font-weight     : 700;
         text-align      : center;
+        border: none;
+        &:disabled{
+            background-color: $color-dark;
+        }
     }
 }
