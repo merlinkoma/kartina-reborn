@@ -115,20 +115,20 @@ $pictureprice = $picture['price'];
 
         <div class="frame-choice div-choices" style="display: none;">
             <div class="frame-choice-1" style="display: none;">
-                <div>Sans encadrement <span>- Format ...</span></div>
-                <div>Encadrement noir satin <span>- Format ...</span></div>
-                <div>Encadrement blanc satin <span>- Format ...</span></div>
-                <div>Encadrement noyer <span>- Format ...</span></div>
-                <div>Encadrement chêne <span>- Format ...</span></div>
+                <div class="frame-list" data-frame="none">Sans encadrement <span>- Format ...</span></div>
+                <div class="frame-list" data-frame="">Encadrement noir satin <span>- Format ...</span></div>
+                <div class="frame-list" data-frame="">Encadrement blanc satin <span>- Format ...</span></div>
+                <div class="frame-list" data-frame="">Encadrement noyer <span>- Format ...</span></div>
+                <div class="frame-list" data-frame="">Encadrement chêne <span>- Format ...</span></div>
             </div>
             <div class="frame-choice-2" style="display: none;">
-                <div>Cadre alumium noir <span>- Format ...</span></div>
-                <div>Bois blanc <span>- Format ...</span></div>
-                <div>Acajou mat <span>- Format ...</span></div>
-                <div>Aluminium brossé <span>- Format ...</span></div>
+                <div class="frame-list" data-frame="">Cadre alumium noir <span>- Format ...</span></div>
+                <div class="frame-list" data-frame="">Bois blanc <span>- Format ...</span></div>
+                <div class="frame-list" data-frame="">Acajou mat <span>- Format ...</span></div>
+                <div class="frame-list" data-frame="">Aluminium brossé <span>- Format ...</span></div>
             </div>
             <div class="frame-choice-3" style="display: none;">
-                <div>Cadre non disponible</div>
+                <div class="frame-list" data-frame="">Cadre non disponible</div>
             </div>
         </div>
 
@@ -170,12 +170,14 @@ $pictureprice = $picture['price'];
     /*PARCOURS D'ACHAT*/
 
     //Récupération du prix de base donné par l'artiste dans la BDD
-    let price = <?= $pictureprice ?>;
+    var price = <?= $pictureprice ?>;
 
     //Récupération du tableau des <div> de format (step 1)
     let divformats = document.querySelectorAll('.format-list');
     //Récupération du tableau des <div> de finition (step 2)
     let divfinitions = document.querySelectorAll('.finition-list');
+    //Récupération du tableau des <div> de cadre (step 3)
+    let divframes = document.querySelectorAll('.frame-list');
 
     //Bouton pour passer à l'étape suivante
     let stepsbutton = document.querySelector('#stepsbutton');
@@ -240,11 +242,14 @@ $pictureprice = $picture['price'];
             }
         });
         //stepsbutton.disabled = true;
+
+        //Appel de la fonction pour passer à l'étape suivante. Prixduformat en paramètre puisqu'on en a besoin pour calculer le prix suivant.
         stepTwo(prixduformat);
     }
 
     //ETAPE 6 : 
     function priceFinition(prixduformat, lafinition) {
+        //Récupération de la finition, calcul du prix en fonction
         let prixdelafinition = '';
         if ((lafinition == 'pp_black') || (lafinition == 'paper_draw')) {
             prixdelafinition = prixduformat;
@@ -255,12 +260,15 @@ $pictureprice = $picture['price'];
         } else if (lafinition == 'acrylic') {
             prixdelafinition = prixduformat * 3.35;
         }
+        //Affichage du prix calculé dans le <div#prix>
         document.getElementById('prix').innerHTML = 'TOTAL : ' + prixdelafinition + '€';
 
+        //"Sécurité" pour activer le bouton seulement si la finition choisie fait bien partie de la liste
         if (lafinition == 'pp_black' || lafinition == 'pp_white' || lafinition == 'paper_draw' || lafinition == 'aluminium' || lafinition == 'acrylic') {
             stepsbutton.disabled = false;
         };
 
+        //Affichage des <div> frame selon le choix de la finition
         stepsbutton.addEventListener('click', event => {
             document.querySelector('.finition-choice').style = "display: none;";
             step3.disabled = false;
@@ -274,6 +282,23 @@ $pictureprice = $picture['price'];
             }
             //stepsbutton.disabled = true;
         });
+        //Appel de la fonction pour passer à l'étape suivante. Prixdelafinition en paramètre puisqu'on en a besoin pour calculer le prix suivant.
+        stepThree(prixdelafinition);
+    }
+
+    //ETAPE 7 :
+    function stepThree(prixdelafinition){
+        for (index = 0; index < divfinitions.length; index++) {
+            //Désactivation du bouton stepsbutton tant que le choix du cadre n'est pas fait.
+            //stepsbutton.disabled = true;
+            let divfinition = divfinitions[index];
+            divfinition.addEventListener('click', event => {
+                for (let divfinition2 of divfinitions) {
+                    divfinition2.style = "border : solid 1px #687079;";
+                };
+                getFinition(event, divfinition, prixduformat);
+            });
+        }
     }
 
     //ETAPE 4 :

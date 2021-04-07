@@ -11,9 +11,10 @@ function pAchat() {
             format.style = "border: 2px solid #aca06c";
             choosenformat = format.dataset.format;
             console.log('2:' + choosenformat);
-            return choosenformat;
+            
         });
     }
+    return choosenformat;
 }
 console.log('3:' + choosenformat);
 console.log(pAchat());
