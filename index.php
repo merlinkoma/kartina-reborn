@@ -77,7 +77,7 @@ $randomquatros = $db->query('SELECT * FROM picture WHERE orientation_idorientati
 
         <!-- Mention Creative Commons -->
         <div class="creative-commons">
-            <p>Toutes les images de ce site sont sous licence Creative Commons - MerlinK</p>
+            <p>Toutes les images de ce site sont sous licence Creative Commons</p>
             <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br />Ces images sont mises à
             disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licence Creative Commons Attribution - Pas
                 d’Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International</a>

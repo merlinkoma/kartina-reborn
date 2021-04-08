@@ -53,12 +53,23 @@
         let prixduformat = '';
         if (unformat == 'classique') {
             prixduformat = unprix * 1.3;
+            document.querySelector('.photosurlemur2').style = "max-width : 10%;";
+            document.querySelector('.photosurlemur1').style = "max-width : 5%;";
+            document.querySelector('.photosurlemur3').style = "max-width : 5%;";
+            document.querySelector('.photosurlemur4').style = "max-width : 5%;";
+            document.querySelector('.divquimenerve').style = "top : 25%";
         } else if (unformat == 'grand') {
             prixduformat = unprix * 2.6;
+            document.querySelector('.photosurlemur2').style = "max-width : 20%;";
+            document.querySelector('.divquimenerve').style = "top : 20%";
         } else if (unformat == 'geant') {
             prixduformat = unprix * 5.2;
+            document.querySelector('.photosurlemur2').style = "max-width : 30%;";
+            document.querySelector('.divquimenerve').style = "top : 15%";
         } else if (unformat == 'collector') {
             prixduformat = unprix * 13;
+            document.querySelector('.photosurlemur2').style = "max-width : 40%;";
+            document.querySelector('.divquimenerve').style = "top : 8%";
         }
 
         document.getElementById('prix').innerHTML = 'TOTAL : ' + prixduformat + '€';

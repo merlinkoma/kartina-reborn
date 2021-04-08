@@ -9,7 +9,7 @@ require_once './partials/header.php';
 
 //Si les champs ne sont pas renseignés sur la page, les variables sont vides.
 $firstname = $_POST['firstname'] ?? '';
-$surname = $_POST['surname'] ?? '';
+$lastname = $_POST['lastname'] ?? '';
 $email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
 $cf_password = $_POST['cf-password'] ?? '';
@@ -23,8 +23,8 @@ if (!empty($_POST)) {
     }
 
     //Vérification de la longueur du nom de famille
-    if (strlen($surname) < 2) {
-        $errors['surname'] = "Le nom de famille doit faire au moins 2 caractères";
+    if (strlen($lastname) < 2) {
+        $errors['lastname'] = "Le nom de famille doit faire au moins 2 caractères";
     }
 
     //Vérification de l'email : filter_var renvoie true quand l'email passe le filtre. Si !filter_var... -> ajout d'une erreur dans le tableau.
@@ -57,10 +57,10 @@ if (!empty($_POST)) {
     //S'il n'y a aucune erreur dans le tableau, on ajoute le nouvel user à la BDD.
     if (empty($errors)) {
         //Requête préparée pour empêcher les injections SQL lors de la requête à la BDD
-        $query = $db->prepare('INSERT INTO user (firstname, surname, email, password, role, licence) VALUES (:firstname, :surname, :email, :password, :role, :licence)');
+        $query = $db->prepare('INSERT INTO user (firstname, lastname, email, password, role, licence) VALUES (:firstname, :lastname, :email, :password, :role, :licence)');
         //password_hash() = méthode qui permet de ne pas stocker de mot de passe en clair dans la BDD.
         //Nb : un mot de passe oublié ne peut pas être récupéré.
-        $query->execute([':firstname' => $firstname, ':surname' => $surname, ':email' => $email, ':password' => password_hash($password, PASSWORD_DEFAULT), ':role' => 'user', ':licence' => 'CC']);
+        $query->execute([':firstname' => $firstname, ':lastname' => $lastname, ':email' => $email, ':password' => password_hash($password, PASSWORD_DEFAULT), ':role' => 'user', ':licence' => 'CC']);
 
         //On récupère le nouvel user pour le connecter.
         $user = $db->query('SELECT * FROM user WHERE email = "' . $email . '"')->fetch();
@@ -88,9 +88,9 @@ if (!empty($_POST)) {
             <div><?= $errors['firstname'] ?></div>
         <?php } ?>
 
-        <label for="surname">Nom de famille</label>
-        <input type="text" name="surname" id="surname" value="<?= $surname; ?>">
-        <?php if (isset($errors['surname'])) { ?>
+        <label for="lastname">Nom de famille</label>
+        <input type="text" name="lastname" id="lastname" value="<?= $lastname; ?>">
+        <?php if (isset($errors['lastname'])) { ?>
             <div><?= $errors['firstname'] ?></div>
         <?php } ?>
 
