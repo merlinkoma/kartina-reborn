@@ -1008,6 +1008,25 @@ div.container-header header div div.info div form select {
   border: none;
   border-bottom: solid 1px;
 }
+div.container-header header div div.info div.connexion {
+  display: none;
+  position: absolute;
+  border: 1px solid black;
+  background-color: #EDE4BE;
+  z-index: 1000;
+  margin-top: 17px;
+  text-align: left;
+  height: auto;
+  width: auto;
+}
+div.container-header header div div.info div.connexion .connexion p {
+  padding: 0;
+  margin: 0;
+}
+div.container-header header div div.info div.sign-in:hover .connexion {
+  display: flex;
+  flex-direction: column;
+}
 @media screen and (min-width: 1024px) {
   div.container-header header div div.info {
     width: 25%;

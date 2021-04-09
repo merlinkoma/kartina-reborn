@@ -11,7 +11,7 @@ $errors = [];
 
 if (!empty($_POST)) {
     $query = $db->prepare(
-        'SELECT * FROM '
+        'SELECT * FROM user WHERE email = :email'
     );
     $query->bindValue(':email', $email);
     $query->execute();
@@ -21,9 +21,11 @@ if (!empty($_POST)) {
         $_SESSION['user'] = $user;
         header('Location: index.php');
     } else {
-        echo 'Email ou mot de passe incorrect';
+        $errors['password'] = 'Email ou mot de passe incorrect';
+        $errors['email'] = 'Email ou mot de passe incorrect';
     }
 }
+
 ?>
 
 <div class="user-login">
@@ -39,7 +41,7 @@ if (!empty($_POST)) {
 
             <div class="ligne"></div>
 
-            <form class="connection-bloc">
+            <form method="post" class="connection-bloc">
                 <label><span class="required">* </span>Adresse e-mail</label>
                 <input type="email" name="email" placeholder="Adresse e-mail">
 
@@ -47,7 +49,16 @@ if (!empty($_POST)) {
                 <input type="password" name="password" placeholder="Mot de passe">
 
                 <a href="mailto: ">Mot de passe oublié ?</a>
-                <button id="connect-button"><a href="./administration-useraccount.php">CONNEXION ></a></button>
+
+                    <?php if (isset($errors['password'])) {
+                        echo '<div style="color: red">' . $errors['password'] . '</div>';
+                    } ?>
+
+                    <?php if (isset($errors['email'])) {
+                        echo '<div style="color: red">' . $errors['email'] . '</div>';
+                    } ?>
+
+                <button id="connect-button">CONNEXION ></button>
             </form>
         </div>
 
