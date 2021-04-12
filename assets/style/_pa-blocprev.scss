@@ -60,13 +60,19 @@ div.container {
                         max-width : 20%;
                         height    : auto;
                         box-shadow: 0 0 20px $color-dark;
-                        //border    : 10px rgb(48, 43, 43) groove;
                     }
 
                     img.photosurlemur2 {
                         max-width : 40%;
                         height    : auto;
                         box-shadow: 0 0 20px $color-dark;
+                        border-style: solid;
+                        border-image: url(https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/OAK.png) 100 100 80 / 4.48152px / 0 stretch;
+                        //border-image :
+                        // 1 = image source
+                        // 2 = border-image-slice
+                        // border-width
+                        // border-repeat 
                     }
 
                     img.photosurlemur3 {
@@ -189,3 +195,15 @@ div.rightpersonnalisation {
         }
     }
 }
+
+/*
+encadrement blanc satin : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/WHITE_SATIN.png
+
+noir satin : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/BLACK_SATIN.png
+
+chêne/ oak : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/OAK.png
+
+noyer/ walnut : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/WALNUT.png
+
+acajou/ mahogany : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/WENGE.png
+*/

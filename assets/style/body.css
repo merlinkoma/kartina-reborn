@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
@@ -1243,6 +1244,8 @@ div.container div.leftprevisualisation div.choice div.avecmockup div.divquimener
   max-width: 40%;
   height: auto;
   box-shadow: 0 0 20px #333A42;
+  border-style: solid;
+  border-image: url(https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/OAK.png) 100 100 80/4.48152px/0 stretch;
 }
 div.container div.leftprevisualisation div.choice div.avecmockup div.divquimenerve img.photosurlemur3 {
   max-width: 25%;
@@ -1339,6 +1342,17 @@ div.rightpersonnalisation button#stepsbutton:disabled {
   background-color: #333A42;
 }
 
+/*
+encadrement blanc satin : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/WHITE_SATIN.png
+
+noir satin : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/BLACK_SATIN.png
+
+chêne/ oak : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/OAK.png
+
+noyer/ walnut : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/WALNUT.png
+
+acajou/ mahogany : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/WENGE.png
+*/
 span.required {
   color: #a5434a;
   font-weight: bold;
