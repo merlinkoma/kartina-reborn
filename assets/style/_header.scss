@@ -4,186 +4,214 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 
 
-    div.container-header {
-        @include colors;
-        margin: 0;
-        padding: 0;
-        header {
-            font-weight: bold;
-            a {
-                @include liens;
-            }
-            
-            ul li {
-                @include listes;
-            }
-            background-color: $bg-color;
-            font-family: 'Cinzel', serif;
+div.container-header {
+    @include colors;
+    margin : 0;
+    padding: 0;
 
-            div {
+    header {
+        font-weight: bold;
 
-                text-align: center;
+        a {
+            @include liens;
+        }
 
-                div.titre {
-                    width: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    flex-wrap: wrap;
-                    height: 60px;
-                    padding: 0;
-                    margin: 0;
-                    @include slogan;
+        ul li {
+            @include listes;
+        }
 
-                    h1 {
-                        @include titre;
+        background-color: $bg-color;
+        font-family     : 'Cinzel',
+        serif;
 
-                        @media screen and (min-width : 1024px) {
-                            font-size: 3em;
-                        }
+        div {
 
-                    }
+            text-align: center;
 
-                    p {
-                        font-size: 12px;
-                        padding: 0;
-                        margin: 15px;
+            div.titre {
+                width         : 100%;
+                display       : flex;
+                flex-direction: column;
+                flex-wrap     : wrap;
+                height        : 60px;
+                padding       : 0;
+                margin        : 0;
+                @include slogan;
 
-                        @media screen and (min-width : 1024px) {
-                            margin: 0;
-                        }
-                    }
+                h1 {
+                    @include titre;
 
-                    //Taille Ecran
                     @media screen and (min-width : 1024px) {
+                        font-size: 3em;
+                    }
 
-                        width: 30%;
-                        display: block;
-                        align-items: start;
-                        height: 100px;
+                }
+
+                p {
+                    font-size: 12px;
+                    padding  : 0;
+                    margin   : 15px;
+
+                    @media screen and (min-width : 1024px) {
+                        margin: 0;
                     }
                 }
 
-                div.barrerecherche {
+                //Taille Ecran
+                @media screen and (min-width : 1024px) {
+
+                    width      : 30%;
+                    display    : block;
+                    align-items: start;
+                    height     : 100px;
+                }
+            }
+
+            div.barrerecherche {
+
+                form {
+
+                    input {
+                        background-color: #EDE4BE;
+                        border          : none;
+                        border-bottom   : solid 1px;
+                        border-left     : solid 1px;
+
+                        @media screen and (min-width : 1024px) {
+                            width    : 80%;
+                            font-size: 20px;
+                        }
+                    }
+
+                    @media screen and (min-width : 1024px) {
+                        width: 100%;
+                    }
+                }
+
+                @media screen and (min-width : 1024px) {
+                    width      : 44%;
+                    align-items: center;
+                }
+            }
+
+            div.info {
+                font-size      : 15px;
+                display        : flex;
+                align-items    : center;
+                justify-content: space-between;
+                margin         : 5px;
+
+                img {
+                    width : 15px;
+                    height: 15px;
+                }
+
+                div {
 
                     form {
 
-                        input {
+                        select {
                             background-color: #EDE4BE;
-                            border: none;
-                            border-bottom: solid 1px;
-                            border-left: solid 1px;
-
-                            @media screen and (min-width : 1024px) {
-                                width: 80%;
-                                font-size: 20px;
-                            }
+                            border          : none;
+                            border-bottom   : solid 1px;
                         }
-
-                        @media screen and (min-width : 1024px) {
-                            width: 100%;
-                        }
-                    }
-
-                    @media screen and (min-width : 1024px) {
-                        width: 44%;
-                        align-items: center;
                     }
                 }
 
-                div.info {
-                    font-size: 15px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    margin: 5px;
+                div.connexion {
+                    display         : none;
+                    position        : absolute;
+                    border          : 1px solid black;
+                    background-color: #EDE4BE;
+                    z-index         : 1000;
+                    margin          : 17px 0 0 0;
+                    text-align      : left;
+                    height          : auto;
+                    width           : auto;
 
-                    img {
-                        width: 15px;
-                        height: 15px;
+                    .connexion ul {
+                        // width     : 100%;
+                        padding: 0;
+                        margin : 0;
+
                     }
+                }
 
-                    div {
+                div.sign-in:hover .connexion {
+                    display       : flex;
+                    flex-direction: column;
+                }
 
-                        form {
+                @media screen and (min-width : 1024px) {
+                    width          : 25%;
+                    justify-content: space-evenly;
+                    align-items    : initial;
+                    margin-top     : 5px;
+                }
+            }
 
-                            select {
-                                background-color: #EDE4BE;
-                                border: none;
-                                border-bottom: solid 1px;
-                            }
-                        }
+            @media screen and (min-width : 1024px) {
+                display: flex;
+
+            }
+        }
+
+        div.navigation {
+            border-bottom: 1px solid black;
+
+            ul {
+                padding: 0;
+                margin : 0;
+
+
+                li {
+                    font-size    : 15px;
+                    border-bottom: 1px solid black;
+                    min-width    : 190px;
+
+                    a {
+                        display: block;
                     }
 
                     @media screen and (min-width : 1024px) {
-                        width: 25%;
-                        justify-content: space-evenly;
-                        align-items: initial;
-                        margin-top: 5px;
+                        border-bottom: none;
+                        border-right : 1px solid black;
+                        padding-right: 5px;
+                        font-size    : 16px;
+                        width        : 100%;
                     }
                 }
 
                 @media screen and (min-width : 1024px) {
-                    display: flex;
-
+                    display        : flex;
+                    // width: 60%;
+                    justify-content: space-evenly;
+                    align-items    : center;
+                    text-align     : center;
                 }
+
             }
 
-            div.navigation {
-                border-bottom: 1px solid black;
-
-                ul {
-                    padding: 0;
-                    margin: 0;
-
-
-                    li {
-                        font-size: 15px;
-                        border-bottom: 1px solid black;
-                        min-width: 190px;
-
-                        a {
-                            display: block;
-                        }
-
-                        @media screen and (min-width : 1024px) {
-                            border-bottom: none;
-                            border-right: 1px solid black;
-                            padding-right: 5px;
-                            font-size: 16px;
-                            width: 100%;
-                        }
-                    }
-
-                    @media screen and (min-width : 1024px) {
-                        display: flex;
-                        // width: 60%;
-                        justify-content: space-evenly;
-                        align-items: center;
-                        text-align: center;
-                    }
-
-                }
-
-                @media screen and (min-width : 1024px) {
-                    height: 30px;
-                }
+            @media screen and (min-width : 1024px) {
+                height: 30px;
             }
         }
     }
+}
 
-    #trait {
-        border-top: 1px solid #000;
-        width: 100%;
+#trait {
+    border-top: 1px solid #000;
+    width     : 100%;
+}
+
+input::placeholder {
+    color    : black;
+    font-size: 12px;
+
+    @media screen and (min-width : 1024px) {
+        font-size: 15px;
     }
-
-    input::placeholder {
-        color: black;
-        font-size: 12px;
-
-        @media screen and (min-width : 1024px) {
-            font-size: 15px;
-        }
-    }
+}
 
 
 // body {

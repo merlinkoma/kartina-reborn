@@ -17,94 +17,101 @@ ul li {
 }
 
 div.container-aide {
-    padding: 100px 0 100px 0;
-    margin: 0 auto;
-    background-color: #EDE4BE;
-    font-family: 'Cinzel', serif;
-    background-image: url('../banqueimg/bgc-aide2.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+    padding            : 100px 0 100px 0;
+    margin             : 0 auto;
+    background-color   : #EDE4BE;
+    font-family        : 'Cinzel', serif;
+    background-image   : url('../banqueimg/bgc-aide2.jpg');
+    background-size    : cover;
+    background-repeat  : no-repeat;
     background-position: center center;
 
     .bloc {
-        margin: auto;
+        margin          : auto;
         background-color: #9bb9be;
-        width: 40%;
-        border-radius: 6px;
-        box-shadow: 17px 15px 30px 20px rgba(0,0,0,0.54);
+        width           : 40%;
+        border-radius   : 6px;
+        box-shadow      : 17px 15px 30px 20px rgba(0, 0, 0, 0.54);
 
         @media screen and (min-width : 1024px) and (max-width : 1380px) {
-          width: 60%;  
+            width: 60%;
         }
 
         div.formulaire {
             height: 800px;
 
             form {
-                
+
                 section {
-                    display: flex;
+                    display        : flex;
                     justify-content: center;
-                    flex-wrap: wrap;
+                    flex-wrap      : wrap;
 
                     section {
-                        width: 100%;
+                        width : 100%;
                         margin: 20px;
 
                         div {
-                            div {
 
-                                input.write {
-                                    width: $widthform;
-                                    border: none;
-                                    border-bottom: solid 1px;
-                                    background-color: #9bb9be;
+                            input.gender {
+                                width: 15px;
+                            }
+                        }
+                    }
+                
+                    div {
 
-                                    @media screen and (max-width : 1024px) {
-                                        width: 100%;
-                                    }
+                        input.write {
+                            width           : $widthform;
+                            border          : none;
+                            border-bottom   : solid 1px;
+                            background-color: #9bb9be;
 
-                                }
-
-                                select {
-                                    width: $widthform;
-                                    border: none;
-                                    border-bottom: solid 1px;
-                                    background-color: #9bb9be;
-
-                                    @media screen and (max-width : 1024px) {
-                                        width: 100%;
-                                    }
-                                }
-
-
+                            @media screen and (max-width : 1024px) {
+                                width: 100%;
                             }
 
-                            textarea {
-                                width: $widthform;
+                        }
 
-                                @media screen and (max-width : 1024px) {
-                                    width: 100%;
-                                    height: 70px;
-                                }
-                            }
-
-                            button {
-                                width: $widthform;
-                                background-color: #EDE4BE;
-                                border-radius: 10px;
-                                border: solid 1px;
-
-                                @media screen and (max-width : 1024px) {
-                                    width: 100%;
-                                }
-                            }
+                        select {
+                            width           : $widthform;
+                            border          : none;
+                            border-bottom   : solid 1px;
+                            background-color: #9bb9be;
 
                             @media screen and (max-width : 1024px) {
                                 width: 100%;
                             }
                         }
+
+
                     }
+
+                    textarea {
+                        width: $widthform;
+
+                        @media screen and (max-width : 1024px) {
+                            width : 100%;
+                            height: 70px;
+                        }
+                    }
+
+                    button {
+                        width           : $widthform;
+                        background-color: #EDE4BE;
+                        border-radius   : 10px;
+                        border          : solid 1px;
+
+                        @media screen and (max-width : 1024px) {
+                            width: 100%;
+                        }
+                    }
+
+                    @media screen and (max-width : 1024px) {
+                        width: 100%;
+                    }
+
+
 
                     @media screen and (max-width : 1024px) {
                         width: 100%;

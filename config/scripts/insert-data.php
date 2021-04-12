@@ -43,7 +43,13 @@ foreach ($cadres as $cadre){
 }
 
 foreach ($artists as $artist){
+
     $db->query("INSERT INTO user (firstname, lastname, artist_name, role, licence, password) VALUES ('$artist[0]', '$artist[1]' ,'$artist[2]', 'artist', '$artist[3]', '".password_hash('azerty', PASSWORD_DEFAULT)."')");
+}
+
+foreach($users as $user){
+    $passwordhash = password_hash($user[2], PASSWORD_DEFAULT);
+    $db->query("INSERT INTO user (firstname, lastname, password, role, licence, email) VALUES ('$user[0]', '$user[1]', '$passwordhash', '$user[3]', '$user[4]', '$user[5]')");
 }
 
 foreach($users as $user){
