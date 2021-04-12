@@ -47,28 +47,26 @@ session_start();
                     </div>
 
                     <?php if (isset($_SESSION['user'])) { ?>
-                        <!-- <div>
-                            <form action="">
-                                <select name="connexion" id="connexion">
-                                    <option value="myaccount"><a href="#"><?= $_SESSION['user']['email']; ?></a></option>
-                                    <option value="deconnexion"><a href="./logout.php">Déconnexion</a></option>
-                                </select>
-                            </form>
-                        </div> -->
+                        <div class="sign-in">
+                            <a href="#"><?= $_SESSION['user']['email']; ?></a>
+                            <div class="connexion">
+                                <a href="./logout.php">Déconnexion</a>
+                            </div>
+                        </div>
 
 
                     <?php } else { ?>
                         <div class="sign-in">
-                            <a href="./interface-useraccount.php"><img src="./assets/icons/user.png" alt="user"></a>
+                        <a href="./interface-useraccount.php"><img src="./assets/icons/user.png" alt="user"></a>
 
-                            <div class="connexion">
-                                <!-- <ul>
-                                    <li><a href="./interface-useraccount.php">Connexion</a></li>
-                                    <li>Suivi de commandes</li>
-                                </ul> -->
-                                <p><a href="./interface-useraccount.php">Connexion</a></p>
-                                <p>Suivi de commandes</p>
-                            </div>
+                        <div class="connexion">
+                        <ul>
+                            <li><a href="./interface-useraccount.php">Connexion</a></li>
+                            <li>Suivi de commandes</li>
+                        </ul>
+                        <!-- <p><a href="./interface-useraccount.php">Connexion</a></p>
+                                <p>Suivi de commandes</p> -->
+                        </div>
                         </div>
                     <?php } ?>
 

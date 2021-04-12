@@ -22,7 +22,6 @@ if (!empty($_POST)) {
         header('Location: index.php');
     } else {
         $errors['password'] = 'Email ou mot de passe incorrect';
-        $errors['email'] = 'Email ou mot de passe incorrect';
     }
 }
 
