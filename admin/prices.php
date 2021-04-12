@@ -1,11 +1,11 @@
 <?php
 
 function priceFormat($unprix, $unformat){
-    if ($unformat == 'classical') {
+    if ($unformat == 'classique') {
         $prixduformat = $unprix * 1.3;
-    } elseif ($unformat == 'big') {
+    } elseif ($unformat == 'grand') {
         $prixduformat = $unprix * 2.6;
-    } elseif ($unformat == 'giant') {
+    } elseif ($unformat == 'geant') {
         $prixduformat = $unprix * 5.2;
     } elseif ($unformat == 'collector') {
         $prixduformat = $unprix * 13;

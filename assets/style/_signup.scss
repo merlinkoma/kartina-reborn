@@ -1,0 +1,47 @@
+@import "variables";
+
+div.ligne {
+    width     : 80%;
+    margin    : 0 auto;
+    border-top: 2px solid $color-dark;
+}
+
+div.signup {
+    font-family     : Oswald;
+    background-color: #dad6da;
+    width           : 100%;
+    height          : 100vh;
+    padding-top     : 3%;
+    color           : $color-dark;
+
+    form.signup {
+        display        : flex;
+        flex-direction : column;
+        justify-content: space-around;
+        padding        : 1px;
+        width          : 60%;
+        align-items    : center;
+        margin         : auto;
+
+        label {
+            margin     : 2% auto 0;
+            font-size  : 1.4em;
+            font-weight: 200;
+        }
+
+        input {
+            width : 70%;
+            height: 3vh;
+        }
+
+        button {
+            width           : 50%;
+            height          : 30px;
+            border          : none;
+            background-color: $color-text;
+            color           : $color-back;
+            font-weight     : bold;
+            margin: 2% auto;
+        }
+    }
+}
