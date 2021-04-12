@@ -2,6 +2,8 @@
     $title = 'filtres';
     require_once './partials/header.php';
     require_once './partials/ariane.php';
+
+    $allpictures = $db->query('SELECT * FROM picture ORDER BY RAND()')->fetchAll();
     ?>
 
     <div class="all-photographies">
@@ -106,7 +108,15 @@
             </div>
 
             <div class="results">
-                *Résultats de la recherche.*
+                <?php
+
+                foreach ($allpictures as $picture) { ?>
+
+                    <div class="picture">
+                        <img src="./assets/banqueimg/<?=$picture['cover']?>" alt="<?=$picture['title']?>">
+                    </div>
+
+                <?php } ?>
             </div>
 
             <div class="pagination">

@@ -65,7 +65,7 @@ if (!empty($_POST)) {
             <p>Vous n'avez pas de compte Kartina</p>
             <p>Vous pouvez commander sans créer de compte. Vous pourrez créer votre compte plus tard.</p>
             <br>
-            <button a="#" id="create-account">CREER UN COMPTE ></button>
+            <button id="signup-button"><a href="./signup.php" id="create-account">CREER UN COMPTE ></button>
         </div>
 
     </div>

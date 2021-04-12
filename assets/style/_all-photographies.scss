@@ -98,6 +98,12 @@ div.all-photographies {
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
+            div.picture{
+                img{
+                    height: 10vh;
+                    width: auto;
+                }
+            }
         }
 
         div.pagination{

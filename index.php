@@ -2,17 +2,23 @@
 $title = 'accueil';
 require_once './partials/header.php';
 require_once './partials/ariane.php';
+
+$randompictures = $db->query('SELECT * FROM picture INNER JOIN user ON picture.user_iduser = user.iduser ORDER BY RAND() LIMIT 6')->fetchAll();
+$randombanner = $db->query('SELECT * FROM picture INNER JOIN user ON picture.user_iduser = user.iduser WHERE orientation_idorientation = 2 ORDER BY RAND() LIMIT 1')->fetch();
+$randomquatros = $db->query('SELECT * FROM picture WHERE orientation_idorientation = 3 ORDER BY RAND() LIMIT 4')->fetchAll();
+
 ?>
 
 <main class="mainaccueil">
     <!-- SECTION 1 NOUVELLES OEUVRES -->
     <div class="homebanner">
-        <img src="./assets/banqueimg/filrouge10.jpg" alt="background" class="background-header">
+        <img src="./assets/banqueimg/<?= $randombanner['cover'] ?>" alt="background" class="background-header">
         <div class="header-titles">
             <h1>Nouvelles oeuvres</h1>
-            <p>La légendaire collection Everest</p>
+            <p>La légendaire collection Reborn</p>
             <a href="" class="newcoll">Explorer la nouvelle collection ></a>
         </div>
+        <div class="legend"><a href="./page-artiste.php?id=<?= $randombanner['user_iduser'] ?>"><?= $randombanner['title'] ?> - <?= $randombanner['artist_name'] ?></a></div>
     </div>
 
     <!-- SECTION 2 PHOTO D'ART -->
@@ -24,89 +30,24 @@ require_once './partials/ariane.php';
 
         <div class="articles">
 
-            <figure id="fig1">
-                <div class="image"><img src="./assets/banqueimg/filrouge13.jpg" alt=""></div>
-                <figcaption class="legendeimg">
-                    <div class="legendeimg1">
-                        <p><a href="./page-artiste.php">Marie Martin</a></p>
-                        <p>Edition limitée</p>
-                    </div>
-                    <div class="legendeimg2">
-                        <p>à partir de...</p>
-                        <p><a href="./pa-blocprev.php">...€</a></p>
-                    </div>
-                </figcaption>
-            </figure>
+            <?php
+            foreach ($randompictures as $randompicture) { ?>
 
-            <figure id="fig2">
-                <div class="image"><img src="./assets/banqueimg/filrouge75.jpg" alt=""></div>
-                <figcaption class="legendeimg">
-                    <div class="legendeimg1">
-                        <p>Nom de l'auteur</p>
-                        <p>Edition limitée</p>
-                    </div>
-                    <div class="legendeimg2">
-                        <p>à partir de...</p>
-                        <p>...€</p>
-                    </div>
-                </figcaption>
-            </figure>
-
-            <figure id="fig3">
-                <div class="image"><img src="./assets/banqueimg/filrouge15.jpg" alt=""></div>
-                <figcaption class="legendeimg">
-                    <div class="legendeimg1">
-                        <p>Nom de l'auteur</p>
-                        <p>Edition limitée</p>
-                    </div>
-                    <div class="legendeimg2">
-                        <p>à partir de...</p>
-                        <p>...€</p>
-                    </div>
-                </figcaption>
-            </figure>
-
-            <figure id="fig4">
-                <div class="image"><img src="./assets/banqueimg/filrouge72.jpg" alt=""></div>
-                <figcaption class="legendeimg">
-                    <div class="legendeimg1">
-                        <p>Nom de l'auteur</p>
-                        <p>Edition limitée</p>
-                    </div>
-                    <div class="legendeimg2">
-                        <p>à partir de...</p>
-                        <p>...€</p>
-                    </div>
-                </figcaption>
-            </figure>
-
-            <figure id="fig5">
-                <div class="image"><img src="./assets/banqueimg/filrouge24.jpg" alt=""></div>
-                <figcaption class="legendeimg">
-                    <div class="legendeimg1">
-                        <p>Nom de l'auteur</p>
-                        <p>Edition limitée</p>
-                    </div>
-                    <div class="legendeimg2">
-                        <p>à partir de...</p>
-                        <p>...€</p>
-                    </div>
-                </figcaption>
-            </figure>
-
-            <figure id="fig6">
-                <div class="image"><img src="./assets/banqueimg/filrouge28.jpg" alt=""></div>
-                <figcaption class="legendeimg">
-                    <div class="legendeimg1">
-                        <p>Nom de l'auteur</p>
-                        <p>Edition limitée</p>
-                    </div>
-                    <div class="legendeimg2">
-                        <p>à partir de...</p>
-                        <p>...€</p>
-                    </div>
-                </figcaption>
-            </figure>
+                <figure id="fig1">
+                    <div class="image"><img src="./assets/banqueimg/<?= $randompicture['cover'] ?>" alt=""></div>
+                    <figcaption class="legendeimg">
+                        <div class="legendeimg1">
+                            <p><a href="./page-artiste.php?id=<?= $randompicture['user_iduser'] ?>"><?= $randompicture['artist_name'] ?></a></p>
+                            <p><?= $randompicture['title'] ?></p>
+                            <p>Edition limitée</p>
+                        </div>
+                        <div class="legendeimg2">
+                            <p>à partir de</p>
+                            <p><a href="./pa-blocprev.php?id=<?= $randompicture['idpicture'] ?>"><?= $randompicture['price'] ?> €</a></p>
+                        </div>
+                    </figcaption>
+                </figure>
+            <?php } ?>
 
         </div>
 
@@ -122,26 +63,25 @@ require_once './partials/ariane.php';
     <div class="quatro">
         <h1>QUATRO</h1>
         <div class="gridquatro">
-            <div class="quatro1 quatro"><a href="">Voyages ></a>
 
-            </div>
-            <div class="quatro2 quatro"><a href="">N&B></a>
+            <?php
 
-            </div>
-            <div class="quatro3 quatro"><a href="">Artiste ></a>
+            foreach ($randomquatros as $index => $randomquatro) { ?>
 
-            </div>
-            <div class="quatro4 quatro"><a href="">Derniers exemplaires ></a></div>
+                <div class="quatro1 quatro" style="background: url('./assets/banqueimg/<?= $randomquatro['cover'] ?>'); background-size: cover; background-position: center;"><a href="">Quatro <?= $index ?> ></a>
+                </div>
+
+            <?php } ?>
+
         </div>
-    </div>
 
-    <!-- Mention Creative Commons -->
-    <div class="creative-commons">
-        <p>Toutes les images de ce site sont sous licence Creative Commons - MerlinK</p>
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br />Ces images sont mises à
-        disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licence Creative Commons Attribution - Pas
-            d’Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International</a>
-    </div>
+        <!-- Mention Creative Commons -->
+        <div class="creative-commons">
+            <p>Toutes les images de ce site sont sous licence Creative Commons</p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br />Ces images sont mises à
+            disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licence Creative Commons Attribution - Pas
+                d’Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International</a>
+        </div>
 </main>
 
 <?php require_once './partials/footer.php'; ?>

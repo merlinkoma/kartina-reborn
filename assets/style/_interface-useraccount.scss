@@ -63,7 +63,7 @@ div.user-login {
                     border          : 0.5px solid $color-dark;
                 }
 
-                a {
+                a.mailto {
                     text-decoration: none;
                     color          : inherit;
                     width          : 90%;
@@ -71,19 +71,23 @@ div.user-login {
                     height         : 50px;
                     display        : flex;
                     align-items    : center;
-
-                    &:hover {
-                        font-size: 1.1em;
-                    }
                 }
-
+                
                 button#connect-button {
-                    width           : 100%;
+                    width           : 90%;
                     height          : 50px;
                     border          : none;
                     background-color: $color-text;
                     color           : $color-back;
                     font-weight     : bold;
+                    a.connect {
+                        text-decoration: none;
+                        color          : inherit;
+                        width          : 90%;
+                        margin         : auto;
+                        height         : 50px;
+                        text-align: center;
+                    }
                 }
             }
         }
@@ -96,17 +100,14 @@ div.user-login {
             margin          : 25px;
             padding         : 10px;
 
-            button#create-account {
-                width           : 100%;
+            button#signup-button {
+                width           : 90%;
                 height          : 50px;
                 border          : none;
                 background-color: $color-text;
                 color           : $color-back;
                 font-weight     : bold;
-
-                &:hover {
-                    font-size: 0.85em;
-                }
+                margin : 0 auto;
             }
         }
     }
