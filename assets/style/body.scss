@@ -1,4 +1,4 @@
-@import "accueil";             
+@import "accueil";
 @import "administration-useraccount";
 @import "aide";
 @import "all-photographies";
@@ -8,15 +8,18 @@
 @import "icons";
 @import "interface-useraccount";
 @import "mixin";
+@import "new-sales";
 @import "pa-blocprev";
 @import "page-artiste";
 @import "panier";
 @import "sales";
 @import "signup";
+@import "validation-compte";
 @import "validation";
 @import "variables";
 
 body{
     margin: 0;
     padding: 0;
+
 }

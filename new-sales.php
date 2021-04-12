@@ -20,7 +20,7 @@ if (!empty($_POST)) {
     }
 
     if (!empty($_FILES['cover'])) {
-        if ($_FILES['cover']['errors'] === 0 && in_array($_FILES['cover']['type'], $allowedTypes)) {
+        if ($_FILES['cover']['error'] === 0 && in_array($_FILES['cover']['type'], $allowedTypes)) {
             $file = $_FILES['cover']['tmp_name'];
 
             if (!is_dir(__DIR__ . '/images')) {
@@ -32,65 +32,108 @@ if (!empty($_POST)) {
 
             move_uploaded_file($file, __DIR__ . '/images/' . $fileName);
         } else {
-            echo 'Veuillez envoyer un fichier au bon format (jpg, jpeg, png)...';
+            $errors['cover'] = 'Veuillez envoyer un fichier au bon format (jpg, jpeg, png)...';
         }
     }
 
+    if ($price < 0) {
+        $errors['price'] = "Le prix doit être supérieur à 0€...";
+    }
+
     if ($quantity < 1 && $quantity > 1000) {
-        $errors['number'] = "Le nombre doit etre compris entre 1 et 1000.";
+        $errors['quantity'] = "Le nombre doit etre compris entre 1 et 1000.";
     }
 
-    if (empty($errors)) {
-        $query = $db->prepare(
-            'INSERT INTO picture (title, price, quantity, cover) VALUES (:title, :price, :quantity, :cover)'
-        );
-        $query->bindValue(':title', $title);
-        $query->bindValue(':price', $price);
-        $query->bindValue(':quantity', $quantity);
-        $query->bindValue(':cover', $cover);
+    // if (empty($errors)) {
+    //     $query = $db->prepare(
+    //         'INSERT INTO picture (title, price, quantity, cover) VALUES (:title, :price, :quantity, :cover)'
+    //     );
+    //     $query->bindValue(':title', $title);
+    //     $query->bindValue(':price', $price);
+    //     $query->bindValue(':quantity', $quantity);
+    //     $query->bindValue(':cover', $cover);
 
-        $query->execute();
-    }
+    //     $query->execute();
+    // }
 }
 ?>
 
 <div class="container-new-sales">
     <div class="titre">
-        <h1>Nouvelle vente</h1>
+        <h1>Nouvelle vente :</h1>
     </div>
 
     <div class="formulaire">
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <div class="title">
-                <label for="title">Titre de l'œuvre : </label>
-                <input type="text" name="title" id="title" value="<?= $title; ?>">
+                <div>
+                    <label for="title">Titre de l'œuvre : </label>
+                </div>
+                <div>
+
+                    <input type="text" name="title" id="title" value="<?= $title; ?>" placeholder="Votre titre">
+                    <?php if (isset($errors['title'])) {
+                        echo '<div style="color: red">' . $errors['title'] . '</div>';
+                    } ?>
+                </div>
             </div>
             <div class="cover">
-                <label for="cover">Choisissez une photo à vendre : </label>
-                <input type="file" name="cover" id="cover" value="<?= $cover; ?>">
+                <div>
+                    <label for="cover">Choisissez une photo à vendre : </label>
+                </div>
+                <div>
+                    <input type="file" name="cover" id="cover" value="<?= $cover; ?>" placeholder="Votre photo">
+                    <?php if (isset($errors['cover'])) {
+                        echo '<div style="color: red">' . $errors['cover'] . '</div>';
+                    } ?>
+                </div>
             </div>
             <div class="format">
-                <label for="format">Choix du format : </label>
-                <input type="radio" name="format" id="format" value="<?= $format; ?>">Classique
-                <input type="radio" name="format" id="format" value="<?= $format; ?>">Grand
-                <input type="radio" name="format" id="format" value="<?= $format; ?>">Géant
-                <input type="radio" name="format" id="format" value="<?= $format; ?>">Collector
+                <div>
+                    <label for="format">Choix du format : </label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="format" id="format" value="<?= $format; ?>">Classique
+                    <input type="radio" name="format" id="format" value="<?= $format; ?>">Grand
+                    <input type="radio" name="format" id="format" value="<?= $format; ?>">Géant
+                    <input type="radio" name="format" id="format" value="<?= $format; ?>">Collector
+                </div>
             </div>
             <div class="price">
-                <label for="price">Prix à la vente : </label>
-                <input type="number" name="price" id="price" value="<?= $price; ?>">
+                <div>
+                    <label for="price">Prix à la vente : </label>
+                </div>
+                <div>
+                    <input type="number" name="price" id="price" min="0" value="<?= $price; ?>" placeholder="Votre prix">€
+                    <?php if (isset($errors['price'])) {
+                        echo '<div style="color: red">' . $errors['price'] . '</div>';
+                    } ?>
+                </div>
             </div>
             <div class="quantity">
-                <label for="quantity">Nombre de tirages maximum pour la photographie : </label>
-                <input type="number" name="quantity" id="quantity" value="<?= $quantity; ?>">
+                <div>
+                    <label for="quantity">Nombre de tirages maximum pour la photographie : </label>
+                </div>
+                <div>
+                    <input type="number" name="quantity" id="quantity" min="1" value="<?= $quantity; ?>" placeholder="Votre quantité">
+                    <?php if (isset($errors['quantity'])) {
+                        echo '<div style="color: red">' . $errors['quantity'] . '</div>';
+                    } ?>
+                </div>
             </div>
             <div class="tag">
-                <label for="tag">Ajouter un tags à la photographie : </label>
-                <input type="text" name="tag" id="tag" value="<?= $tag; ?>">
+                <div>
+                    <label for="tag">Ajouter un tags à la photographie : </label>
+                </div>
+                <div>
+                    <input type="text" name="tag" id="tag" value="<?= $tag; ?>" placeholder="Votre tag">
+                </div>
             </div>
             <div class="validation">
-                <button type="button">Validation</button>
+                <button>Validation</button>
             </div>
         </form>
     </div>
 </div>
+
+<?php require_once './partials/footer.php'; ?>

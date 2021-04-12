@@ -1,7 +1,30 @@
 <?php
-$title = 'login';
+$title = 'Login';
+ob_start();
+
 require_once './partials/header.php';
 require_once './partials/ariane.php';
+
+$email = $_POST['email'] ?? '';
+$password = $_POST['password'] ?? '';
+$errors = [];
+
+if (!empty($_POST)) {
+    $query = $db->prepare(
+        'SELECT * FROM user WHERE email = :email'
+    );
+    $query->bindValue(':email', $email);
+    $query->execute();
+    $user = $query->fetch();
+
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['user'] = $user;
+        header('Location: index.php');
+    } else {
+        $errors['password'] = 'Email ou mot de passe incorrect';
+    }
+}
+
 ?>
 
 <div class="user-login">
@@ -17,15 +40,24 @@ require_once './partials/ariane.php';
 
             <div class="ligne"></div>
 
-            <form class="connection-bloc">
+            <form method="post" class="connection-bloc">
                 <label><span class="required">* </span>Adresse e-mail</label>
                 <input type="email" name="email" placeholder="Adresse e-mail">
 
                 <label><span class="required">* </span>Mot de passe</label>
                 <input type="password" name="password" placeholder="Mot de passe">
 
-                <a href="mailto: " class="mailto">Mot de passe oublié ?</a>
-                <button id="connect-button"><a class="connect" href="./administration-useraccount.php">CONNEXION ></a></button>
+                <a href="mailto: ">Mot de passe oublié ?</a>
+
+                    <?php if (isset($errors['password'])) {
+                        echo '<div style="color: red">' . $errors['password'] . '</div>';
+                    } ?>
+
+                    <?php if (isset($errors['email'])) {
+                        echo '<div style="color: red">' . $errors['email'] . '</div>';
+                    } ?>
+
+                <button id="connect-button">CONNEXION ></button>
             </form>
         </div>
 
