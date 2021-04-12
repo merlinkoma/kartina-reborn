@@ -1,5 +1,6 @@
 <?php
     require __DIR__.'/../config/database.php';
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">

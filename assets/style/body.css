@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
@@ -27,6 +28,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@200;400;700&display=swap");
@@ -1130,7 +1133,7 @@ div.user-login div.blocs div.left-bloc form.connection-bloc input {
   background-color: inherit;
   border: 0.5px solid #333A42;
 }
-div.user-login div.blocs div.left-bloc form.connection-bloc a {
+div.user-login div.blocs div.left-bloc form.connection-bloc a.mailto {
   text-decoration: none;
   color: inherit;
   width: 90%;
@@ -1139,16 +1142,21 @@ div.user-login div.blocs div.left-bloc form.connection-bloc a {
   display: flex;
   align-items: center;
 }
-div.user-login div.blocs div.left-bloc form.connection-bloc a:hover {
-  font-size: 1.1em;
-}
 div.user-login div.blocs div.left-bloc form.connection-bloc button#connect-button {
-  width: 100%;
+  width: 90%;
   height: 50px;
   border: none;
   background-color: #a5434a;
   color: #e7e7e7;
   font-weight: bold;
+}
+div.user-login div.blocs div.left-bloc form.connection-bloc button#connect-button a.connect {
+  text-decoration: none;
+  color: inherit;
+  width: 90%;
+  margin: auto;
+  height: 50px;
+  text-align: center;
 }
 div.user-login div.blocs div.right-bloc {
   background-color: #e7e7e7;
@@ -1158,16 +1166,14 @@ div.user-login div.blocs div.right-bloc {
   margin: 25px;
   padding: 10px;
 }
-div.user-login div.blocs div.right-bloc button#create-account {
-  width: 100%;
+div.user-login div.blocs div.right-bloc button#signup-button {
+  width: 90%;
   height: 50px;
   border: none;
   background-color: #a5434a;
   color: #e7e7e7;
   font-weight: bold;
-}
-div.user-login div.blocs div.right-bloc button#create-account:hover {
-  font-size: 0.85em;
+  margin: 0 auto;
 }
 
 span.required {
@@ -1198,84 +1204,131 @@ div.container div.context {
 }
 div.container div.context figure {
   width: 80%;
-  border: 1px black solid;
 }
 div.container div.context figure img {
+  border: 1px black solid;
   width: 100%;
   height: auto;
 }
 div.container div.leftprevisualisation {
   width: 40vw;
 }
-div.container div.leftprevisualisation div.choice img {
+div.container div.leftprevisualisation div.choice {
   width: 100%;
 }
-div.container div.leftprevisualisation div.choice h2 {
+div.container div.leftprevisualisation div.choice div.sansmockup {
+  width: 100%;
+  height: auto;
+}
+div.container div.leftprevisualisation div.choice div.sansmockup img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+div.container div.leftprevisualisation div.choice div.avecmockup {
+  width: 100%;
+  position: relative;
+}
+div.container div.leftprevisualisation div.choice div.avecmockup div.divquimenerve {
+  position: absolute;
+  text-align: center;
+  top: 8%;
+}
+div.container div.leftprevisualisation div.choice div.avecmockup div.divquimenerve img.photosurlemur1 {
+  max-width: 20%;
+  height: auto;
+  box-shadow: 0 0 20px #333A42;
+}
+div.container div.leftprevisualisation div.choice div.avecmockup div.divquimenerve img.photosurlemur2 {
+  max-width: 40%;
+  height: auto;
+  box-shadow: 0 0 20px #333A42;
+  border-style: solid;
+  border-image: url(https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/OAK.png) 100 100 80/4.48152px/0 stretch;
+}
+div.container div.leftprevisualisation div.choice div.avecmockup div.divquimenerve img.photosurlemur3 {
+  max-width: 25%;
+  height: auto;
+  box-shadow: 0 0 20px #333A42;
+}
+div.container div.leftprevisualisation div.choice div.avecmockup div.divquimenerve img.photosurlemur4 {
+  margin-top: 3%;
+  max-width: 55%;
+  height: auto;
+  box-shadow: 0 0 20px #333A42;
+}
+div.container div.leftprevisualisation div.choice div.avecmockup img#salon {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+div.container h2 {
   font-size: 2.5rem;
   margin: 0;
   font-family: Cinzel, serif;
 }
-div.container div.leftprevisualisation div.choice p#picturename {
+div.container p#picturename {
   color: #687079;
   margin: 3px 0 10px 0;
 }
-div.container div.leftprevisualisation div.choice div.authordescription {
+div.container div.authordescription {
   color: #333A42;
   text-align: justify;
 }
-div.container div.rightpersonnalisation {
+
+div.rightpersonnalisation {
   width: 40vw;
   padding: 10px;
 }
-div.container div.rightpersonnalisation h2 {
+div.rightpersonnalisation h2 {
   text-align: center;
   font-family: Cinzel, serif;
 }
-div.container div.rightpersonnalisation hr {
+div.rightpersonnalisation hr {
   width: 25%;
 }
-div.container div.rightpersonnalisation div.step ul {
+div.rightpersonnalisation div.step ul {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-div.container div.rightpersonnalisation div.step ul div.choix {
+div.rightpersonnalisation div.step ul div.choix {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-div.container div.rightpersonnalisation div.step ul div.choix div.border {
+div.rightpersonnalisation div.step ul div.choix div.border {
   padding: 10% 20%;
   margin: 5%;
   border: solid black 0.5px;
   border-radius: 50%;
 }
-div.container div.rightpersonnalisation div.step ul div.choix button {
+div.rightpersonnalisation div.step ul div.choix button {
   margin: 2%;
 }
-div.container div.rightpersonnalisation div.typesupport {
-  display: flex;
-  flex-direction: column;
-}
-div.container div.rightpersonnalisation div.typesupport div {
-  width: 100%;
-  height: 50px;
+div.rightpersonnalisation div.div-choices {
+  min-height: 20vh;
   padding: 10px;
-  border: solid black 1px;
   margin: 2px;
+  font-weight: 700;
+  font-size: 1.2em;
 }
-div.container div.rightpersonnalisation div.beforeafter {
+div.rightpersonnalisation div.div-choices div {
+  border: solid #687079 1px;
+  padding: 2%;
+  margin: 1%;
+}
+div.rightpersonnalisation div.div-choices span {
+  color: #687079;
+  font-weight: 200;
+}
+div.rightpersonnalisation div.total {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
-div.container div.rightpersonnalisation div.total {
-  display: flex;
-  justify-content: flex-end;
-}
-div.container div.rightpersonnalisation div.total div {
-  margin-left: 50%;
-}
-div.container div.rightpersonnalisation div.finalchoice {
+div.rightpersonnalisation button#stepsbutton {
   width: 100%;
   background-color: #a5434a;
   padding: 10px;
@@ -1283,8 +1336,23 @@ div.container div.rightpersonnalisation div.finalchoice {
   color: #e7e7e7;
   font-weight: 700;
   text-align: center;
+  border: none;
+}
+div.rightpersonnalisation button#stepsbutton:disabled {
+  background-color: #333A42;
 }
 
+/*
+encadrement blanc satin : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/WHITE_SATIN.png
+
+noir satin : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/BLACK_SATIN.png
+
+chêne/ oak : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/OAK.png
+
+noyer/ walnut : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/WALNUT.png
+
+acajou/ mahogany : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/WENGE.png
+*/
 span.required {
   color: #a5434a;
   font-weight: bold;
@@ -1361,6 +1429,8 @@ div.artiste div.galerie figure {
 div.artiste div.galerie figure img {
   height: 350px;
   width: auto;
+  display: block;
+  margin: auto;
 }
 div.artiste div.galerie figure figcaption {
   display: flex;
@@ -1399,6 +1469,8 @@ div.presentation div.bloc {
 div.presentation img {
   height: 90%;
   width: auto;
+  margin: auto;
+  display: block;
 }
 div.presentation a {
   font-size: 1.5em;
@@ -1631,6 +1703,60 @@ div.sales a.comeback {
 }
 div.sales a.comeback:hover {
   color: #687079;
+}
+
+span.required {
+  color: #a5434a;
+  font-weight: bold;
+  padding: 1%;
+}
+
+div.ligne {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #333A42;
+}
+
+div.ligne {
+  width: 80%;
+  margin: 0 auto;
+  border-top: 2px solid #333A42;
+}
+
+div.signup {
+  font-family: Oswald;
+  background-color: #dad6da;
+  width: 100%;
+  height: 100vh;
+  padding-top: 3%;
+  color: #333A42;
+}
+div.signup form.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1px;
+  width: 60%;
+  align-items: center;
+  margin: auto;
+}
+div.signup form.signup label {
+  margin: 2% auto 0;
+  font-size: 1.4em;
+  font-weight: 200;
+}
+div.signup form.signup input {
+  width: 70%;
+  height: 3vh;
+}
+div.signup form.signup button {
+  width: 50%;
+  height: 30px;
+  border: none;
+  background-color: #a5434a;
+  color: #e7e7e7;
+  font-weight: bold;
+  margin: 2% auto;
 }
 
 span.required {
