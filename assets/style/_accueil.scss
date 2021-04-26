@@ -259,6 +259,7 @@ main.mainaccueil {
                 a {
                     text-decoration: none;
                     color          : $color-back;
+                    text-shadow: 1px 1px 2px $color-dark;
                     padding-left   : 20px;
                     padding-bottom : 20px;
                     font-size      : 1.8em;

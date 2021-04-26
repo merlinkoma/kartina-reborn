@@ -9,6 +9,26 @@ $query->execute([':id' => $id]);
 $picture = $query->fetch();
 
 $pictureprice = $picture['price'];
+
+class Parcours{
+    public $format = 0 ;
+    public $finition = 0 ;
+    public $frame = 0 ;
+    public $price = [];
+}
+
+if(!empty($_POST)){
+    //sécuriser le formulaire
+    $parcours = new Parcours();
+    $parcours->format = $_POST['format'];
+    $parcours->finition = $_POST['finition'];
+    $parcours->frame = $_POST['frame'];
+    $parcours->price['formatprice'] = round( $_POST['formatprice'], 2);
+    $parcours->price['finitionprice'] = round($_POST['finitionprice'], 2);
+    $parcours->price['frameprice'] = round($_POST['frameprice'], 2);
+        
+    var_dump($parcours);
+}
 ?>
 
 
@@ -66,69 +86,90 @@ $pictureprice = $picture['price'];
 
     <div class="rightpersonnalisation">
 
-        <h2>Créez votre photographie d'art sur mesure</h2>
-        <hr>
-
-        <div class="step">
-            <ul>
-                <div class="choix">
-                    <div class="border">
-                        <label>1</label>
-                    </div>
-                    <button id="step1">Format</button>
+        <div class="steps-labels">
+            <div class="step-label">
+                <div class="border">
+                    <label>1</label>
                 </div>
-
-                <div class="choix">
-                    <div class="border">
-                        <label>2</label>
-                    </div>
-                    <button id="step2" disabled>Finition</button>
-                </div>
-
-                <div class="choix">
-                    <div class="border">
-                        <label>3</label>
-                    </div>
-                    <button id="step3" disabled>Cadre</button>
-                </div>
-            </ul>
-        </div>
-
-        <div class="format-choice div-choices">
-            <div class="format-list" data-format="classique">Classique <span>- 20 x 30cm, à partir de </span><?= ($pictureprice * 1.3) ?>€</div>
-            <div class="format-list" data-format="grand">Grand <span>- 60 x 75cm, à partir de </span><?= ($pictureprice * 2.6) ?>€</div>
-            <div class="format-list" data-format="geant">Géant <span>- 100 x 125cm, à partir de </span><?= ($pictureprice * 5.2) ?>€</div>
-            <div class="format-list" data-format="collector">Collector <span>- 120 x 150cm, à partir de </span><?= ($pictureprice * 13) ?>€</div>
-        </div>
-
-        <div class="finition-choice div-choices" style="display: none;">
-            <div class="finition-choice-1" style="display: none;">
-                <div class="finition-list" data-finition="paper_draw">Tirage sur papier photo <span>- Tirage sur papier photo expédié roulé, à accrocher ou à encadrer</span></div>
-                <div class="finition-list" data-finition="aluminium">Support aluminium <span>- Tirage contrecollé sur support aluminium</span></div>
-                <div class="finition-list" data-finition="acrylic">Support aluminium avec verre acrylique <span>- Tirage contrecollé sur support aluminium avec finition protectrice en verre acrylique accentuant les contrastes et les couleurs</span></div>
+                <div class="step-name" id="step1">Format</div>
             </div>
-            <div class="finition-choice-2" style="display: none;">
-                <div class="finition-list" data-finition="pp_black">Passe-partout noir <span>- </span></div>
-                <div class="finition-list" data-finition="pp_white">Passe-partout blanc <span>- </span></div>
+
+            <div class="step-label">
+                <div class="border">
+                    <label>2</label>
+                </div>
+                <div class="step-name" id="step2">Finition</div>
+            </div>
+
+            <div class="step-label">
+                <div class="border">
+                    <label>3</label>
+                </div>
+                <div class="step-name" id="step3">Cadre</div>
             </div>
         </div>
 
-        <div class="frame-choice div-choices" style="display: none;">
-            <div class="frame-choice-1" style="display: none;">
-                <div class="frame-list" data-frame="none">Sans encadrement <span>- Format ...</span></div>
-                <div class="frame-list" data-frame="black_satin">Encadrement noir satin <span>- Format ...</span></div>
-                <div class="frame-list" data-frame="white_satin">Encadrement blanc satin <span>- Format ...</span></div>
-                <div class="frame-list" data-frame="walnut">Encadrement noyer <span>- Format ...</span></div>
-                <div class="frame-list" data-frame="oak">Encadrement chêne <span>- Format ...</span></div>
+        <div class="div-choices div-format">
+            <div class="div-choice" data-format="classique" data-type="format">Classique</div>
+
+            <div class="div-choice" data-format="grand" data-type="format">Grand</div>
+
+            <div class="div-choice" data-format="geant" data-type="format">Géant</div>
+
+            <div class="div-choice" data-format="collector" data-type="format">Collector</div>
+        </div>
+
+        <div class="div-choices div-finition" style="display: none">
+
+            <div class="finition-choice-1 sub-div-choices">
+
+                <div class="div-choice" data-finition="paper_draw" data-type="finition">Tirage sur papier photo</div>
+
+                <div class="div-choice" data-finition="aluminium" data-type="finition">Support aluminium</div>
+
+                <div class="div-choice" data-finition="acrylic" data-type="finition">Support aluminium avec verre acrylique</div>
+
             </div>
-            <div class="frame-choice-2" style="display: none;">
-                <div class="frame-list" data-frame="black_aluminium">Cadre alumium noir <span>- Format ...</span></div>
-                <div class="frame-list" data-frame="white_wood">Bois blanc <span>- Format ...</span></div>
-                <div class="frame-list" data-frame="mahogany">Acajou mat <span>- Format ...</span></div>
-                <div class="frame-list" data-frame="brushed_aluminium">Aluminium brossé <span>- Format ...</span></div>
+
+            <div class="finition-choice-2 sub-div-choices">
+
+                <div class="div-choice" data-finition="pp_black" data-type="finition">Passe-partout noir</div>
+
+                <div class="div-choice" data-finition="pp_white" data-type="finition">Passe-partout blanc</div>
+
             </div>
-            <div class="frame-choice-3" style="display: none;">
-                <div class="frame-list" data-frame="noframe">Cadre non disponible</div>
+        </div>
+
+        <div class="div-choices div-frame" style="display: none">
+
+            <div class="frame-choice-1 sub-div-choices">
+
+                <div class="div-choice" data-frame="none" data-type="frame">Sans encadrement</div>
+
+                <div class="div-choice" data-frame="black_satin" data-type="frame">Encadrement noir satin</div>
+
+                <div class="div-choice" data-frame="white_satin" data-type="frame">Encadrement blanc satin</div>
+
+                <div class="div-choice" data-frame="walnut" data-type="frame">Encadrement noyer</div>
+
+                <div class="div-choice" data-frame="oak" data-type="frame">Encadrement chêne</div>
+
+            </div>
+            <div class="frame-choice-2 sub-div-choices">
+
+                <div class="div-choice" data-frame="black_aluminium" data-type="frame">Cadre alumium noir</div>
+
+                <div class="div-choice" data-frame="white_wood" data-type="frame">Bois blanc</div>
+
+                <div class="div-choice" data-frame="mahogany" data-type="frame">Acajou mat</div>
+
+                <div class="div-choice" data-frame="brushed_aluminium" data-type="frame">Aluminium brossé</div>
+
+            </div>
+            <div class="frame-choice-3 sub-div-choices">
+
+                <div class="div-choice" data-frame="noframe" data-type="frame">Cadre non disponible</div>
+
             </div>
         </div>
 
@@ -136,10 +177,23 @@ $pictureprice = $picture['price'];
             <div id="prix"></div>
         </div>
 
-        <button id="stepsbutton" disabled>
-            Choisir cette finition
+        <button id="nextbutton" disabled>
+            Etape suivante
         </button>
+
+        <form method="post" name="form">
+            <input type="text" name="format" id="format" hidden>
+            <input type="text" name="finition" id="finition" hidden>
+            <input type="text" name="frame" id="frame" hidden>
+            <input type="text" name="formatprice" id="formatprice" hidden>
+            <input type="text" name="finitionprice" id="finitionprice" hidden>
+            <input type="text" name="frameprice" id="frameprice" hidden>
+            <button id="formbutton" hidden>Valider cette sélection</button>
+        </form>
+
     </div>
+</div>
+</div>
 </div>
 
 <?php require_once './partials/footer.php'; ?>
@@ -167,7 +221,7 @@ $pictureprice = $picture['price'];
     //Récupération du prix de base donné par l'artiste dans la BDD
     var price = <?= $pictureprice ?>;
 </script>
-<script src="./assets/js/pa-blocprev.js"></script>
+<script src="./assets/js/opti-pa-achat.js"></script>
 </body>
 
 </html>
