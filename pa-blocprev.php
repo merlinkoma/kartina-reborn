@@ -11,15 +11,22 @@ $picture = $query->fetch();
 $pictureprice = $picture['price'];
 
 class Parcours{
+    public $pictureid;
+    public $pictureprice;
     public $format = 0 ;
     public $finition = 0 ;
     public $frame = 0 ;
     public $price = [];
+
+    public function __construct($pictureid, $pictureprice){
+        $this->pictureid = $pictureid;
+        $this->pictureprice = $pictureprice;
+    }
 }
 
 if(!empty($_POST)){
-    //sécuriser le formulaire
-    $parcours = new Parcours();
+    //@TODO sécuriser le formulaire
+    $parcours = new Parcours($id, $pictureprice);
     $parcours->format = $_POST['format'];
     $parcours->finition = $_POST['finition'];
     $parcours->frame = $_POST['frame'];
@@ -27,6 +34,7 @@ if(!empty($_POST)){
     $parcours->price['finitionprice'] = round($_POST['finitionprice'], 2);
     $parcours->price['frameprice'] = round($_POST['frameprice'], 2);
         
+    //@TODO à la place du dump : ajout de l'oeuvre dans la session->pannier
     var_dump($parcours);
 }
 ?>
@@ -46,16 +54,11 @@ if(!empty($_POST)){
         <div class="choice">
             <div class="avecmockup" style="display: none;">
                 <div class="divquimenerve">
-                    <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="photosurlemur" class="
-                    <?php
-                    if ($picture['orientation_idorientation'] == 1) {
-                        echo 'photosurlemur1';
-                    } elseif ($picture['orientation_idorientation'] == 2) {
-                        echo 'photosurlemur2';
-                    } elseif ($picture['orientation_idorientation'] == 3) {
-                        echo 'photosurlemur3';
-                    } elseif ($picture['orientation_idorientation'] == 4) {
-                        echo 'photosurlemur4';
+                    <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="photosurlemur" data-orientation="<?php
+                    if ($picture['orientation_idorientation'] == 1) {echo 'portrait';
+                    } elseif ($picture['orientation_idorientation'] == 2) {echo 'paysage';
+                    } elseif ($picture['orientation_idorientation'] == 3) {echo 'portrait';
+                    } elseif ($picture['orientation_idorientation'] == 4) {echo 'paysage';
                     }
                     ?>">
                 </div>

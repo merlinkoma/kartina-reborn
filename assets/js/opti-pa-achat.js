@@ -25,6 +25,9 @@ let step2 = document.querySelector('#step2');
 //Label 3
 let step3 = document.querySelector('#step3');
 
+//image avec mockup
+let image = document.querySelector('#photosurlemur');
+
 function steps() {
     for (i = 0; i < divchoices.length; i++) {
         let choosendiv = divchoices[i];
@@ -36,6 +39,7 @@ function steps() {
 
             if (choosendiv.dataset.type == 'format') {
                 parcours.format = choosendiv.dataset[event.currentTarget.dataset['type']];
+                mockupFormat(image.dataset['orientation'], parcours.format);
                 console.log(parcours.format);
             }
             if (choosendiv.dataset.type == 'finition') {
@@ -44,6 +48,7 @@ function steps() {
             }
             if (choosendiv.dataset.type == 'frame') {
                 parcours.frame = choosendiv.dataset[event.currentTarget.dataset['type']];
+                mockupFrame(parcours.frame)
                 console.log(parcours.frame);
             }
 
@@ -161,4 +166,53 @@ function priceFrame(prixdelafinition, frame, objet) {
     document.form.frame.value = objet.frame;
     document.form.frameprice.value = objet.price.frameprice;
     total.innerHTML = 'Prix après choix du cadre ' + frame + ' : ' + prixtotal + '€';
+}
+
+function mockupFormat(orientation, format) {
+    if (orientation == 'portrait') {
+        image.className='';
+        if (format == 'classique') {
+            image.classList.add('porclassique');
+        } else if (format == 'grand') {
+            image.classList.add('porgrand');
+        } else if (format == 'geant') {
+            image.classList.add('porgeant');
+        } else if (format == 'collector') {
+            image.classList.add('porcollector');
+        }
+    } else if (orientation == 'paysage') {
+        image.className='';
+        if (format == 'classique') {
+            image.classList.add('payclassique');
+        } else if (format == 'grand') {
+            image.classList.add('paygrand');
+        } else if (format == 'geant') {
+            image.classList.add('paygeant');
+        } else if (format == 'collector') {
+            image.classList.add('paycollector');
+        }
+    }
+}
+
+function mockupFrame(frame){
+    image.style="border-style: none; border-image:none";
+ if(frame == 'black_satin'){
+    image.style="border-style: solid; border-image:url(https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/BLACK_SATIN.png) 100 100 80 / 4.48152px / 0 stretch";
+ }else if(frame == 'white_satin'){
+    image.style="border-style: solid; border-image:url(https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/WHITE_SATIN.png) 100 100 80 / 4.48152px / 0 stretch";
+ }else if(frame == 'walnut'){
+    image.style="border-style: solid; border-image:url(https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/WALNUT.png) 100 100 80 / 4.48152px / 0 stretch";
+ }else if(frame == 'oak'){
+    image.style="border-style: solid; border-image:url(https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/OAK.png) 100 100 80 / 4.48152px / 0 stretch";
+ }else if(frame == 'black_aluminium'){
+    image.style="border-style: solid; border-color: rgb(11, 10, 10)";
+ }else if(frame == 'white_wood'){
+    image.style="border-style: solid; border-color: rgb(250, 248, 251)";
+ }else if(frame == 'mahogany'){
+    image.style="border-style: solid; border-color: rgb(72, 31, 26)";
+ }else if(frame == 'brushed_aluminium'){
+    image.style="border-style: solid; border-color: rgb(167, 167, 167)";
+ }else{
+    image.style="border-style: none; border-image:none";     
+ }
 }
