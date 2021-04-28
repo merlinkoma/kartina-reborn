@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../config/database.php';
 require __DIR__ . '/../admin/functions.php';
+require_once('vendor/autoload.php');
 session_start();
 
 if (!isset($path)) {
