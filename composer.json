@@ -1,0 +1,12 @@
+{
+    "name": "administrateur/kartina-reborn",
+    "authors": [
+        {
+            "name": "Merlinkoma",
+            "email": "ameye.melissa@gmail.com"
+        }
+    ],
+    "require": {
+        "fakerphp/faker": "^1.14"
+    }
+}

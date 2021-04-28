@@ -3,6 +3,9 @@
 //chemin pour la connexion à la BDD
 require __DIR__ . '/../../config/database.php';
 
+//pour utiliser faker
+require_once './../../vendor/autoload.php';
+
 //insersion des tables fixes
 $orientations = ['portrait', 'paysage', 'carré', 'panoramique'];
 $formats = [['classique', 1.3], ['grand', 2.6], ['geant', 5.2], ['collector', 13]];
@@ -10,17 +13,17 @@ $finitions = [['pp_black', 1], ['paper_draw', 1], ['pp_white', 1.4], ['aluminium
 $cadres = [['none', 1], ['black_aluminium', 1], ['white_wood', 1], ['mahogany', 1], ['brushed_aluminium', 1], ['black_satin', 1.45], ['white_satin', 1.45], ['walnut', 1.45], ['oak', 1.45]];
 
 $artists = [
-    ['Mélissa', 'Ameye', 'Merlink', 'CC'], 
-    ['Maïlys', 'Edard', 'Maïlys', 'CC'], 
-    ['Ambre', 'Arrivé', 'Ambre Arv', 'CC'], 
-    ['Vincent', 'Schricke', 'Vincent Schricke', 'CC'], 
-    ['Cátia', 'Matos', 'Cátia Matos', 'pexels'], 
-    ['Eberhard', 'Grossgasteiger', 'Eberhard Grossgasteiger', 'unsplash'], 
-    ['Everaldo', 'Coelho', 'Everaldo Coelho', 'unsplash'], 
-    ['Lumen', 'Lumen', 'Lum3n', 'unsplash'], 
-    ['Valor', 'Kopeny', 'Valor Kopeny', 'unsplash'], 
-    ['Yi', 'Wu', 'Wu Yi', 'pexels'], 
-    ['Louis', 'Ville', 'Louis Ville', 'CC'], 
+    ['Mélissa', 'Ameye', 'Merlink', 'CC'],
+    ['Maïlys', 'Edard', 'Maïlys', 'CC'],
+    ['Ambre', 'Arrivé', 'Ambre Arv', 'CC'],
+    ['Vincent', 'Schricke', 'Vincent Schricke', 'CC'],
+    ['Cátia', 'Matos', 'Cátia Matos', 'pexels'],
+    ['Eberhard', 'Grossgasteiger', 'Eberhard Grossgasteiger', 'unsplash'],
+    ['Everaldo', 'Coelho', 'Everaldo Coelho', 'unsplash'],
+    ['Lumen', 'Lumen', 'Lum3n', 'unsplash'],
+    ['Valor', 'Kopeny', 'Valor Kopeny', 'unsplash'],
+    ['Yi', 'Wu', 'Wu Yi', 'pexels'],
+    ['Louis', 'Ville', 'Louis Ville', 'CC'],
     ['Romaric', 'Thirard', 'Romaric Thirard', 'CC']
 ];
 
@@ -151,7 +154,11 @@ foreach ($cadres as $cadre) {
 
 foreach ($artists as $artist) {
 
-    $db->query("INSERT INTO user (firstname, lastname, artist_name, role, licence, password) VALUES ('$artist[0]', '$artist[1]' ,'$artist[2]', 'artist', '$artist[3]', '" . password_hash('azerty', PASSWORD_DEFAULT) . "')");
+    //Générer des fausses adresses mails 
+    $faker = Faker\Factory::create();
+    $useremail = $faker->email();
+
+    $db->query("INSERT INTO user (firstname, lastname, artist_name, role, licence, password, email) VALUES ('$artist[0]', '$artist[1]' ,'$artist[2]', 'artist', '$artist[3]', '" . password_hash('azerty', PASSWORD_DEFAULT) . "', '$useremail')");
 }
 
 foreach ($users as $user) {
@@ -167,6 +174,6 @@ foreach ($picturesthemes as $picturestheme) {
     $db->query("INSERT INTO theme_has_picture (theme_idtheme, picture_idpicture) VALUES ($picturestheme[1], $picturestheme[0])");
 }
 
-foreach ($networks as $network){
+foreach ($networks as $network) {
     $db->query("INSERT INTO network (user_iduser, network_name, network_path) VALUES ($network[0], '$network[1]', '$network[2]')");
 }
