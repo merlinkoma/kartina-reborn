@@ -156,7 +156,7 @@ function priceFinition(prixduformat, finition, objet) {
     if ((finition == 'pp_black')) {
         prixdelafinition = prixduformat;
     }
-    else if((finition == 'paper_draw')){
+    else if ((finition == 'paper_draw')) {
         prixdelafinition = prixduformat;
         objet.price.finitionprice = (prixdelafinition).toFixed(2);
         document.form.finitionprice.value = objet.price.finitionprice;
@@ -240,7 +240,7 @@ function mockupFinition(finition) {
 }
 
 function mockupFrame(frame, objet) {
-    if(objet.finition == "pp_black"){
+    if (objet.finition == "pp_black") {
         image.style = "padding: 15px; background-color: #161616; border-style: none; border-image:none";
         aloneimage.style = "padding: 25px; background-color: #161616; border-style: none; border-image:none";
         if (frame == 'black_satin') {
@@ -271,7 +271,7 @@ function mockupFrame(frame, objet) {
             image.style = "padding: 15px; background-color: #161616; border-style: none; border-image:none";
             aloneimage.style = "padding: 25px; background-color: #161616; border-style: none; border-image:none";
         }
-    }else if(objet.finition == "pp_white"){
+    } else if (objet.finition == "pp_white") {
         image.style = "padding: 15px; background-color: #f4f4f4; border-style: none; border-image:none";
         aloneimage.style = "padding: 25px; background-color: #f4f4f4; border-style: none; border-image:none";
         if (frame == 'black_satin') {
@@ -302,6 +302,37 @@ function mockupFrame(frame, objet) {
             image.style = "padding: 15px; background-color: #f4f4f4; border-style: none; border-image:none";
             aloneimage.style = "padding: 25px; background-color: #f4f4f4; border-style: none; border-image:none";
         }
+    } else {
+        image.style = "border-style: none; border-image:none";
+        aloneimage.style = "border-style: none; border-image:none";
+        if (frame == 'black_satin') {
+            image.style = "border-style: ridge; border-color: #323536";
+            aloneimage.style = "border-style: ridge; border-color: #323536";
+        } else if (frame == 'white_satin') {
+            image.style = "border-style: ridge; border-color: #ECEFE5";
+            aloneimage.style = "border-style: ridge; border-color: #ECEFE5";
+        } else if (frame == 'walnut') {
+            image.style = "border-style: ridge; border-color: #6C3F19";
+            aloneimage.style = "border-style: ridge; border-color: #6C3F19";
+        } else if (frame == 'oak') {
+            image.style = "border-style: ridge; border-color: #734432";
+            aloneimage.style = "border-style: ridge; border-color: #734432";
+        } else if (frame == 'black_aluminium') {
+            image.style = "border-style: ridge; border-color: #343B3E";
+            aloneimage.style = "border-style: ridge; border-color: #343B3E";
+        } else if (frame == 'white_wood') {
+            image.style = "border-style: ridge; border-color: #FFF8DC";
+            aloneimage.style = "border-style: ridge; border-color: #FFF8DC";
+        } else if (frame == 'mahogany') {
+            image.style = "border-style: ridge; border-color: #8D2F00";
+            aloneimage.style = "border-style: ridge; border-color: #8D2F00";
+        } else if (frame == 'brushed_aluminium') {
+            image.style = "border-style: ridge; border-color: #cbc4c1";
+            aloneimage.style = "border-style: ridge; border-color: #cbc4c1";
+        } else {
+            image.style = "border-style: none; border-image:none";
+            aloneimage.style = "border-style: none; border-image:none";
+        }
     }
 }
 
@@ -326,11 +357,11 @@ function stepBack(objet) {
 }
 stepBack(parcours);
 
-function summary(objet){
+function summary(objet) {
     console.log(objet);
     console.log('1');
-    if(objet.format !== ''){
-        if(objet.format == 'classique'){
+    if (objet.format !== '') {
+        if (objet.format == 'classique') {
             document.querySelector('#summary').innerHTML = 'Format classique';
             document.querySelector('#summaryprice').innerHTML = `${objet.price.formatprice}`;
         }
