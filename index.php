@@ -50,7 +50,7 @@ $randomquatros = $db->query(
                         </div>
                         <div class="legendeimg2">
                             <p>à partir de</p>
-                            <p><a href="./pa-blocprev.php?id=<?= $randompicture['idpicture'] ?>"><?= $randompicture['price'] ?> €</a></p>
+                            <p><a href="./pa-blocprev.php?id=<?= $randompicture['idpicture'] ?>"><?= $randompicture['price']*1.3 ?> €</a></p>
                         </div>
                     </figcaption>
                 </figure>
