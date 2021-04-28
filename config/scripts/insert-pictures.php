@@ -2,7 +2,8 @@
 
 require __DIR__.'/../../config/database.php'; 
 
-$pictures = [['Nydalasjön aurora','2015-01-01',1,1,1,2],
+$pictures = [
+['Nydalasjön aurora','2015-01-01',1,1,1,2],
 ['Frozen clothespin','2015-01-01',1,1,1,1],
 ['Miroirs de la Défense','2013-01-01',1,1,1,2],
 ['Nydalahöjden','2014-01-01',1,1,1,2],
@@ -173,5 +174,8 @@ foreach ($pictures as $picture){
     $cover = str_replace('…', 'x', $cover);
     $cover = strtolower($cover).'.jpg';
 
-    $db->query("INSERT INTO picture (title, creation_date, user_iduser, price, quantity, orientation_idorientation, cover) VALUES ('$picture[0]', '$picture[1]', $picture[2], $picture[3], $picture[4], $picture[5], '$cover')");
+    $price = rand(20, 100);
+    $quantity = rand(30, 300);
+
+    $db->query("INSERT INTO picture (title, creation_date, user_iduser, price, quantity, orientation_idorientation, cover) VALUES ('$picture[0]', '$picture[1]', $picture[2], $price, $quantity, $picture[5], '$cover')");
 }

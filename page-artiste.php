@@ -50,7 +50,7 @@ if (isset($id) && $id != '') {
                     <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['cover'] ?>">
                     <figcaption>
                         <div><?= $picture['title'] ?></div>
-                        <div class="price"><?= $picture['price'] ?>€</div>
+                        <div class="price"><a href="./pa-blocprev.php?id=<?= $picture['idpicture'] ?>"><?= $picture['price'] ?> €</a></div>
                     </figcaption>
                 </figure>
             <?php } ?>

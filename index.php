@@ -5,7 +5,14 @@ require_once './partials/ariane.php';
 
 $randompictures = $db->query('SELECT * FROM picture INNER JOIN user ON picture.user_iduser = user.iduser ORDER BY RAND() LIMIT 6')->fetchAll();
 $randombanner = $db->query('SELECT * FROM picture INNER JOIN user ON picture.user_iduser = user.iduser WHERE orientation_idorientation = 2 ORDER BY RAND() LIMIT 1')->fetch();
-$randomquatros = $db->query('SELECT * FROM picture WHERE orientation_idorientation = 3 ORDER BY RAND() LIMIT 4')->fetchAll();
+
+$randomquatros = $db->query(
+    'SELECT * FROM theme_has_picture 
+    INNER JOIN theme ON theme_has_picture.theme_idtheme = theme.idtheme 
+    INNER JOIN picture ON theme_has_picture.picture_idpicture = picture.idpicture
+    GROUP BY theme_idtheme
+    ORDER BY RAND() LIMIT 4'
+    )->fetchAll();
 
 ?>
 
@@ -43,7 +50,7 @@ $randomquatros = $db->query('SELECT * FROM picture WHERE orientation_idorientati
                         </div>
                         <div class="legendeimg2">
                             <p>à partir de</p>
-                            <p><a href="./pa-blocprev.php?id=<?= $randompicture['idpicture'] ?>"><?= $randompicture['price'] ?> €</a></p>
+                            <p><a href="./pa-blocprev.php?id=<?= $randompicture['idpicture'] ?>"><?= $randompicture['price']*1.3 ?> €</a></p>
                         </div>
                     </figcaption>
                 </figure>
@@ -66,9 +73,9 @@ $randomquatros = $db->query('SELECT * FROM picture WHERE orientation_idorientati
 
             <?php
 
-            foreach ($randomquatros as $index => $randomquatro) { ?>
+            foreach ($randomquatros as $randomquatro) { ?>
 
-                <div class="quatro1 quatro" style="background: url('./assets/banqueimg/<?= $randomquatro['cover'] ?>'); background-size: cover; background-position: center;"><a href="">Quatro <?= $index ?> ></a>
+                <div class="quatro1 quatro" style="background: url('./assets/banqueimg/<?= $randomquatro['cover'] ?>'); background-size: cover; background-position: center;"><a href=""><?= $randomquatro['theme_name'] ?> ></a>
                 </div>
 
             <?php } ?>
