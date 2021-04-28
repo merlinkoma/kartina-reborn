@@ -22,7 +22,7 @@ div.container {
             width: 80%;
 
             img {
-                border: 1px black solid;
+                border: 1px rgb(22, 22, 22) solid;
                 width : 100%;
                 height: auto;
             }
@@ -33,17 +33,43 @@ div.container {
         width: 40vw;
 
         div.choice {
-            width: 100%;
+            width      : 100%;
+            min-height : 30vh;
+            display    : flex;
+            align-items: center;
 
             div.sansmockup {
-                width : 100%;
-                height: auto;
+                width      : 100%;
+                display    : flex;
+                text-align : center;
+                align-items: center;
 
                 img {
-                    max-width : 100%;
-                    max-height: 100%;
+                    max-width : 20%;
+                    max-height: 20%;
                     width     : auto;
                     height    : auto;
+                    box-shadow: 0 0 20px $color-dark;
+
+                    &.classique {
+                        max-width : 20%;
+                        max-height: 20%;
+                    }
+
+                    &.grand {
+                        max-width : 40%;
+                        max-height: 40%;
+                    }
+
+                    &.geant {
+                        max-width : 65%;
+                        max-height: 65%;
+                    }
+
+                    &.collector {
+                        max-width : 90%;
+                        max-height: 90%;
+                    }
                 }
             }
 
@@ -57,43 +83,51 @@ div.container {
                     width     : 100%;
                     top       : 20%;
 
-                    img[data-orientation = 'portrait'] {
+                    img[data-orientation='portrait'] {
                         max-width : 8%;
                         height    : auto;
                         box-shadow: 0 0 20px $color-dark;
-                        &.porclassique{
+
+                        &.porclassique {
                             transform: scale(1);
                         }
-                        &.porgrand{
+
+                        &.porgrand {
                             transform: scale(1.6);
                         }
-                        &.porgeant{
+
+                        &.porgeant {
                             transform: scale(2.2);
                         }
-                        &.porcollector{
+
+                        &.porcollector {
                             transform: scale(2.8);
                         }
                     }
 
-                    img[data-orientation = 'paysage'] {
-                        max-width      : 12%;
-                        height         : auto;
-                        box-shadow     : 0 0 20px $color-dark;
+                    img[data-orientation='paysage'] {
+                        max-width : 12%;
+                        height    : auto;
+                        box-shadow: 0 0 20px $color-dark;
+
                         //border-image :
                         // 1 = image source
                         // 2 = border-image-slice
                         // border-width
                         // border-repeat 
-                        &.payclassique{
+                        &.payclassique {
                             transform: scale(1);
                         }
-                        &.paygrand{
+
+                        &.paygrand {
                             transform: scale(1.8);
                         }
-                        &.paygeant{
+
+                        &.paygeant {
                             transform: scale(2.6);
                         }
-                        &.paycollector{
+
+                        &.paycollector {
                             transform: scale(3.4);
                         }
                     }
@@ -126,89 +160,94 @@ div.container {
         color     : $color-dark;
         text-align: justify;
     }
-}
 
-div.rightpersonnalisation {
-    width         : 40vw;
-    padding       : 10px;
-    display       : flex;
-    flex-direction: column;
-    align-items   : center;
+    div.rightpersonnalisation {
+        width         : 40vw;
+        padding       : 10px;
+        display       : flex;
+        flex-direction: column;
+        align-items   : center;
 
-    h2 {
-        text-align : center;
-        font-family: Cinzel, serif;
-    }
+        h2 {
+            text-align : center;
+            font-family: Cinzel, serif;
+        }
 
-    div.steps-labels {
-        width          : 90%;
-        display        : flex;
-        flex-direction : row;
-        justify-content: space-around;
+        div.steps-labels {
+            width          : 90%;
+            display        : flex;
+            flex-direction : row;
+            justify-content: space-around;
 
-        div.step-label {
-            display       : flex;
-            flex-direction: column;
-            margin        : 2%;
+            div.step-label {
+                display       : flex;
+                flex-direction: column;
+                margin        : 2%;
 
-            div.border {
-                border         : black solid 1px;
-                height         : 50px;
-                width          : 50px;
-                border-radius  : 50%;
-                display        : flex;
-                justify-content: center;
-                align-items    : center;
-            }
-
-            div.step-name {
-                font-weight: bold;
-                margin     : 1%;
-                text-align : center;
-
-                &#step2 {
-                    color: grey;
+                div.border {
+                    border         : black solid 1px;
+                    height         : 50px;
+                    width          : 50px;
+                    border-radius  : 50%;
+                    display        : flex;
+                    justify-content: center;
+                    align-items    : center;
                 }
 
-                &#step3 {
-                    color: grey;
+                div.step-name {
+                    font-weight: bold;
+                    margin     : 1%;
+                    text-align : center;
+
+                    &#step2 {
+                        color: grey;
+                    }
+
+                    &#step3 {
+                        color: grey;
+                    }
                 }
             }
         }
-    }
 
-    div.div-choices {
-        padding: 2% 0;
+        div.div-choices {
+            padding: 2% 0;
 
-        div[data-type] {
-            border : solid #687079 1px;
-            width  : 30vw;
-            height : 5vh;
-            margin : 3%;
-            padding: 1%;
+            div[data-type] {
+                border    : solid #687079 1px;
+                width     : 30vw;
+                min-height: 5vh;
+                margin    : 3%;
+                padding   : 1%;
+
+                span {
+                    font-weight: 200;
+                }
+            }
+        }
+
+        div.total {
+            margin: 0 0 4%;
+        }
+
+        button#nextbutton {
+            width           : 30%;
+            height          : 5vh;
+            border          : none;
+            background-color: $color-text;
+            color           : $color-back;
+        }
+
+        button#formbutton {
+            width           : 100%;
+            height          : 5vh;
+            border          : none;
+            background-color: $color-text;
+            color           : $color-back;
         }
     }
-
-    div.total {
-        margin: 0 0 4%;
-    }
-
-    button#nextbutton {
-        width           : 30%;
-        height          : 5vh;
-        border          : none;
-        background-color: $color-text;
-        color           : $color-back;
-    }
-
-    button#formbutton {
-        width           : 100%;
-        height          : 5vh;
-        border          : none;
-        background-color: $color-text;
-        color           : $color-back;
-    }
 }
+
 
 /*
 encadrement blanc satin : https://storage.googleapis.com/yk-cdn/images/pic-presentation/textures/WHITE_SATIN.png

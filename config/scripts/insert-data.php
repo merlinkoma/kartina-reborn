@@ -5,9 +5,9 @@ require __DIR__ . '/../../config/database.php';
 
 //insersion des tables fixes
 $orientations = ['portrait', 'paysage', 'carré', 'panoramique'];
-$formats = [['classique', 1.3], ['grand', 2.6], ['géant', 4], ['collector', 10]];
-$finitions = [['passe-partout noir', 1], ['tirage papier', 1], ['passe-partout blanc', 1.4], ['aluminium', 2.6], ['acrylique', 3.35]];
-$cadres = [['sans cadre', 1], ['aluminium noir', 1], ['aluminium blanc', 1], ['acajou', 1], ['aluminium brossé', 1], ['satin noir', 1.45], ['satin blanc', 1.45], ['noyer', 1.45], ['chêne', 1.45]];
+$formats = [['classique', 1.3], ['grand', 2.6], ['geant', 5.2], ['collector', 13]];
+$finitions = [['pp_black', 1], ['paper_draw', 1], ['pp_white', 1.4], ['aluminium', 2.6], ['acrylic', 3.35]];
+$cadres = [['none', 1], ['black_aluminium', 1], ['white_wood', 1], ['mahogany', 1], ['brushed_aluminium', 1], ['black_satin', 1.45], ['white_satin', 1.45], ['walnut', 1.45], ['oak', 1.45]];
 
 $artists = [['Mélissa', 'Ameye', 'Merlink', 'CC'], ['Maïlys', 'Edard', 'Maïlys', 'CC'], ['Ambre', 'Arrivé', 'Ambre Arv', 'CC'], ['Vincent', 'Schricke', 'Vincent Schricke', 'CC'], ['Cátia', 'Matos', 'Cátia Matos', 'pexels'], ['Eberhard', 'Grossgasteiger', 'Eberhard Grossgasteiger', 'unsplash'], ['Everaldo', 'Coelho', 'Everaldo Coelho', 'unsplash'], ['Lumen', 'Lumen', 'Lum3n', 'unsplash'], ['Valor', 'Kopeny', 'Valor Kopeny', 'unsplash'], ['Yi', 'Wu', 'Wu Yi', 'pexels'], ['Louis', 'Ville', 'Louis Ville', 'CC'], ['Romaric', 'Thirard', 'Romaric Thirard', 'CC']];
 
@@ -68,7 +68,7 @@ foreach ($orientations as $orientation) {
 }
 
 foreach ($formats as $format) {
-    $db->query("INSERT INTO format (format_name, cost) VALUES ('$format[0]', $format[1])");
+    $db->query("INSERT INTO kartina.format (format_name, cost) VALUES ('$format[0]', $format[1])");
     echo '<br/>' . $format[0] . ' -> ' . $format[1];
 }
 
