@@ -49,13 +49,13 @@ if (!empty($_POST)) {
 
                 <a href="mailto: ">Mot de passe oublié ?</a>
 
-                    <?php if (isset($errors['password'])) {
-                        echo '<div style="color: red">' . $errors['password'] . '</div>';
-                    } ?>
+                <?php if (isset($errors['password'])) {
+                    echo '<div style="color: red">' . $errors['password'] . '</div>';
+                } ?>
 
-                    <?php if (isset($errors['email'])) {
-                        echo '<div style="color: red">' . $errors['email'] . '</div>';
-                    } ?>
+                <?php if (isset($errors['email'])) {
+                    echo '<div style="color: red">' . $errors['email'] . '</div>';
+                } ?>
 
                 <button id="connect-button">CONNEXION ></button>
             </form>

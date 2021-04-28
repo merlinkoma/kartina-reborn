@@ -1,6 +1,18 @@
 <?php
-    require __DIR__.'/../config/database.php';
-    session_start();
+require __DIR__ . '/../config/database.php';
+require __DIR__ . '/../admin/functions.php';
+session_start();
+
+if (!isset($path)) {
+    $path = './';
+}
+
+if (!isset($paths)) {
+    $paths = './admin/';
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +21,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
-    <link rel="stylesheet" href="./assets/style/body.css">
+    <link rel="stylesheet" href="<?= $path; ?>assets/style/body.css">
 </head>
 
 <body>
@@ -19,7 +31,7 @@
             <div>
                 <!-- Titre -->
                 <div class="titre">
-                    <h1><a href="./index.php">KARTINA</a></h1>
+                    <h1><a href="<?= $path; ?>index.php">KARTINA</a></h1>
                     <p>L'Art au bout des doigts.</p>
                 </div>
 
@@ -33,12 +45,12 @@
                 <!-- Icônes top right -->
                 <div class="info">
                     <div>
-                        <a href="./Aide.php">Aide</a>
+                        <a href="<?= $path; ?>Aide.php">Aide</a>
                     </div>
 
                     <div>
                         <form action="">
-                            <img src="./assets/icons/langue.png" alt="langue">
+                            <img src="<?= $path; ?>assets/icons/langue.png" alt="langue">
                             <select name="langue" id="">
                                 <option value="france">FR</option>
                                 <option value="anglais">EN</option>
@@ -50,28 +62,36 @@
                         <div class="sign-in">
                             <a href="#"><?= $_SESSION['user']['email']; ?></a>
                             <div class="connexion">
-                                <a href="./logout.php">Déconnexion</a>
+                                <div>
+                                    <a href="<?= $paths; ?>administration-useraccount.php">Mon compte</a>
+                                </div>
+                                <div>
+                                    <?php if (isAdmin()) { ?>
+                                        <a href="<?= $paths; ?>administration-useraccount.php">Administration</a>
+                                    <?php } ?>
+                                </div>
+                                <a href="<?= $path; ?>logout.php">Déconnexion</a>
                             </div>
                         </div>
 
 
                     <?php } else { ?>
                         <div class="sign-in">
-                        <a href="./interface-useraccount.php"><img src="./assets/icons/user.png" alt="user"></a>
+                            <a href="<?= $path; ?>interface-useraccount.php"><img src="./assets/icons/user.png" alt="user"></a>
 
-                        <div class="connexion">
-                        <ul>
-                            <li><a href="./interface-useraccount.php">Connexion</a></li>
-                            <li>Suivi de commandes</li>
-                        </ul>
-                        <!-- <p><a href="./interface-useraccount.php">Connexion</a></p>
+                            <div class="connexion">
+                                <ul>
+                                    <li><a href="<?= $path; ?>interface-useraccount.php">Connexion</a></li>
+                                    <li>Suivi de commandes</li>
+                                </ul>
+                                <!-- <p><a href="./interface-useraccount.php">Connexion</a></p>
                                 <p>Suivi de commandes</p> -->
-                        </div>
+                            </div>
                         </div>
                     <?php } ?>
 
                     <div>
-                        <a href="./panier.php"><img src="./assets/icons/shopping-cart.png" alt="panier">
+                        <a href="<?= $path; ?>panier.php"><img src="<?= $path; ?>assets/icons/shopping-cart.png" alt="panier">
                             Panier</a>
                     </div>
                 </div>
@@ -80,14 +100,14 @@
             <div id="trait"></div>
             <div id="trait"></div>
 
-        <!-- Navigation dans le site -->
-        <div class="navigation">
-            <ul>
-                <li><a href="./all-photographies.php">Photographies</a></li>
-                <li><a href="liens vers les nouveautés">Nouveautés</a></li>
-                <li><a href="./page-artiste.php">Artistes</a></li>
-                <li><a href="liens vers les derniers exemplaires">Derniers exemplaires</a></li>
-            </ul>
-        </div>
-    </header>
-</div>
+            <!-- Navigation dans le site -->
+            <div class="navigation">
+                <ul>
+                    <li><a href="<?= $path; ?>all-photographies.php">Photographies</a></li>
+                    <li><a href="liens vers les nouveautés">Nouveautés</a></li>
+                    <li><a href="<?= $path; ?>page-artiste.php">Artistes</a></li>
+                    <li><a href="liens vers les derniers exemplaires">Derniers exemplaires</a></li>
+                </ul>
+            </div>
+        </header>
+    </div>
