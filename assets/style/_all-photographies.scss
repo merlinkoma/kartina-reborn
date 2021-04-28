@@ -25,6 +25,8 @@ div.all-photographies {
 
         div.filter {
             padding: 5% 3%;
+            display: flex;
+            flex-direction: column;
 
             div.filter-title {
                 font-size  : 1.8em;
@@ -55,12 +57,14 @@ div.all-photographies {
             div.choice {
                 display       : flex;
                 flex-direction: row;
+                align-items: baseline;
                 margin        : 5% 0;
                 color         : #515961;
 
                 label {
                     font-weight: 600;
                     font-size  : 1.2em;
+                    padding-left: 2%;
                 }
             }
 
@@ -76,7 +80,6 @@ div.all-photographies {
         width: 80%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
 
         div.category {
             h3 {
@@ -97,12 +100,10 @@ div.all-photographies {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
-            div.picture{
-                img{
-                    height: 10vh;
-                    width: auto;
-                }
+            img{
+                height: 20vh;
+                width: auto;
+                padding: 1%;
             }
         }
 

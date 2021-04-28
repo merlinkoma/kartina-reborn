@@ -1,3 +1,8 @@
+<?php
+$query = $db->query('SELECT * FROM theme');
+$themes = $query->fetchAll();
+?>
+
 <footer id="footer" class="footer">
 
     <!-- BLOC FIND-GALLERY -->
@@ -19,38 +24,19 @@
 
             <div class="liste-col-photographies">
                 <ul class="liste-col-photographies1">
-                    <li class="mode"><a href="https://www.yellowkorner.com/fr/photographies-dart/mode/">Mode</a>
-                    </li>
 
-                    <li class="nature"><a href="https://www.yellowkorner.com/fr/photographies-dart/nature/">Nature</a>
-                    </li>
-
-                    <li class="urban"><a href="https://www.yellowkorner.com/fr/photographies-dart/urban/">Urban</a>
-                    </li>
-
-                    <li class="voyage"><a href="https://www.yellowkorner.com/fr/photographies-dart/voyage/">Voyage</a>
-                    </li>
-
-                    <li class="reveetcreation"><a href="https://www.yellowkorner.com/fr/photographies-dart/reve-et-creation/">Rêve
-                            &amp; Création</a></li>
-
-                    <li class="sportettechnique"><a href="https://www.yellowkorner.com/fr/photographies-dart/sport-et-technique/">Sport
-                            &amp; Technique</a></li>
-
-                    <li class="celebritesethistoire"><a href="https://www.yellowkorner.com/fr/photographies-dart/celebrites-et-histoire/">Célébrités
-                            &amp; Histoire</a></li>
-
-                    <li class="paysage"><a href="https://www.yellowkorner.com/fr/photographies-dart/paysage/">Paysage</a>
-                    </li>
+                    <?php
+                    foreach ($themes as $theme) { ?>
+                        <li class="<?= $theme['idtheme'] ?>"><a href="#"><?= $theme['theme_name'] ?></a>
+                        </li>
+                    <?php }
+                    ?>
 
                 </ul>
                 <ul class="liste-col-photographies2">
 
-                    <li class="artistes"><a href="https://www.yellowkorner.com/fr/artistes/">Artistes</a></li>
+                    <li class="artistes"><a href="./page-artiste.php">Artistes</a></li>
 
-                    <li class="coupsdecoeur"><a href="https://www.yellowkorner.com/fr/photographies-dart/coups-de-coeur/">Coups de
-                            coeurs</a>
-                    </li>
 
                     <li class="nouveautes"><a href="https://www.yellowkorner.com/fr/photographies-dart/nouveautes/">Nouveautés</a>
                     </li>
@@ -60,9 +46,6 @@
 
                     <li class="dernierstirages"><a href="https://www.yellowkorner.com/fr/photographies-dart/derniers-exemplaires/">Derniers
                             tirages</a></li>
-
-                    <li class="noiretblanc"><a href="https://www.yellowkorner.com/fr/photographies-dart/noir-et-blanc/">Noir
-                            &amp; blanc</a></li>
 
                     <li class="inspirations"><a href="https://www.yellowkorner.com/fr/inspirations">Inspirations</a>
                     </li>

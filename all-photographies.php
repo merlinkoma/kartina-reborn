@@ -4,6 +4,11 @@
     require_once './partials/ariane.php';
 
     $allpictures = $db->query('SELECT * FROM picture ORDER BY RAND()')->fetchAll();
+    $orientations = $db->query('SELECT * FROM orientation')->fetchAll();
+    $formats = $db->query('SELECT * FROM format')->fetchAll();
+    $themes = $db->query('SELECT * FROM theme')->fetchAll();
+    $keywords = $db->query('SELECT * FROM keyword')->fetchAll();
+
     ?>
 
     <div class="all-photographies">
@@ -15,12 +20,16 @@
                     Orientation
                     <div class="line"></div>
                 </div>
-                <div class="choice">
-                    <input type="checkbox">
-                    <label for="">*selection multiple/ checkbox*</label>
-                </div>
-                <div class="line"></div>
-
+                <?php
+                foreach ($orientations as $orientation) { ?>
+                    <div class="choice">
+                        <input type="checkbox" class="orientationcheck" value="<?= $orientation['idorientation'] ?>">
+                        <span class="check"></span>
+                        <label for="<?= $orientation['orientation_name'] ?>"><?= $orientation['orientation_name'] ?></label>
+                    </div>
+                    <div class="line"></div>
+                <?php }
+                ?>
             </div>
 
             <div class="formats filter">
@@ -28,24 +37,15 @@
                     Formats
                     <div class="line"></div>
                 </div>
-
-                <div class="choice">
-                    <input type="checkbox">
-                    <label for="">*selection multiple/ checkbox*</label>
-                </div>
-                <div class="line"></div>
-                <div class="choice">
-                    <input type="checkbox">
-                    <label for="">*selection multiple/ checkbox*</label>
-                </div>
-                <div class="line"></div>
-                <div class="choice">
-                    <input type="checkbox">
-                    <label for="">*selection multiple/ checkbox*</label>
-                </div>
-                <div class="line"></div>
-
-
+                <?php
+                foreach ($formats as $format) { ?>
+                    <div class="choice">
+                        <input type="checkbox" value="<?= $format['format_name'] ?>">
+                        <label for="<?= $format['format_name'] ?>"><?= $format['format_name'] ?></label>
+                    </div>
+                    <div class="line"></div>
+                <?php }
+                ?>
             </div>
 
             <div class="prix filter">
@@ -53,10 +53,23 @@
                     Prix
                     <div class="line"></div>
                 </div>
-                <div class="choice">
-                    <input type="checkbox">
-                    <label for="">*selection multiple/ checkbox*</label>
-                </div>
+                
+                    <div class="choice">
+                        <a href="#">Moins de 50 €</a>
+                    </div>
+                    <div class="choice">
+                        <a href="#">De 50€ à 100€</a>
+                    </div>
+                    <div class="choice">
+                        <a href="#">De 100€ à 200€</a>
+                    </div>
+                    <div class="choice">
+                        <a href="#">De 200€ à 500€</a>
+                    </div>
+                    <div class="choice">
+                        <a href="#">Plus de 500€</a>
+                    </div>
+                
                 <div class="line"></div>
             </div>
 
@@ -65,8 +78,14 @@
                     Thème
                     <div class="line"></div>
                 </div>
-                <a href="#">*sélection unique/ lien hypertext</a>
-                <div class="line-link"></div>
+                <?php
+                foreach ($themes as $theme) { ?>
+                    <div class="choice">
+                        <a href="#"><?= $theme['theme_name'] ?></a>
+                    </div>
+                    <div class="line-link"></div>
+                <?php }
+                ?>
             </div>
 
             <div class="others-filters filter">
@@ -86,16 +105,15 @@
                     Recherche par mots-clefs
                     <div class="line"></div>
                 </div>
-                <div class="choice">
-                    <input type="checkbox">
-                    <label for="">*selection multiple/ checkbox*</label>
-                </div>
-                <div class="line"></div>
-                <div class="choice">
-                    <input type="checkbox">
-                    <label for="">*selection multiple/ checkbox*</label>
-                </div>
-                <div class="line"></div>
+                <?php
+                foreach ($keywords as $keyword) { ?>
+                    <div class="choice">
+                        <input type="checkbox" value="<?= $keyword['keyword_name'] ?>">
+                        <label for="<?= $keyword['keyword_name'] ?>"><?= $keyword['keyword_name'] ?></label>
+                    </div>
+                    <div class="line"></div>
+                <?php }
+                ?>
             </div>
         </aside>
 
@@ -110,13 +128,13 @@
             <div class="results">
                 <?php
 
-                foreach ($allpictures as $picture) { ?>
+                /*foreach ($allpictures as $picture) { ?>
 
                     <div class="picture">
-                        <img src="./assets/banqueimg/<?=$picture['cover']?>" alt="<?=$picture['title']?>">
-                    </div>
+                        <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>">
+                    </div> 
 
-                <?php } ?>
+                <?php } */ ?>
             </div>
 
             <div class="pagination">
@@ -127,7 +145,8 @@
     </div>
 
     <?php require_once './partials/footer.php'; ?>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./assets/js/filters.js"></script>
     </body>
 
     </html>
