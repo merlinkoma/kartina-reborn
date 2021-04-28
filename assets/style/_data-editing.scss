@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap');
+
+.dashboard {
+    font-family      : Oswald;
+    width            : 100vw;
+    height           : 1500px;
+    background-image : url('./../images/pexels-photo-fleurs.jfif');
+    background-size  : cover;
+    background-repeat: no-repeat;
+
+    .data-container {
+        margin: 50px;
+
+        .title {
+            margin-bottom: 50px;
+
+            h1 {}
+        }
+
+        form {
+
+            div.gender {
+                display        : flex;
+                justify-content: center;
+                margin-bottom  : 50px;
+
+                div {
+                    margin-right: 30px;
+                }
+            }
+
+            div.space-between {
+                margin-bottom  : 30px;
+                display        : flex;
+                justify-content: space-between;
+
+                div {
+
+                    label {
+                        // width: 30px;
+                        padding-right: 50px;
+                    }
+                }
+
+                div {
+
+                    input {
+                        width        : 400px;
+                        height       : 30px;
+                        border       : 1px solid rgb(206, 203, 203);
+                        border-radius: 5px;
+                    }
+                }
+            }
+
+            div.trait {
+                border       : 1px solid white;
+                width        : 600px;
+                margin-bottom: 20px;
+            }
+
+            div {
+
+                button {
+                    width           : 200px;
+                    height          : 60px;
+                    border          : 2px solid white;
+                    border-radius   : 10px;
+                    background-color: rgb(207, 182, 39);
+                    color           : white;
+                    font-size       : 20px;
+                }
+            }
+
+            div.validation {
+                margin-top: 10px;
+                margin-left: 10px;
+                font-size: 20px;
+            }
+        }
+    }
+}
