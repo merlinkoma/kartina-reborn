@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../config/database.php';
 require __DIR__ . '/../admin/functions.php';
-require_once('vendor/autoload.php');
+
 session_start();
 
 if (!isset($path)) {
@@ -12,6 +12,7 @@ if (!isset($paths)) {
     $paths = './admin/';
 }
 
+require_once($path.'vendor/autoload.php');
 
 
 ?>

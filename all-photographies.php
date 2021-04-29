@@ -20,16 +20,17 @@
                     Orientation
                     <div class="line"></div>
                 </div>
-                <?php
-                foreach ($orientations as $orientation) { ?>
-                    <div class="choice">
-                        <input type="checkbox" class="orientationcheck" value="<?= $orientation['idorientation'] ?>">
+                <form class="choice" name="orientationform" method="GET">
+                    <?php
+                    foreach ($orientations as $orientation) { ?>
+                        <input type="checkbox" class="orientationcheck" name="orientation[]" value="<?= $orientation['idorientation'] ?>">
                         <span class="check"></span>
                         <label for="<?= $orientation['orientation_name'] ?>"><?= $orientation['orientation_name'] ?></label>
-                    </div>
-                    <div class="line"></div>
-                <?php }
-                ?>
+
+                        <div class="line"></div>
+                    <?php }
+                    ?>
+                </form>
             </div>
 
             <div class="formats filter">
@@ -53,23 +54,23 @@
                     Prix
                     <div class="line"></div>
                 </div>
-                
-                    <div class="choice">
-                        <a href="#">Moins de 50 €</a>
-                    </div>
-                    <div class="choice">
-                        <a href="#">De 50€ à 100€</a>
-                    </div>
-                    <div class="choice">
-                        <a href="#">De 100€ à 200€</a>
-                    </div>
-                    <div class="choice">
-                        <a href="#">De 200€ à 500€</a>
-                    </div>
-                    <div class="choice">
-                        <a href="#">Plus de 500€</a>
-                    </div>
-                
+
+                <div class="choice">
+                    <a href="#">Moins de 50 €</a>
+                </div>
+                <div class="choice">
+                    <a href="#">De 50€ à 100€</a>
+                </div>
+                <div class="choice">
+                    <a href="#">De 100€ à 200€</a>
+                </div>
+                <div class="choice">
+                    <a href="#">De 200€ à 500€</a>
+                </div>
+                <div class="choice">
+                    <a href="#">Plus de 500€</a>
+                </div>
+
                 <div class="line"></div>
             </div>
 
