@@ -24,8 +24,8 @@ div.all-photographies {
         }
 
         div.filter {
-            padding: 5% 3%;
-            display: flex;
+            padding       : 5% 3%;
+            display       : flex;
             flex-direction: column;
 
             div.filter-title {
@@ -56,16 +56,23 @@ div.all-photographies {
 
             form.choice {
                 display       : flex;
-                flex-direction: row;
-                align-items: baseline;
-                margin        : 5% 0;
+                flex-direction: column;
+
                 color         : #515961;
 
-                label {
-                    font-weight: 600;
-                    font-size  : 1.2em;
-                    padding-left: 2%;
+                div.choicebloc {
+                    display       : flex;
+                    flex-direction: row;
+                    align-items   : baseline;
+                    margin        : 5% 0;
+
+                    label {
+                        font-weight : 600;
+                        font-size   : 1.2em;
+                        padding-left: 2%;
+                    }
                 }
+
             }
 
             div.line {
@@ -77,8 +84,8 @@ div.all-photographies {
     }
 
     div.results-bloc {
-        width: 80%;
-        display: flex;
+        width         : 80%;
+        display       : flex;
         flex-direction: column;
 
         div.category {
@@ -89,6 +96,7 @@ div.all-photographies {
                 text-align    : center;
                 margin        : 1% auto;
             }
+
             p.presentation {
                 font-size  : 1.3em;
                 font-weight: 300;
@@ -96,21 +104,33 @@ div.all-photographies {
             }
         }
 
-        div.results{
-            display: flex;
-            flex-wrap: wrap;
+        div.results {
+            display        : flex;
+            flex-wrap      : wrap;
             justify-content: center;
-            img{
-                height: 20vh;
-                width: auto;
+
+            img {
+                height : 20vh;
+                width  : auto;
                 padding: 1%;
             }
         }
 
-        div.pagination{
-            margin: 2% auto;
-            display: flex;
+        div.pagination {
+            margin         : 2% auto;
+            display        : flex;
             justify-content: center;
+            width: 100%;
+
+            span {
+                margin: 0 2%;
+                cursor: pointer;
+
+                &#here{
+                    font-weight: bold;
+                    cursor: default;
+                }
+            }
         }
     }
 }

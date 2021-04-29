@@ -8,7 +8,13 @@ $db = new PDO('mysql:host=localhost;dbname=kartina; charset=UTF8', 'root', '', [
 
 $orientations = $_GET['orientation'] ?? null;
 $long = count($orientations);
+// 1 normalement inutile mais sécurité en +
+$page = $_GET['page'] ?? 1;
 $where = '';
+$limit = 24;
+$debut = ($page - 1)*$limit;
+
+$datas = [];
 
 foreach ($orientations as $index => $orientation) {
     if ($index == ($long - 1)) {
@@ -18,9 +24,15 @@ foreach ($orientations as $index => $orientation) {
     }
 }
 
-$query = $db->query("SELECT * FROM picture WHERE orientation_idorientation = $where ORDER BY RAND() LIMIT 24");
-$responses = $query->fetchAll();
+$query = $db->query("SELECT * FROM picture WHERE orientation_idorientation = $where LIMIT $limit OFFSET $debut");
+$datas['responses'] = $query->fetchAll();
+
+$query = $db->query("SELECT count(idpicture) FROM picture WHERE orientation_idorientation = $where");
+$datas['quantity'] = $query->fetchColumn();
+//fetch() -> renvoie un objet, difficile à utiliser
+//fetchColumn() -> renvoie un entier
+
 
 header('Content-Type: application/json');
 
-echo json_encode($responses);
+echo json_encode($datas);

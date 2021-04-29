@@ -9,7 +9,7 @@
     $themes = $db->query('SELECT * FROM theme')->fetchAll();
     $keywords = $db->query('SELECT * FROM keyword')->fetchAll();
 
-    ?>
+   ?>
 
     <div class="all-photographies">
 
@@ -23,9 +23,11 @@
                 <form class="choice" name="orientationform" method="GET">
                     <?php
                     foreach ($orientations as $orientation) { ?>
+                    <div class="choicebloc">                  
                         <input type="checkbox" class="orientationcheck" name="orientation[]" value="<?= $orientation['idorientation'] ?>">
                         <span class="check"></span>
                         <label for="<?= $orientation['orientation_name'] ?>"><?= $orientation['orientation_name'] ?></label>
+                    </div>
 
                         <div class="line"></div>
                     <?php }
@@ -139,13 +141,14 @@
             </div>
 
             <div class="pagination">
-                1
+
             </div>
         </div>
 
     </div>
 
     <?php require_once './partials/footer.php'; ?>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./assets/js/filters.js"></script>
     </body>
