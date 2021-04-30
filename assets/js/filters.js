@@ -21,7 +21,7 @@ function axiosFilters(e) {
     let params = new URLSearchParams(orientationform);
     //ajout d'un paramètre page dans l'url
     params.append('page', currentpage);
-    console.log(params.toString());
+    //console.log(params.toString());
 
     //envoi d'une requête avec axios, passage des paramètres ci-dessus dans l'url
     axios.get('./assets/php/filters.php?' + params)
@@ -42,7 +42,17 @@ function axiosFilters(e) {
 
             //boucle sur le tableau contenant toutes les images, concaténation des résultats & affichage dans la div
             pictures.map(picture => {
-                document.querySelector('.results').innerHTML += `<img src="./assets/banqueimg/${picture.cover}" alt="">`;
+                document.querySelector('.results').innerHTML += `
+                <div class="vignette">
+                    <figure>
+                        <img src="./assets/banqueimg/${picture.cover}" alt="${picture.title}">
+                    </figure>
+                    <figcaption class="legende">
+                        <a href="./pa-blocprev.php?id=${picture.idpicture}">${picture.title}</a>
+                        <p>A partir de <a href="./pa-blocprev.php?id=${picture.idpicture}">${picture.price}</a>€</p>
+                    </figcaption>
+                </div>  
+                `;
             })
 
             ////////////////////////////////////////////////
@@ -59,20 +69,21 @@ function axiosFilters(e) {
 
             //toutes les pages
             for (let i = 1; i <= totalpages; i++) {
-                if(i == currentpage){
+                if (i == currentpage) {
                     document.querySelector('.pagination').innerHTML += `<span class="links" data-page="${i}" id="here">${i}</span>`;
-                }else{
+                } else {
                     document.querySelector('.pagination').innerHTML += `<span class="links" data-page="${i}">${i}</span>`;
                 }
             }
             //page suivante, condition pour ne pas afficher "page suivante" quand on est à la dernière page
             if (totalpages > currentpage) {
-                document.querySelector('.pagination').innerHTML += `<span class="links" data-page="${currentpage + 1}">Page suivante</span>`;
+                // ! au f****** parseInt sinon concaténation
+                document.querySelector('.pagination').innerHTML += `<span class="links" data-page="${(parseInt(currentpage) + 1)}">Page suivante</span>`;
             }
 
             //évènement quand on clique sur un span/ numéro de page
             let links = document.querySelectorAll('.links');
-            for (link of links){
+            for (link of links) {
                 link.addEventListener('click', axiosFilters);
             }
         })

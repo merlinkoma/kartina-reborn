@@ -69,7 +69,7 @@ if (!empty($_POST)) {
             <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="photo dans un salon">
         </figure>
         <figure id="room">
-            <img src="./assets/banqueimg/salon-test.jpg" alt="image d'un salon">
+            <img src="./assets/images/salon-test.jpg" alt="image d'un salon">
         </figure>
     </div>
 
@@ -90,7 +90,7 @@ if (!empty($_POST)) {
                                                                                                                                                 ?>">
                 </div>
 
-                <img src="./assets/banqueimg/salon-test.jpg" alt="image dans un salon" id="salon">
+                <img src="./assets/images/salon-test.jpg" alt="image dans un salon" id="salon">
 
             </div>
 

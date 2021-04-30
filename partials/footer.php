@@ -7,7 +7,7 @@ $themes = $query->fetchAll();
 
     <!-- BLOC FIND-GALLERY -->
     <div class="find-gallery">
-        <img src="./assets/banqueimg/galery.jpg" alt="">
+        <img src="./assets/images/galery.jpg" alt="">
         <form action="" method="GET" class="find-gallery-form">
             <label for="find-gallery-field">TROUVER UNE GALERIE</label>
             <input id="find-gallery-field" type="text" name="address" placeholder="Ville, code postal, rue..." required="">

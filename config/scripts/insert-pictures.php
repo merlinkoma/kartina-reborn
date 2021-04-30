@@ -154,7 +154,8 @@ $pictures = [
 ['Sophie','2020-12-16',12,50,50,3],
 ['Still a cat','2020-12-16',12,50,50,2],
 ['Touffu','2020-12-11',12,50,50,2],
-['Toujours par trois','2020-07-21',12,50,50,2]
+['Toujours par trois','2020-07-21',12,50,50,2],
+['Kungshögarna','2015-01-01',1,1,1,2]
 ];
 
 $db->query('SET FOREIGN_KEY_CHECKS = 0');
