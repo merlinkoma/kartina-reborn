@@ -1,7 +1,7 @@
 //Filtrer les orientations
 
 //inputs orientation check
-let inputorientation = document.querySelectorAll('.orientationcheck');
+let inputs = document.querySelectorAll('input');
 
 //fonction pour envoyer des requêtes en PHP à la BDD puis récupérer les données via axios
 function axiosFilters(e) {
@@ -15,13 +15,13 @@ function axiosFilters(e) {
     console.log('current page :' + currentpage);
 
     //mise en forme des données du formulaire
-    orientationform = new FormData(document.querySelector('[name="orientationform"]'));
+    filtersform = new FormData(document.querySelector('[name="filtersform"]'));
 
     //récupération des paramètres
-    let params = new URLSearchParams(orientationform);
+    let params = new URLSearchParams(filtersform);
     //ajout d'un paramètre page dans l'url
     params.append('page', currentpage);
-    //console.log(params.toString());
+    console.log(params.toString());
 
     //envoi d'une requête avec axios, passage des paramètres ci-dessus dans l'url
     axios.get('./assets/php/filters.php?' + params)
@@ -37,8 +37,32 @@ function axiosFilters(e) {
             let totalpages = Math.round(totalpictures / 24);
             console.log('nombre total de page :' + totalpages);
 
+            //Afficher les tags sélectionnés
+            let divtags = document.querySelector('#tags');
+            divtags.innerHTML = '';
+
+            let tags = response.data.tags;
+            console.log(tags);
+
+            let orientationtags = tags['orientation'];
+            
+            if(tags['price']){
+                divtags.innerHTML += `<div class='tag'>${tags['price']}</div>`;
+            }
+            if(tags['theme']){
+                divtags.innerHTML += `<div class='tag'>${tags['theme']}</div>`;
+            }
+            if(tags['creation_date']){
+                divtags.innerHTML += `<div class='tag'>${tags['creation_date']}</div>`;
+            }
+            if(orientationtags){
+                for(let orientationtag of orientationtags){
+                    divtags.innerHTML += `<div class='tag'> ${orientationtag}</div>`;
+                }
+            }
+
             //à chaque requête, on vide la div dans laquelle seront affichées les images (au cas où on décoche une checkbox par exemple);
-            document.querySelector('.results').innerHTML = '';
+            document.querySelector('.results').innerHTML = '';    
 
             //boucle sur le tableau contenant toutes les images, concaténation des résultats & affichage dans la div
             pictures.map(picture => {
@@ -49,6 +73,7 @@ function axiosFilters(e) {
                     </figure>
                     <figcaption class="legende">
                         <a href="./pa-blocprev.php?id=${picture.idpicture}">${picture.title}</a>
+                        <p>Créé le ${picture.creation_date}</p>
                         <p>A partir de <a href="./pa-blocprev.php?id=${picture.idpicture}">${picture.price}</a>€</p>
                     </figcaption>
                 </div>  
@@ -89,8 +114,8 @@ function axiosFilters(e) {
         })
 }
 
-//formulaire orientation en GET
-for (let input of inputorientation) {
+//formulaire en GET
+for (let input of inputs) {
     input.addEventListener('click', axiosFilters);
 }
 
