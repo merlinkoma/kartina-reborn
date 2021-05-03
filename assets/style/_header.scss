@@ -2,12 +2,14 @@
 @import "mixin";
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap');
 
 
 div.container-header {
     @include colors;
-    margin : 0;
-    padding: 0;
+    margin     : 0;
+    padding    : 0;
+    font-family: Oswald;
 
     header {
         font-weight: bold;
@@ -21,8 +23,7 @@ div.container-header {
         }
 
         background-color: $bg-color;
-        font-family     : 'Cinzel',
-        serif;
+
 
         div {
 
@@ -37,6 +38,8 @@ div.container-header {
                 padding       : 0;
                 margin        : 0;
                 @include slogan;
+                font-family     : 'Cinzel',
+                serif;
 
                 h1 {
                     @include titre;

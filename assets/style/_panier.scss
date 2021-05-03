@@ -1,5 +1,6 @@
 // @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap');
 
 a {
     text-decoration: none;
@@ -12,16 +13,27 @@ ul li {
 
 div.container-panier {
     background-color: #EDE4BE;
-    font-family     : 'Cinzel', serif;
+    font-family     : Oswald;
     height          : 100%;
+    min-height: 700px;
 
     div.titre {
-        width      : 20%;
-        margin-left: 10px;
+        width : 20%;
+        padding: 30px;
 
-        p {
+
+        h1 {
             font-size: 40px;
             margin   : auto;
+
+        }
+    }
+
+    div {
+        text-align: center;
+
+        h2 {
+            margin: 0;
         }
     }
 
@@ -30,71 +42,77 @@ div.container-panier {
         margin : 0;
     }
 
-    div.main {
-        display         : flex;
-        background-color: #9bb9be; //#EDD2A9;
-        width           : 99%;
-        justify-content : space-evenly;
-        margin          : 10px;
-        // border: 1px solid black;
-        border-radius   : 6px;
-        box-shadow      : 0 2px 2px 0 rgb(0 0 0 / 14%),
-            0 10px 1px -2px rgb(0 0 0 / 20%),
-            0 10px 5px 0 rgb(0 0 0 / 12%);
-        box-sizing: border-box;
+    .main {
+        display: flex;
+        justify-content: center;
 
-        div.pic {
-            display        : flex;
-            align-items    : center;
-            justify-content: center;
-            width          : 15%;
-            padding        : 20px;
+        div.cart-product {
+            display         : flex;
+            background-color: #9bb9be; //#EDD2A9;
+            width           : 80%;
+            justify-content : space-evenly;
+            margin          : 10px;
+            margin-bottom   : 30px;
+            // border: 1px solid black;
+            border-radius   : 6px;
+            box-shadow      : 0 2px 2px 0 rgb(0 0 0 / 14%),
+                0 10px 1px -2px rgb(0 0 0 / 20%),
+                0 10px 5px 0 rgb(0 0 0 / 12%);
+            box-sizing: border-box;
+
+            div.pic {
+                display        : flex;
+                align-items    : center;
+                justify-content: center;
+                width          : 15%;
+                padding        : 20px;
 
 
-            img {
-                width : 100%;
-                height: auto;
-            }
-        }
-
-        div.infos {
-            width: 25%;
-        }
-
-        div.caracteristiques {
-            width: 25%;
-        }
-
-        div.quantite {
-            width: 20%;
-
-            input {
-                width      : 20%;
-                margin-left: 3px;
-            }
-
-            div {
-
-                button {
-                    margin-top      : 20px;
-                    border          : none;
-                    background-color: #9bb9be;
-
-                    a {
-                        display: block;
-                    }
-
+                img {
+                    width : 100%;
+                    height: auto;
                 }
             }
-        }
 
-        div.prix {
-            width      : 12%;
-            display    : flex;
-            align-items: center;
+            div.infos {
+                width: 25%;
+            }
 
-            h2 {
-                border-bottom: 1px solid;
+            div.caracteristiques {
+                width: 25%;
+            }
+
+            div.quantite {
+                width: 20%;
+
+                input {
+                    width      : 20%;
+                    margin-left: 3px;
+                }
+
+                div {
+
+                    button {
+                        margin-top      : 20px;
+                        border          : none;
+                        background-color: #9bb9be;
+
+                        a {
+                            display: block;
+                        }
+
+                    }
+                }
+            }
+
+            div.prix {
+                width      : 20%;
+                display    : flex;
+                align-items: center;
+
+                h2 {
+                    border-bottom: 1px solid;
+                }
             }
         }
     }
@@ -138,7 +156,7 @@ div.container-panier {
 
                 input[type=checkbox] {
                     margin: 10px;
-                    width: auto;
+                    width : auto;
                 }
             }
 

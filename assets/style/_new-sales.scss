@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap');
 
 a {
     text-decoration: none;
@@ -9,135 +10,156 @@ ul li {
     list-style: none;
 }
 
-
-div.container-new-sales {
+.dashboard-new-sales {
     background-color: #EDE4BE;
-    font-family     : 'Cinzel', serif;
-    height          : 900px;
-    margin          : auto;
 
-    input {
-        background-color: #9bb9be;
-        border          : none;
-        border-bottom   : 1px solid black;
-        width           : 500px;
-    }
+    div.container-new-sales {
 
-    .titre {
-        width      : auto;
-        margin-left: 10px;
+        font-family      : Oswald;
+        // font-family: 'Cinzel', serif;
+        height     : 1500px;
+        margin     : 50px;
+        width      : 100%;
 
-        h1 {
-            margin   : auto;
-            font-size: 40px;
+        input {
+            background-color: #9bb9be;
+            border          : none;
+            border-bottom   : 1px solid black;
+            width           : 500px;
         }
-    }
 
-    .formulaire {
-        display         : flex;
-        background-color: #9bb9be;
-        width           : 40%;
-        justify-content : center;
-        margin          : auto;
-        // border: 1px solid black;
-        border-radius   : 6px;
-        box-shadow      : 17px 15px 30px 20px rgba(0, 0, 0, 0.54);
-        box-sizing      : border-box;
-        height          : 800px;
+        .titre {
+            width      : auto;
+            margin-left: 10px;
 
-        form {
-            display        : flex;
-            flex-direction : column;
-            justify-content: space-between;
-            margin         : auto;
-            height         : 90%;
-
-            div.title {
-
-                div {
-
-                    label {}
-                }
-
-                div {
-
-                    input {}
-                }
+            h1 {
+                margin   : auto;
+                font-size: 40px;
             }
+        }
 
-            div.cover {
+        .formulaire {
+            display         : flex;
+            background-color: #9bb9be;
+            width           : 40%;
+            justify-content : center;
+            margin          : auto;
+            // border: 1px solid black;
+            border-radius   : 6px;
+            box-shadow      : 17px 15px 30px 20px rgba(0, 0, 0, 0.54);
+            box-sizing      : border-box;
+            height          : 800px;
 
-                div {
+            form {
+                display        : flex;
+                flex-direction : column;
+                justify-content: space-between;
+                margin         : auto;
+                height         : 90%;
 
-                    label {}
-                }
+                div.title {
 
-                div {
+                    div {
 
-                    input {}
-                }
-            }
+                        label {}
+                    }
 
-            div.format {
+                    div {
 
-                div {
-
-                    label {}
-                }
-
-                div.radio {
-                    border-bottom: 1px solid;
-
-                    input {
-                        width: 20px;
+                        input {}
                     }
                 }
-            }
 
-            div.price {
+                div.cover {
 
-                div {
+                    div {
 
-                    label {}
+                        label {}
+                    }
+
+                    div {
+
+                        input {}
+                    }
                 }
 
-                div {
+                div.format {
 
-                    input {}
+                    div {
+
+                        label {}
+                    }
+
+                    div.radio {
+                        border-bottom: 1px solid;
+
+                        input {
+                            width: 20px;
+                        }
+                    }
                 }
 
-            }
+                div.orientation {
 
-            div.quantity {
+                    div {
 
-                div {
+                        label {}
+                    }
 
-                    label {}
+                    div.radio {
+                        border-bottom: 1px solid;
+
+                        input {
+                            width: 20px;
+                        }
+                    }
                 }
 
-                div {
+                div.price {
 
-                    input {}
+                    div {
+
+                        label {}
+                    }
+
+                    div {
+
+                        input {}
+                    }
+
                 }
-            }
 
-            div.tag {
+                div.quantity {
 
-                div {
-                    label {}
+                    div {
+
+                        label {}
+                    }
+
+                    div {
+
+                        input {}
+                    }
                 }
 
-                div {
-                    input {}
-                }
-            }
+                div.tag {
 
-            div.validation {
-                button {
-                    width           : 500px;
-                    background-color: #EDE4BE;
-                    border-radius   : 10px;
-                    border          : solid 1px;
+                    div {
+                        label {}
+                    }
+
+                    div {
+                        input {}
+                    }
+                }
+
+                div.validation {
+                    button {
+                        width           : 500px;
+                        background-color: #EDE4BE;
+                        border-radius   : 10px;
+                        border          : solid 1px;
+                    }
                 }
             }
         }

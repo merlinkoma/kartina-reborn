@@ -66,6 +66,11 @@ if (!isset($paths)) {
                                     <a href="<?= $paths; ?>administration-useraccount.php">Mon compte</a>
                                 </div>
                                 <div>
+                                    <?php if (isArtist()) { ?>
+                                        <a href="<?= $paths; ?>current-sales.php">Mes ventes</a>
+                                    <?php } ?>
+                                </div>
+                                <div>
                                     <?php if (isAdmin()) { ?>
                                         <a href="<?= $paths; ?>administration-useraccount.php">Administration</a>
                                     <?php } ?>

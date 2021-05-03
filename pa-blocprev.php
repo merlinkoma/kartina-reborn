@@ -1,7 +1,13 @@
 <?php
+
+ob_start();
+
 $title = 'parcours';
+
 require_once './partials/header.php';
 require_once './partials/ariane.php';
+require './Parcours.php';
+
 $id = $_GET['id'];
 
 $query = $db->prepare('SELECT * FROM picture INNER JOIN user ON picture.user_iduser = user.iduser WHERE idpicture = :id');
@@ -19,21 +25,6 @@ $frames = $query->fetchAll();
 
 $pictureprice = $picture['price'];
 
-class Parcours
-{
-    public $pictureid;
-    public $pictureprice;
-    public $format = 0;
-    public $finition = 0;
-    public $frame = 0;
-    public $price = [];
-
-    public function __construct($pictureid, $pictureprice)
-    {
-        $this->pictureid = $pictureid;
-        $this->pictureprice = $pictureprice;
-    }
-}
 
 if (!empty($_POST)) {
     //@TODO sécuriser le formulaire
@@ -45,8 +36,11 @@ if (!empty($_POST)) {
     $parcours->price['finitionprice'] = round($_POST['finitionprice'], 2);
     $parcours->price['frameprice'] = round($_POST['frameprice'], 2);
 
+    $serial = serialize($parcours);
     //@TODO à la place du dump : ajout de l'oeuvre dans la session->pannier
-    var_dump($parcours);
+    $_SESSION['paniers'][] = $serial;
+    var_dump($_SESSION['paniers']);
+    header('Location: panier.php');
 }
 ?>
 
@@ -83,7 +77,7 @@ if (!empty($_POST)) {
             </div>
 
             <div class="sansmockup" style="display: block;">
-                    <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="photopassurlemur">
+                <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="photopassurlemur">
             </div>
 
         </div>

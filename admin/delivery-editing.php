@@ -49,7 +49,7 @@ if (!empty($_POST)) {
 }
 ?>
 
-<div class="dashboard-2" style="display : flex">
+<div class="dashboard-delivery" style="display : flex">
 
     <?php require_once './../partials/dashboard.php'; ?>
 

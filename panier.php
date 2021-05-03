@@ -2,9 +2,10 @@
 
 ob_start();
 
-$title = 'panier';
+$title = 'Panier';
 require_once './partials/header.php';
 require_once './partials/ariane.php';
+require './Parcours.php';
 
 global $db;
 
@@ -16,23 +17,25 @@ $clear = isset($_GET['clear']) ? true : false;
 //     header('Location: panier.php');
 // }
 
-$_SESSION['panier'] = [
-    [
-        'name' => 'Produit 1',
-        'picture' => 'Cover 1',
-        'price' => '1000'
-    ],
-    [
-        'name' => 'Produit 2',
-        'picture' => 'Cover 2',
-        'price' => '2000'
-    ]
-];
+
+// $_SESSION['panier'] = [
+//     [
+//         'name' => 'Produit 1',
+//         'picture' => 'Cover 1',
+//         'price' => '1000'
+//     ],
+//     [
+//         'name' => 'Produit 2',
+//         'picture' => 'Cover 2',
+//         'price' => '2000'
+//     ]
+// ];
+
 
 
 function panier()
 {
-    return $_SESSION['panier'] ?? [];
+    return $_SESSION['paniers'] ?? [];
 }
 
 
@@ -40,74 +43,88 @@ function panier()
 
 
 <div class="container-panier">
-
     <div class="titre">
-        <p>Votre Panier :</p>
+        <h1>Votre Panier :</h1>
     </div>
 
     <?php if (empty(panier())) { ?>
-        <h2>Votre panier est vide...</h2>
+        <div>
+            <h2>Votre panier est vide...</h2>
+        </div>
     <?php } ?>
 
     <?php if (!empty(panier())) { ?>
-        <?php foreach (panier() as $panier) { ?>
+        <?php foreach (panier() as $panier) {
+
+            
+            $panier = unserialize($panier);
+            var_dump($panier);
+
+            $query = $db->prepare('SELECT * FROM picture WHERE idpicture = :id');
+            $id = $panier->pictureid;
+            $query->execute([':id' => $id]);
+            $picture = $query->fetch(); ?>
+            
             <div class="main">
 
+                <div class="cart-product">
 
-                <div class="pic">
-                    <img src="./assets/icons/try.jpg" alt="photo du panier">
-                </div>
+                    <div class="pic">
+                        <img src="./assets/icons/try.jpg" alt="photo du panier">
+                    </div>
 
-                <div class="infos">
-                    <div>
-                        <h2 name="forPadding"><?= $panier['name']; ?></h2>
+                    <div class="infos">
+                        <div>
+                            <h2 name="forPadding"><?= $picture['title']; ?></h2>
+                        </div>
+                        <div>
+                            <p>Description de la photographie</p>
+                        </div>
                     </div>
-                    <div>
-                        <p>Description de la photographie</p>
-                    </div>
-                </div>
 
-                <div class="caracteristiques">
-                    <div>
+                    <div class="caracteristiques">
                         <div>
-                            <h3>Format</h3>
+                            <div>
+                                <h3>Format</h3>
+                            </div>
+                            <div>
+                                <p><?= $panier->format; ?></p>
+                            </div>
                         </div>
                         <div>
-                            <p>Grand - 60 x 75 cm</p>
+                            <div>
+                                <h3>Finition</h3>
+                            </div>
+                            <div>
+                                <p><?= $panier->finition; ?></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3>Cadre</h3>
+                            </div>
+                            <div>
+                                <p><?= $panier->frame; ?></p>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <div>
-                            <h3>Finition</h3>
-                        </div>
-                        <div>
-                            <p>SUR PAPIER PHOTO</p>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <h3>Cadre</h3>
-                        </div>
-                        <div>
-                            <p>Sans encadrement</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="quantite">
-                    <div>
-                        <h3><label for="quantity">Quantité</label></h3>
+                    <div class="quantite">
+                        <div>
+                            <h3><label for="quantity">Quantité</label></h3>
+                        </div>
+                        <div>
+                            <input type="number" class="quantity" name="quantite" value="1">
+                        </div>
+                        <div>
+                            <button type="reset"><a href="">Supprimer</a></button>
+                        </div>
                     </div>
-                    <div>
-                        <input type="number" class="quantity" name="quantite" value="1">
-                    </div>
-                    <div>
-                        <button type="reset"><a href="">Supprimer</a></button>
-                    </div>
-                </div>
 
-                <div class="prix">
-                    <h2 name="forPadding" class="totalProductPrice" data-prix="<?= $panier['price']; ?>"><?= $panier['price']; ?>€</h2>
+                    <div class="prix">
+                        <h2 name="forPadding" class="totalProductPrice" data-prix="<?= $panier->price['frameprice']; ?>"><?= $panier->price['frameprice']; ?>€</h2>
+                    </div>
+
                 </div>
 
             </div>
@@ -131,10 +148,9 @@ function panier()
                     </div>
                     <div class="finalprix">
                         <h2 id="totalPriceElement">
-                            <? $panier['price']?>€
+                        €
                         </h2>
                         <p id="tva">dont tva 20% :
-                            <? $panier['price'] ?>
                         </p>
                     </div>
                 </div>
@@ -195,7 +211,7 @@ function panier()
     let tva = (totalPrice / 100) * 20;
     totalPrice += tva;
     totalPriceElement.innerHTML = totalPrice.toFixed(2).replace('.', ',') + '€';
-    tvaElement.innerHTML = 'DONT TVA 20% : ' + tva + '€';
+    tvaElement.innerHTML = 'DONT TVA 20% : ' + tva.toFixed(2) + '€';
 
     // JS pour les quantitées.
 
@@ -219,7 +235,7 @@ function panier()
             tva = (totalPrice / 100) * 20;
             totalPrice += tva;
             totalPriceElement.innerHTML = totalPrice.toFixed(2).replace('.', ',') + '€';
-            tvaElement.innerHTML = 'DONT TVA 20% : ' + tva + '€';
+            tvaElement.innerHTML = 'DONT TVA 20% : ' + tva.toFixed(2) + '€';
         })
     }
 </script>
