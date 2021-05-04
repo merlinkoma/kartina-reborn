@@ -1,4 +1,5 @@
-//Filtrer les orientations
+//Simuler un clic au chargement de la page
+window.onload = () => document.querySelector('#reset').dispatchEvent(new Event('click'));
 
 //inputs orientation check
 let inputs = document.querySelectorAll('input');
@@ -33,6 +34,7 @@ function axiosFilters(e) {
 
             //récupération du nombre d'images total pour pouvoir faire la pagination
             let totalpictures = response.data.quantity;
+            console.log('nombre total de résultats :' + totalpictures);
             //calcul du total de pages pour une limite de 24 images/ page, arrondi à l'entier supérieur
             let totalpages = Math.round(totalpictures / 24);
             console.log('nombre total de page :' + totalpages);
@@ -60,20 +62,21 @@ function axiosFilters(e) {
                     divtags.innerHTML += `<div class='tag'> ${orientationtag}</div>`;
                 }
             }
+            
 
             //à chaque requête, on vide la div dans laquelle seront affichées les images (au cas où on décoche une checkbox par exemple);
             document.querySelector('.results').innerHTML = '';    
 
             //boucle sur le tableau contenant toutes les images, concaténation des résultats & affichage dans la div
             pictures.map(picture => {
+                let picturedate = new Date(picture.creation_date).toLocaleString('fr', {year: "numeric", month: "long", day: "numeric"});
                 document.querySelector('.results').innerHTML += `
                 <div class="vignette">
                     <figure>
                         <img src="./assets/banqueimg/${picture.cover}" alt="${picture.title}">
                     </figure>
                     <figcaption class="legende">
-                        <a href="./pa-blocprev.php?id=${picture.idpicture}">${picture.title}</a>
-                        <p>Créé le ${picture.creation_date}</p>
+                        <a href="./pa-blocprev.php?id=${picture.idpicture}">${picture.title} - ${picturedate}</a>
                         <p>A partir de <a href="./pa-blocprev.php?id=${picture.idpicture}">${picture.price}</a>€</p>
                     </figcaption>
                 </div>  
