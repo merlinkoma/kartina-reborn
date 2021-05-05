@@ -1,19 +1,13 @@
 <?php
 
-/*
-@TODO Pour utiliser stripe / https://github.com/stripe/stripe-php
-$stripe = new \Stripe\StripeClient('sk_test_BQokikJOvBiI2HlWgH4olfQ2');
-$customer = $stripe->customers->create([
-    'description' => 'example customer',
-    'email' => 'email@example.com',
-    'payment_method' => 'pm_card_visa',
-]);
-echo $customer;
-*/
+ob_start();
 
 $title = 'parcours';
+
 require_once './partials/header.php';
 require_once './partials/ariane.php';
+require './Parcours.php';
+
 $id = $_GET['id'];
 
 $query = $db->prepare('SELECT * FROM picture INNER JOIN user ON picture.user_iduser = user.iduser WHERE idpicture = :id');
@@ -30,6 +24,8 @@ $query = $db->query('SELECT * FROM cadre');
 $frames = $query->fetchAll();
 
 $pictureprice = $picture['price'];
+
+$errors = [];
 
 class Parcours
 {
@@ -48,7 +44,7 @@ class Parcours
 }
 
 if (!empty($_POST)) {
-    //@TODO sécuriser le formulaire
+    //@TODO sécuriser le formulaire 
     $parcours = new Parcours($id, $pictureprice);
     $parcours->format = $_POST['format'];
     $parcours->finition = $_POST['finition'];
@@ -57,8 +53,96 @@ if (!empty($_POST)) {
     $parcours->price['finitionprice'] = round($_POST['finitionprice'], 2);
     $parcours->price['frameprice'] = round($_POST['frameprice'], 2);
 
-    //@TODO à la place du dump : ajout de l'oeuvre dans la session->pannier
-    var_dump($parcours);
+    //vérification des choix de l'utilisateur
+    if ($parcours->format == "classique") {
+        //vérification de la finition et du cadre pour le format classique
+        if ($parcours->finition !== "pp_black" || $parcours->finition !== "pp_white") {
+            $errors['finition'] = 'finition indisponible avec ce choix de format';
+        }
+        if ($parcours->frame !== "black_aluminium" || $parcours->frame !== "mahogany" || $parcours->frame !== "white_wood" || $parcours->frame !== "brushed_aluminium") {
+            $errors['frame'] = 'cadre indisponible avec ce choix de format';
+        }
+    } elseif ($parcours->format == "grand" || $parcours->format == "geant" || $parcours->format == "collector") {
+        //vérification de la finition et du cadre pour les autres formats connus
+        if ($parcours->finition == "paper_draw") {
+            //vérification de la finition paper_draw
+            if ($parcours->frame !== "none") {
+                $errors['frame'] = 'cadre indisponible avec ce choix de finition';
+            }
+        } elseif ($parcours->finition == "aluminium" || $parcours->finition == "acrylic") {
+            //vérification des autres finitions connues
+            if ($parcours->frame !== "white_satin" || $parcours->frame !== "black_satin" || $parcours->frame !== "walnut" || $parcours->frame !== "oak") {
+                $errors['frame'] = 'cadre indisponible avec ce choix de finition';
+            }
+        } else {
+            //erreur si finition inconnue
+            $errors['finition'] = 'finition inconnue';
+        }
+    } else {
+        //erreur si format inconnu
+        $errors['format'] = 'format inconnu';
+    }
+
+    if (empty($errors)) {
+        //calcul du prix si pas d'erreur sur les formats, finitions, cadres
+
+        //calcul du prix du format
+        function priceFormat($unprix, $unformat, $objet)
+        {
+            $prixduformat = 0;
+            if ($unformat == 'classique') {
+                $prixduformat = $unprix * 1.3;
+            } elseif ($unformat == 'grand') {
+                $prixduformat = $unprix * 2.6;
+            } elseif ($unformat == 'geant') {
+                $prixduformat = $unprix * 5.2;
+            } elseif ($unformat == 'collector') {
+                $prixduformat = $unprix * 13;
+            }
+            $objet->price['formatprice'] = $prixduformat;
+            return $objet->price['formatprice'];
+        }
+
+        //calcul du prix de la finition
+        function priceFinition($prixduformat, $lafinition, $objet)
+        {
+            $prixdelafinition = 0;
+            if (($lafinition == 'pp_black') || ($lafinition == 'paper_draw')) {
+                $prixdelafinition = $prixduformat;
+            } elseif ($lafinition == 'pp_white') {
+                $prixdelafinition = $prixduformat * 1.4;
+            } elseif ($lafinition == 'aluminium') {
+                $prixdelafinition = $prixduformat * 2.6;
+            } elseif ($lafinition == 'acrylic') {
+                $prixdelafinition = $prixduformat * 3.35;
+            }
+            $objet->price['finitionprice'] = $prixdelafinition;
+            return $objet->price['finitionprice'];
+        }
+
+        //calcul du prix du cadre
+        function priceFrame($price_finition, $frame, $objet)
+        {
+            $total_price = 0;
+            if (($frame == 'none') || ($frame == 'white_wood') || ($frame == 'mahogany') || ($frame == 'brushed_aluminium')) {
+                $total_price = $price_finition;
+            } elseif (($frame == 'white_satin') || ($frame == 'black_satin') || ($frame == 'walnut') || ($frame == 'oak')) {
+                $total_price = $price_finition * 1.45;
+            }
+            return $total_price;
+        }
+
+        //calcul du total
+        $objet->price['frameprice'] = priceFrame(priceFinition(priceFormat($pictureprice, $parcours->format, $parcours), $parcours->finition), $parcours->frame);
+    }
+
+    if (empty($errors)) {
+        $serial = serialize($parcours);
+        //@TODO à la place du dump : ajout de l'oeuvre dans la session->pannier
+        $_SESSION['paniers'][] = $serial;
+        var_dump($_SESSION['paniers']);
+        header('Location: panier.php');
+    }
 }
 ?>
 
@@ -95,7 +179,7 @@ if (!empty($_POST)) {
             </div>
 
             <div class="sansmockup" style="display: block;">
-                    <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="photopassurlemur">
+                <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>" id="photopassurlemur">
             </div>
 
         </div>
@@ -198,17 +282,10 @@ if (!empty($_POST)) {
                 <div class="div-choice" data-frame="brushed_aluminium" data-type="frame">Aluminium brossé <span> - Format 50 x 40cm</span></div>
 
             </div>
-            <div class="frame-choice-3 sub-div-choices">
-
-                <div class="div-choice" data-frame="noframe" data-type="frame">Cadre non disponible</div>
-
-            </div>
         </div>
 
-        <div id="summary"></div>
-        <div id="summaryprice"></div>
-        <div class="total">
 
+        <div class="total">
             <div id="prix"></div>
         </div>
 
