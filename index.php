@@ -23,7 +23,7 @@ $randomquatros = $db->query(
         <div class="header-titles">
             <h1>Nouvelles oeuvres</h1>
             <p>La légendaire collection Reborn</p>
-            <a href="" class="newcoll">Explorer la nouvelle collection ></a>
+            <a href="./all-photographies.php?creation_date=date" class="newcoll">Explorer la nouvelle collection ></a>
         </div>
         <div class="legend"><a href="./page-artiste.php?id=<?= $randombanner['user_iduser'] ?>"><?= $randombanner['title'] ?> - <?= $randombanner['artist_name'] ?></a></div>
     </div>

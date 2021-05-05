@@ -90,7 +90,6 @@
                 <div class="others-filters filter">
                     <div class="filter-title">
                         <div>Filtrage avancé</div>
-                        <input type="button" name="creation_date" value="">Réinitialiser les filtrages avancés
                         <div class="line"></div>
                     </div>
                     <div class="choicebloc">

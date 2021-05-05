@@ -7,10 +7,12 @@ div.all-photographies {
     display         : flex;
     flex-direction  : row;
     width           : 100vw;
+
     box-sizing      : border-box;
 
     aside.filtrage {
         width         : 20%;
+        background-color: $color-back;
         border-right  : 1px solid $color-light;
         display       : flex;
         flex-direction: column;
@@ -92,6 +94,7 @@ div.all-photographies {
 
     div.results-bloc {
         width         : 80%;
+        background-color: $color-back;
         display       : flex;
         flex-direction: column;
 
