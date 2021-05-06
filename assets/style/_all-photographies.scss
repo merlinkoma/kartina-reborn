@@ -132,7 +132,7 @@ div.all-photographies {
                 max-width      : 500px;
                 min-width      : 400px;
                 width          : 25%;
-                max-height     : 400px;
+                max-height     : 500px;
                 min-height     : 300px;
                 margin         : 1%;
                 padding        : 1%;
@@ -170,6 +170,9 @@ div.all-photographies {
                     p {
                         margin : 0;
                         padding: 0;
+                        &.lastones{
+                            color: $color-text;
+                        }
                     }
 
                     a {

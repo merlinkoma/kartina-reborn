@@ -1,0 +1,52 @@
+div.container-legals{
+    background-color: $color-back;
+    color: $color-dark;
+    min-height: 50vh;
+    font-family     : Oswald;
+    h2{
+        margin: 0;
+        padding: 3% 0;
+        text-align: center;
+        font-size: 2em;
+    }
+    div.line {
+        padding   : 0;
+        margin    : 1% auto;
+        width     : 50%;
+        border-top: solid 1px $color-darkyellow;
+    }
+
+    .legals-presentation{
+        h4{
+            margin: 0;
+            padding: 3% 0 1.5%;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        div.line {
+            padding   : 0;
+            margin    : 1% auto;
+            width     : 30%;
+            border-top: solid 1px $color-darkyellow;
+        }
+        p{
+            width: 70%;
+            margin: auto;
+            text-align: center;
+            
+        }
+        ul{
+            width: 70%;
+            margin: 2% auto;
+            li{
+                margin:1% auto;
+                text-align: center;
+            }
+        }
+        a{
+            text-decoration: none;
+            color: $color-darkyellow;
+            font-weight: 700;
+        }
+    }
+}

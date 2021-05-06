@@ -175,8 +175,9 @@ foreach ($pictures as $picture){
     $cover = str_replace('…', 'x', $cover);
     $cover = strtolower($cover).'.jpg';
 
-    $price = rand(20, 100);
+    $price = rand(20, 550);
     $quantity = rand(30, 300);
+    $sold = rand(0, ($quantity-1));
 
-    $db->query("INSERT INTO picture (title, creation_date, user_iduser, price, quantity, orientation_idorientation, cover) VALUES ('$picture[0]', '$picture[1]', $picture[2], $price, $quantity, $picture[5], '$cover')");
+    $db->query("INSERT INTO picture (title, creation_date, user_iduser, price, quantity, orientation_idorientation, cover, sold) VALUES ('$picture[0]', '$picture[1]', $picture[2], $price, $quantity, $picture[5], '$cover', $sold)");
 }

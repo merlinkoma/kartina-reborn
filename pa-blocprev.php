@@ -27,22 +27,6 @@ $pictureprice = $picture['price'];
 
 $errors = [];
 
-class Parcours
-{
-    public $pictureid;
-    public $pictureprice;
-    public $format = 0;
-    public $finition = 0;
-    public $frame = 0;
-    public $price = [];
-
-    public function __construct($pictureid, $pictureprice)
-    {
-        $this->pictureid = $pictureid;
-        $this->pictureprice = $pictureprice;
-    }
-}
-
 if (!empty($_POST)) {
     //@TODO sécuriser le formulaire 
     $parcours = new Parcours($id, $pictureprice);
@@ -56,10 +40,10 @@ if (!empty($_POST)) {
     //vérification des choix de l'utilisateur
     if ($parcours->format == "classique") {
         //vérification de la finition et du cadre pour le format classique
-        if ($parcours->finition !== "pp_black" || $parcours->finition !== "pp_white") {
+        if ($parcours->finition !== "pp_black" && $parcours->finition !== "pp_white") {
             $errors['finition'] = 'finition indisponible avec ce choix de format';
         }
-        if ($parcours->frame !== "black_aluminium" || $parcours->frame !== "mahogany" || $parcours->frame !== "white_wood" || $parcours->frame !== "brushed_aluminium") {
+        if ($parcours->frame !== "black_aluminium" && $parcours->frame !== "mahogany" && $parcours->frame !== "white_wood" && $parcours->frame !== "brushed_aluminium") {
             $errors['frame'] = 'cadre indisponible avec ce choix de format';
         }
     } elseif ($parcours->format == "grand" || $parcours->format == "geant" || $parcours->format == "collector") {
@@ -71,7 +55,7 @@ if (!empty($_POST)) {
             }
         } elseif ($parcours->finition == "aluminium" || $parcours->finition == "acrylic") {
             //vérification des autres finitions connues
-            if ($parcours->frame !== "white_satin" || $parcours->frame !== "black_satin" || $parcours->frame !== "walnut" || $parcours->frame !== "oak") {
+            if ($parcours->frame !== "white_satin" && $parcours->frame !== "black_satin" && $parcours->frame !== "walnut" && $parcours->frame !== "oak") {
                 $errors['frame'] = 'cadre indisponible avec ce choix de finition';
             }
         } else {
@@ -121,7 +105,7 @@ if (!empty($_POST)) {
         }
 
         //calcul du prix du cadre
-        function priceFrame($price_finition, $frame, $objet)
+        function priceFrame($price_finition, $frame)
         {
             $total_price = 0;
             if (($frame == 'none') || ($frame == 'white_wood') || ($frame == 'mahogany') || ($frame == 'brushed_aluminium')) {
@@ -133,15 +117,16 @@ if (!empty($_POST)) {
         }
 
         //calcul du total
-        $objet->price['frameprice'] = priceFrame(priceFinition(priceFormat($pictureprice, $parcours->format, $parcours), $parcours->finition), $parcours->frame);
-    }
-
-    if (empty($errors)) {
+        $objet->price['frameprice'] = priceFrame(priceFinition(priceFormat($pictureprice, $parcours->format, $parcours), $parcours->finition, $parcours), $parcours->frame);
+    
         $serial = serialize($parcours);
         //@TODO à la place du dump : ajout de l'oeuvre dans la session->pannier
         $_SESSION['paniers'][] = $serial;
         var_dump($_SESSION['paniers']);
         header('Location: panier.php');
+    }else{
+        var_dump($parcours);
+        var_dump($errors);
     }
 }
 ?>
@@ -282,6 +267,11 @@ if (!empty($_POST)) {
                 <div class="div-choice" data-frame="brushed_aluminium" data-type="frame">Aluminium brossé <span> - Format 50 x 40cm</span></div>
 
             </div>
+            <div class="frame-choice-3 sub-div-choices">
+
+                <div class="div-choice" data-frame="none" data-type="frame">Pas de cadre disponible pour cette finition</div>
+
+            </div>
         </div>
 
 
@@ -300,7 +290,7 @@ if (!empty($_POST)) {
             <input type="text" name="formatprice" id="formatprice" hidden>
             <input type="text" name="finitionprice" id="finitionprice" hidden>
             <input type="text" name="frameprice" id="frameprice" hidden>
-            <button id="formbutton" hidden>Valider cette sélection</button>
+            <button id="formbutton" hidden>Ajouter au panier</button>
         </form>
 
     </div>

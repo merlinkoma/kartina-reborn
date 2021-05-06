@@ -27,7 +27,7 @@ $themes = $query->fetchAll();
 
                     <?php
                     foreach ($themes as $theme) { ?>
-                        <li class="<?= $theme['idtheme'] ?>"><a href="#"><?= $theme['theme_name'] ?></a>
+                        <li class="<?= $theme['idtheme'] ?>"><a href="all-photographies.php?theme=<?= $theme['theme_name'] ?>"><?= $theme['theme_name'] ?></a>
                         </li>
                     <?php }
                     ?>
@@ -161,13 +161,13 @@ $themes = $query->fetchAll();
     <!--MENTIONS LEGALES-->
     <div class="legal">
 
-        <a href="https://www.yellowkorner.com/fr/mentions-legales-Mentions_Legales.html">Mentions
+        <a href="legalmentions.php">Mentions
             légales</a>
 
-        <a href="https://www.yellowkorner.com/fr/conditions-generales-dutilisation-Conditions_Utilisation.html">Conditions
+        <a href="#">Conditions
             générales d'utilisation</a>
 
-        <a href="https://www.yellowkorner.com/fr/mentions-legales-Mentions_Legales.html">Utilisation des
+        <a href="#">Utilisation des
             cookies</a>
 
     </div>

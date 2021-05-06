@@ -57,6 +57,9 @@ function axiosFilters(e) {
             if(tags['creation_date']){
                 divtags.innerHTML += `<div class='tag'>${tags['creation_date']}</div>`;
             }
+            if(tags['last']){
+                divtags.innerHTML += `<div class='tag'>${tags['last']}</div>`;
+            }
             if(orientationtags){
                 for(let orientationtag of orientationtags){
                     divtags.innerHTML += `<div class='tag'> ${orientationtag}</div>`;
@@ -70,17 +73,32 @@ function axiosFilters(e) {
             //boucle sur le tableau contenant toutes les images, concaténation des résultats & affichage dans la div
             pictures.map(picture => {
                 let picturedate = new Date(picture.creation_date).toLocaleString('fr', {year: "numeric", month: "long", day: "numeric"});
-                document.querySelector('.results').innerHTML += `
-                <div class="vignette">
-                    <figure>
-                        <img src="./assets/banqueimg/${picture.cover}" alt="${picture.title}">
-                    </figure>
-                    <figcaption class="legende">
-                        <a href="./pa-blocprev.php?id=${picture.idpicture}">${picture.title} - ${picturedate}</a>
-                        <p>A partir de <a href="./pa-blocprev.php?id=${picture.idpicture}">${picture.price}</a>€</p>
-                    </figcaption>
-                </div>  
-                `;
+                if(picture.sold > picture.quantity * 0.9){
+                    document.querySelector('.results').innerHTML += `
+                    <div class="vignette">
+                        <figure>
+                            <img src="./assets/banqueimg/${picture.cover}" alt="${picture.title}">
+                        </figure>
+                        <figcaption class="legende">
+                            <a href="./pa-blocprev.php?id=${picture.idpicture}">${picture.title} - ${picturedate}</a>
+                            <p>A partir de <a href="./pa-blocprev.php?id=${picture.idpicture}">${picture.price}</a>€</p>
+                            <p class="lastones">Derniers exemplaires</p>
+                        </figcaption>
+                    </div>  
+                    `;
+                }else{
+                    document.querySelector('.results').innerHTML += `
+                    <div class="vignette">
+                        <figure>
+                            <img src="./assets/banqueimg/${picture.cover}" alt="${picture.title}">
+                        </figure>
+                        <figcaption class="legende">
+                            <a href="./pa-blocprev.php?id=${picture.idpicture}">${picture.title} - ${picturedate}</a>
+                            <p>A partir de <a href="./pa-blocprev.php?id=${picture.idpicture}">${picture.price}</a>€</p>
+                        </figcaption>
+                    </div>  
+                    `;
+                }
             })
 
             ////////////////////////////////////////////////

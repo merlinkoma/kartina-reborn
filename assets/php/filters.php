@@ -15,6 +15,7 @@ if($theme == 1){
 $theme = strtolower($theme);
 $price = $_GET['price'] ?? '1';
 $creation_date = $_GET['creation_date'] ?? '';
+$last = $_GET['lastones'] ?? '1';
 
 $page = $_GET['page'] ?? 1;
 $limit = 24;
@@ -115,6 +116,27 @@ if (!empty($price)) {
                 $where .= " WHERE picture.price > 500 ";
                 break;
         }
+    }
+}
+
+if(!empty($last)){
+    if($and){
+        if($last == 'last'){
+            $tags['last'] = 'Derniers exemplaires';
+            $where .= " AND picture.sold > (picture.quantity * 0.9) ";
+        }else{
+            $tags['last'] = '';
+            $where .= " AND picture.sold >= 0 ";
+        }
+    }else{
+        if($last == 'last'){
+            $tags['last'] = 'Derniers exemplaires';
+            $where .= " WHERE picture.sold > (picture.quantity * 0.9) ";
+        }else{
+            $tags['last'] = '';
+            $where .= " WHERE picture.sold >= 0 ";
+        }
+        $and = true;
     }
 }
 

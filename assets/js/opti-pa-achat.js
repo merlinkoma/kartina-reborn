@@ -69,16 +69,7 @@ function steps() {
             }
             //ajout de la bordure de sélection
             choosendiv.style = "border : solid 2px #aca06c";
-            /*si format, finition & frame sont renseignés dans l'objet :
-                - le bouton "suivant" est caché,
-                - envoi vers la fonction priceFrame pour calculer le prix final
-                - le bouton d'envoi du formulaire apparaît à la place du bouton "suivant"
-            */
-            if (parcours.format !== '' && parcours.finition !== '' && parcours.frame !== '') {
-                nextbutton.hidden = true;
-                priceFrame(parcours.price.finitionprice, parcours.frame, parcours);
-                document.querySelector('#formbutton').hidden = false;
-            }
+
             nextbutton.disabled = false;
         });
     }
@@ -133,22 +124,27 @@ function getChoice(objet) {
         nextbutton.hidden = false;
         formbutton.hidden = true;
 
+        //si l'utilisateur revient en arrière, vérification que seule la div du choix de la finition soit visible
+        document.querySelector('.div-format').style = 'display : none';
+        document.querySelector('.div-finition').style = 'display : none';
+        document.querySelector('.div-frame').style = 'display : block';
+
         //l'étape en cours apparaît en noir
         step3.style = 'color : black';
 
-        //si la finition choisie est "paper_draw", il n'y a pas de sélection de cadre, on passe directement à l'étape de calcul du prix
+        //les sous-div frame affichées sont différentes selon la finition choisie
         if (objet.finition == 'paper_draw') {
-            priceFinition(parcours.price.formatprice, parcours.finition, parcours);
-            document.querySelector('.div-format').style = 'display : none';
-            document.querySelector('.div-finition').style = 'display : none';
-            document.querySelector('.div-frame').style = 'display : none';
-        } else if (objet.finition == 'aluminium' || objet.format == 'acrylic') {
-            //les sous-div frame affichées sont différentes selon la finition choisie
+            document.querySelector('.frame-choice-1').style = 'display : none';
+            document.querySelector('.frame-choice-2').style = 'display : none';
+            document.querySelector('.frame-choice-3').style = 'display : block';
+        } else if (objet.finition == 'aluminium' || objet.finition == 'acrylic') {
             document.querySelector('.frame-choice-1').style = 'display : block';
             document.querySelector('.frame-choice-2').style = 'display : none';
+            document.querySelector('.frame-choice-3').style = 'display : none';
         } else {
             document.querySelector('.frame-choice-1').style = 'display : none';
             document.querySelector('.frame-choice-2').style = 'display : block';
+            document.querySelector('.frame-choice-3').style = 'display : none';
         }
         //envoi vers la fonction priceFinition pour calculer le prix après le choix de la finition
         priceFinition(parcours.price.formatprice, parcours.finition, parcours);
@@ -207,22 +203,8 @@ function priceFinition(prixduformat, finition, objet) {
     //initilisation de la variable prixdelafinition
     let prixdelafinition = 0;
     //calcul du prix selon le choix de la finition
-    if ((finition == 'pp_black')) {
+    if ((finition == 'pp_black' || finition == 'paper_draw')) {
         prixdelafinition = prixduformat;
-    }
-    else if ((finition == 'paper_draw')) {
-        prixdelafinition = prixduformat;
-
-        objet.price.finitionprice = (prixdelafinition).toFixed(2);
-        document.form.finitionprice.value = objet.price.finitionprice;
-        //cette finition ne permet pas le choix d'un cadre, remplissage automatique des données de l'objet et du formulaire pour le cadre puis renvoie à la fonction steps()
-        objet.frame = 'none';
-        objet.price.frameprice = objet.price.finitionprice;
-        document.form.frame.value = objet.frame;
-        document.form.frameprice.value = objet.price.frameprice;
-
-        total.innerHTML = 'Prix : ' + (prixdelafinition).toFixed(2) + '€ (pas de cadre disponible avec cette finition)';
-        getChoice(objet);
     }
     else if (finition == 'pp_white') {
         prixdelafinition = prixduformat * 1.4;
@@ -240,7 +222,6 @@ function priceFinition(prixduformat, finition, objet) {
     document.form.finitionprice.value = objet.price.finitionprice;
 
     total.innerHTML = 'Prix : ' + (prixdelafinition).toFixed(2) + '€';
-    getChoice(parcours);
 }
 
 function priceFrame(prixdelafinition, frame, objet) {
@@ -248,7 +229,7 @@ function priceFrame(prixdelafinition, frame, objet) {
     //initilisation de la variable prixtotal
     let prixtotal = 0;
     //calcul du prix final selon le cadre choisi
-    if ((frame == 'black_aluminium') || (frame == 'white_wood') || (frame == 'mahogany') || (frame == 'brushed_aluminium')) {
+    if ((frame == 'black_aluminium') || (frame == 'white_wood') || (frame == 'mahogany') || (frame == 'brushed_aluminium') || (frame == 'none')) {
         prixtotal = prixdelafinition;
     }
     else if ((frame == 'white_satin') || (frame == 'black_satin') || (frame == 'walnut') || (frame == 'oak')) {

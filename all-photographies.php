@@ -8,6 +8,10 @@
     $formats = $db->query('SELECT * FROM format')->fetchAll();
     $themes = $db->query('SELECT * FROM theme')->fetchAll();
     $keywords = $db->query('SELECT * FROM keyword')->fetchAll();
+
+    $checkedtheme = $_GET['theme'] ?? '';
+    $checkedcreated = $_GET['creation_date'] ?? '';
+    $checkedlast = $_GET['lastones'] ?? '';
     ?>
 
     <div class="all-photographies">
@@ -73,16 +77,25 @@
                         <div class="line"></div>
                     </div>
                     <div class="choicebloc">
-                            <input type="radio" name="theme" value="1">Réinitialiser</input>
-                        </div>
-                        <div class="line-link"></div>
+                        <input type="radio" name="theme" value="1">Réinitialiser</input>
+                    </div>
+                    <div class="line-link"></div>
                     <?php
-                    foreach ($themes as $theme) { ?>
-                        <div class="choicebloc">
-                            <input type="radio" name="theme" value="<?= $theme['theme_name'] ?>"><?= $theme['theme_name'] ?></input>
-                        </div>
-                        <div class="line-link"></div>
+
+                    foreach ($themes as $theme) {
+                        if ($theme['theme_name'] == $checkedtheme) { ?>
+                            <div class="choicebloc">
+                                <input type="radio" name="theme" value="<?= $theme['theme_name'] ?>" checked><?= $theme['theme_name'] ?></input>
+                            </div>
+                            <div class="line-link"></div>
+                        <?php
+                        } else { ?>
+                            <div class="choicebloc">
+                                <input type="radio" name="theme" value="<?= $theme['theme_name'] ?>"><?= $theme['theme_name'] ?></input>
+                            </div>
+                            <div class="line-link"></div>
                     <?php }
+                    }
                     ?>
                 </div>
 
@@ -93,11 +106,27 @@
                         <div class="line"></div>
                     </div>
                     <div class="choicebloc">
-                        <input type="radio" name="creation_date" value="date">Nouveautés</input>
+                        <?php
+                        if ($checkedcreated !== '') { ?>
+                            <input type="radio" name="creation_date" value="date" checked>Nouveautés</input>
+
+                        <?php } else { ?>
+                            <input type="radio" name="creation_date" value="date">Nouveautés</input>
+                        <?php }
+                        ?>
                     </div>
                     <div class="line-link"></div>
                     <div class="choicebloc">
-                        <a href="#">Derniers exemplaires</a>
+                        <?php
+                        if ($checkedlast == 'last') { ?>
+                            <input type="radio" name="lastones" value="last" checked>Derniers exemplaires</input>
+                        <?php } else { ?>
+                            <input type="radio" name="lastones" value="last">Derniers exemplaires</input>
+                        <?php }
+                        ?>
+                    </div>
+                    <div class="choicebloc">
+                        <input type="radio" name="lastones" value="1">Réinitialiser</input>
                     </div>
                     <div class="line-link"></div>
                 </div>
@@ -129,17 +158,17 @@
 
             <div class="results">
                 <!-- Affichage par défaut de toutes les images -->
-                <?php foreach($allpictures as $picture){ ?>
+                <?php foreach ($allpictures as $picture) { ?>
                     <div class="vignette">
-                    <figure>
-                        <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>">
-                    </figure>
-                    <figcaption class="legende">
-                        <a href="./pa-blocprev.php?id=<?= $picture['idpicture'] ?>"><?= $picture['title'] ?></a>
-                        <p>A partir de <a href="./pa-blocprev.php?id=<?= $picture['idpicture'] ?>"><?= $picture['price'] ?></a>€</p>
-                    </figcaption>
-                </div>
-               <?php } ?>
+                        <figure>
+                            <img src="./assets/banqueimg/<?= $picture['cover'] ?>" alt="<?= $picture['title'] ?>">
+                        </figure>
+                        <figcaption class="legende">
+                            <a href="./pa-blocprev.php?id=<?= $picture['idpicture'] ?>"><?= $picture['title'] ?></a>
+                            <p>A partir de <a href="./pa-blocprev.php?id=<?= $picture['idpicture'] ?>"><?= $picture['price'] ?></a>€</p>
+                        </figcaption>
+                    </div>
+                <?php } ?>
             </div>
 
             <div class="pagination">
