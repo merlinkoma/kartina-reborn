@@ -14,7 +14,6 @@ require_once './../partials/header.php';
 
 
     <div class="useradmin">
-
         <section class="main-bloc">
             <div class="head">
                 <h2 class="title">Mon compte | <?= $_SESSION['user']['firstname'], ' ', $_SESSION['user']['lastname']; ?></h2>

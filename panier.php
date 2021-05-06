@@ -70,7 +70,7 @@ function panier()
                 <div class="cart-product">
 
                     <div class="pic">
-                        <img src="./assets/icons/try.jpg" alt="photo du panier">
+                        <img src="./assets/banqueimg/<?= $picture['cover']; ?>" alt="photo du panier">
                     </div>
 
                     <div class="infos">

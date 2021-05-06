@@ -22,18 +22,24 @@
             <div>
                 <p>Artiste</p>
                 <ul>
-                    <a href=""><li>Biographie</li></a>
+                    <a href="./../admin/biography.php"><li>Biographie</li></a>
                 </ul>
             </div>
         <?php } ?>
 
         <?php if (isAdmin()) { ?>
             <div>
-                <a href="">Activation des comptes vendeurs</a>
+                <a href="./../admin/activation-promotion.php">Activation des comptes vendeurs</a>
             </div>
 
             <div>
                 <a href="">Gestion du statut des commandes</a>
+            </div>
+        <?php } ?>
+
+        <?php if (isUser()) { ?>
+            <div>
+                <a href="./../admin/utilisateur-promotion.php">Promotion</a>
             </div>
         <?php } ?>
 

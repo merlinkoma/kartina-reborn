@@ -2,7 +2,7 @@
 
     <!-- BLOC FIND-GALLERY -->
     <div class="find-gallery">
-        <img src="./assets/banqueimg/galery.jpg" alt="">
+        <img src="<?= $path; ?>assets/banqueimg/galery.jpg" alt="">
         <form action="" method="GET" class="find-gallery-form">
             <label for="find-gallery-field">TROUVER UNE GALERIE</label>
             <input id="find-gallery-field" type="text" name="address" placeholder="Ville, code postal, rue..." required="">
@@ -166,11 +166,11 @@
         <h3 class="title">Choose your language ></h3>
         <ul class="languages">
 
-            <li class="english"><img src="./assets/icons/001-royaume-uni.svg" alt=""><a href="https://www.yellowkorner.com/en/home">English</a></li>
+            <li class="english"><img src="<?= $path ;?>assets/icons/001-royaume-uni.svg" alt=""><a href="https://www.yellowkorner.com/en/home">English</a></li>
 
-            <li class="français"><img src="./assets/icons/002-france.svg" alt=""><a href="https://www.yellowkorner.com/fr/home">Français</a></li>
+            <li class="français"><img src="<?= $path ;?>assets/icons/002-france.svg" alt=""><a href="https://www.yellowkorner.com/fr/home">Français</a></li>
 
-            <li class="nederlands"><img src="./assets/icons/006-pays-bas.svg" alt=""><a href="https://www.yellowkorner.com/nl/home">Nederlands</a></li>
+            <li class="nederlands"><img src="<?= $path ;?>assets/icons/006-pays-bas.svg" alt=""><a href="https://www.yellowkorner.com/nl/home">Nederlands</a></li>
 
         </ul>
     </div>

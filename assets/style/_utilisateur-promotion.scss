@@ -1,0 +1,41 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul li {
+    list-style: none;
+}
+
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+div.container-promotion {
+    background-color: #ede4be;
+    font-family: Oswald;
+    height: 100%;
+    min-height: 700px;
+    width: 100%;
+
+    .titre {
+        margin: 40px;
+    }
+
+    .choix {
+        margin: 20px;
+        .artist {
+            height: 100px;
+
+            div {
+                display: flex;
+
+                button {
+                    width: 100px;
+                    margin-left: 20px; 
+                }
+            }
+        }
+    }
+}
