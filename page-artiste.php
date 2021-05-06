@@ -13,6 +13,10 @@ if (isset($id) && $id != '') {
     $query2 = $db->prepare('SELECT * FROM user WHERE iduser = :id');
     $query2->execute([':id' => $id]);
     $author = $query2->fetch();
+
+    $query3 = $db->prepare('SELECT * FROM network WHERE user_iduser = :id');
+    $query3->execute([':id' => $id]);
+    $networks = $query3->fetchAll();
 ?>
     <div class="artiste">
         <div class="banner">
@@ -36,11 +40,22 @@ if (isset($id) && $id != '') {
         <div class="line"></div>
 
         <div class="social">
-            <a href=""><i class="fab fa-instagram fa-2x"></i></a>
-            <a href=""><i class="fab fa-facebook-f fa-2x"></i></a>
-            <a href=""><i class="fab fa-twitter fa-2x"></i> </a>
-            <a href=""><i class="fab fa-pinterest fa-2x"></i></a>
-            <a href=""><i class="fab fa-flickr fa-2x"></i></a>
+            <?php
+                if(isset($networks)){
+                    foreach($networks as $network){
+                        if($network['network_name'] == 'instagram'){?>
+                            <div class="instagram"><a href="<?=$network['network_path']?>"><img src="./assets/icons/networks/instagram.png" alt="instagram logo"></a></div>
+                        <?php }
+                        elseif($network['network_name'] == 'personal'){?>
+                            <div class="personal"><a href="<?=$network['network_path']?>"><img src="./assets/icons/networks/personal.png" alt="logo"></a></div>
+                        <?php }
+                        elseif($network['network_name'] == 'pexels'){?>
+                            <div class="pexels"><a href="<?=$network['network_path']?>"><img src="./assets/icons/networks/pexels.png" alt="pexels logo"></a></div>
+                        <?php }
+
+                    }
+                }
+            ?>
         </div>
 
         <div class="galerie">

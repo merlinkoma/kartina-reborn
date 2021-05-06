@@ -1,12 +1,14 @@
 @import 'variables';
 
 div.ariane {
-    height          : 6vh;
+    font-family     : Oswald;
+    font-weight     : 200;
+    height          : 3vh;
     margin          : 0;
-    padding         : 0;
+    padding         : 1% 0;
     background-color: $color-light;
     color           : $color-back;
-    font-size       : 1.5em;
+    font-size       : 1.3em;
     display         : flex;
     flex-direction  : row;
     align-items     : center;
@@ -15,6 +17,7 @@ div.ariane {
         width      : 1vw;
         margin-left: 2%;
         height     : auto;
+        color: $color-darkyellow;
     }
 
     a {

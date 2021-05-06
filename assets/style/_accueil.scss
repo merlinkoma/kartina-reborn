@@ -36,7 +36,7 @@ main.mainaccueil {
         }
 
         img.background-header {
-            width     : 100%;
+            width: 100vw;
             object-fit: contain;
         }
 
@@ -269,21 +269,6 @@ main.mainaccueil {
                     }
                 }
             }
-        }
-    }
-
-    div.creative-commons {
-        width: 100%;
-        display         : flex;
-        flex-direction  : column;
-        align-items     : center;
-        font-size       : 1vw;
-        color           : $color-text;
-        background-color: $color-back;
-        padding-bottom: 40px;
-        a {
-            text-decoration: none;
-            color          : inherit;
         }
     }
 }

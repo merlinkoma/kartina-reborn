@@ -7,10 +7,12 @@ div.all-photographies {
     display         : flex;
     flex-direction  : row;
     width           : 100vw;
+
     box-sizing      : border-box;
 
     aside.filtrage {
         width         : 20%;
+        background-color: $color-back;
         border-right  : 1px solid $color-light;
         display       : flex;
         flex-direction: column;
@@ -23,60 +25,78 @@ div.all-photographies {
             margin     : 1% auto;
         }
 
-        div.filter {
-            padding: 5% 3%;
+        form.choice {
+            display       : flex;
+            flex-direction: column;
+            color         : #515961;
 
-            div.filter-title {
-                font-size  : 1.8em;
-                font-weight: 700;
-
-                div.line {
-                    width     : 100%;
-                    border-top: solid 1px $color-dark;
-                    margin    : 3% 0 3% 0;
-                }
-            }
-
-            a {
-                text-decoration: none;
-                color          : inherit;
-
-                &:hover {
-                    color: $color-darkyellow;
-                }
-            }
-
-            div.line-link {
-                width     : 60%;
-                border-top: solid 1px $color-darkyellow;
-                margin    : 5% 0;
-            }
-
-            div.choice {
+            // filter : catégories de filtres (orientation, thèmes, prix & filtres avancés
+            div.filter {
+                padding       : 5% 3%;
                 display       : flex;
-                flex-direction: row;
-                margin        : 5% 0;
-                color         : #515961;
+                flex-direction: column;
 
-                label {
-                    font-weight: 600;
-                    font-size  : 1.2em;
+                // filter-title : contient div avec un titre, button & div.line
+                div.filter-title {
+                    font-size  : 1.8em;
+                    font-weight: 700;
+
+                    input[type="button"] {
+                        border          : none;
+                        background-color: $color-darkyellow;
+                        color           : $color-back;
+                        padding         : 2%;
+                        text-align      : center;
+                        width           : 100%;
+                    }
+
+                    div.line {
+                        width     : 100%;
+                        border-top: solid 1px $color-dark;
+                        margin    : 3% 0 3% 0;
+                    }
                 }
-            }
 
-            div.line {
-                width     : 60%;
-                border-top: solid 1px $color-darkyellow;
-                margin    : 1% 0;
-            }
+                // choicebloc : inputs & labels
+                div.choicebloc {
+                    display       : flex;
+                    flex-direction: row;
+                    align-items   : baseline;
+                    margin        : 5% 0;
+
+                    label {
+                        font-weight : 400;
+                        font-size   : 1.2em;
+                        padding-left: 2%;
+                    }
+                    &:hover{
+                        color: $color-darkyellow;
+                    }
+                }
+
+                // line-link : ligne sous les inputs radio
+                div.line-link {
+                    width     : 60%;
+                    border-top: solid 1px $color-darkyellow;
+                    margin    : 5% 0;
+                }
+
+                // line : ligne sous les inputs checkbox
+                div.line {
+                    width     : 60%;
+                    border-top: solid 1px $color-darkyellow;
+                    margin    : 1% 0;
+                }
+
+            }      
         }
     }
 
     div.results-bloc {
-        width: 80%;
-        display: flex;
+        width         : 80%;
+        background-color: $color-back;
+        display       : flex;
         flex-direction: column;
-        justify-content: space-between;
 
         div.category {
             h3 {
@@ -86,30 +106,105 @@ div.all-photographies {
                 text-align    : center;
                 margin        : 1% auto;
             }
-            p.presentation {
-                font-size  : 1.3em;
-                font-weight: 300;
-                text-align : center;
-            }
-        }
-
-        div.results{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            div.picture{
-                img{
-                    height: 10vh;
-                    width: auto;
+            div#tags {
+                display        : flex;
+                flex-direction : row;
+                justify-content: center;
+        
+                div.tag {
+                    background-color: $color-darkyellow;
+                    color           : $color-back;
+                    padding         : .5% 1%;
+                    margin          : 0 1% 2%;
+                    box-shadow      : 0px 0px 10px $color-dark;
                 }
             }
         }
 
-        div.pagination{
-            margin: 2% auto;
-            display: flex;
+        div.results {
+            margin         : 0;
+            padding        : 0;
+            display        : flex;
+            flex-wrap      : wrap;
             justify-content: center;
+
+            div.vignette {
+                max-width      : 500px;
+                min-width      : 400px;
+                width          : 25%;
+                max-height     : 500px;
+                min-height     : 300px;
+                margin         : 1%;
+                padding        : 1%;
+                display        : flex;
+                flex-direction : column;
+                align-items    : center;
+                justify-content: flex-end;
+                box-shadow     : 0 0 20px #cecece;
+
+                figure {
+                    display        : flex;
+                    justify-content: center;
+                    align-items    : center;
+                    height         : 80%;
+                    width          : 100%;
+
+                    img {
+                        max-width : 100%;
+                        max-height: 100%;
+                        margin    : 0;
+                    }
+                }
+
+                figcaption.legende {
+                    width          : 70%;
+                    display        : flex;
+                    flex-direction : column;
+                    justify-content: space-between;
+                    flex-wrap      : nowrap;
+                    color          : $color-dark;
+                    font-size      : 1rem;
+                    padding-bottom : 3%;
+                    text-align     : center;
+
+                    p {
+                        margin : 0;
+                        padding: 0;
+                        &.lastones{
+                            color: $color-text;
+                        }
+                    }
+
+                    a {
+                        display        : inline-block;
+                        max-width      : 100%;
+                        margin         : auto;
+                        text-decoration: none;
+                        color          : inherit;
+
+                        &:hover {
+                            color: $color-light;
+                        }
+                    }
+                }
+            }
+        }
+
+        div.pagination {
+            margin         : 2% auto;
+            display        : flex;
+            justify-content: center;
+            width          : 100%;
+
+            span {
+                margin: 0 2%;
+                cursor: pointer;
+
+                &#here {
+                    font-weight: bold;
+                    cursor     : default;
+                }
+            }
         }
     }
 }

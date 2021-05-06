@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../config/database.php';
 require __DIR__ . '/../admin/functions.php';
+
 session_start();
 
 if (!isset($path)) {
@@ -11,6 +12,7 @@ if (!isset($paths)) {
     $paths = './admin/';
 }
 
+require_once($path.'vendor/autoload.php');
 
 
 ?>
@@ -104,9 +106,9 @@ if (!isset($paths)) {
             <div class="navigation">
                 <ul>
                     <li><a href="<?= $path; ?>all-photographies.php">Photographies</a></li>
-                    <li><a href="liens vers les nouveautés">Nouveautés</a></li>
+                    <li><a href="all-photographies.php?creation_date=date">Nouveautés</a></li>
                     <li><a href="<?= $path; ?>page-artiste.php">Artistes</a></li>
-                    <li><a href="liens vers les derniers exemplaires">Derniers exemplaires</a></li>
+                    <li><a href="all-photographies.php?lastones=last">Derniers exemplaires</a></li>
                 </ul>
             </div>
         </header>
