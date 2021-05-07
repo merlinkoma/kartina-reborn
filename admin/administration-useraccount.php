@@ -9,45 +9,11 @@ require_once './../partials/header.php';
 
 ?>
 
-<div class="flex" style="display : flex">
+<div class="dashboard-useraccount" style="display : flex">
     <?php require_once './../partials/dashboard.php'; ?>
 
 
     <div class="useradmin">
-
-        <!-- <aside class="aside">
-            <div class="data-account menu">
-                <h3>Mon compte</h3>
-                <div class="line"></div>
-                <a href="#">Données personnelles</a>
-                <a href="#">Adresses</a>
-            </div>
-
-            <div class="order-informations menu">
-                <h3>Informations de commandes</h3>
-                <div class="line"></div>
-                <a href="#">Historique de commandes</a>
-            </div> -->
-
-        <!-- visible uniquement sur les comptes vendeur -->
-
-        <!-- <div class="photographies-menu menu">
-                <h3>Photographies</h3>
-                <div class="line"></div>
-                <a href="#">Nouvelle vente</a>
-                <a href="./sales.php">Vente en cours</a>
-                <a href="./sales.php">Ventes passées</a>
-            </div>
-
-            <div class="artist-menu menu">
-                <h3>Artiste</h3>
-                <div class="line"></div>
-                <a href="#">Biographie</a>
-            </div> -->
-
-        <!-- fin de div compte vendeur -->
-        <!-- </aside> -->
-
         <section class="main-bloc">
             <div class="head">
                 <h2 class="title">Mon compte | <?= $_SESSION['user']['firstname'], ' ', $_SESSION['user']['lastname']; ?></h2>

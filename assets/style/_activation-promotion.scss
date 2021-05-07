@@ -1,0 +1,53 @@
+.dashboard-activation {
+
+    .activation-container {
+        width: 100%;
+        font-family           : Oswald;
+
+        table {
+            width: 100%;
+            text-align: center;
+            border: 1px solid black;
+
+            thead {
+                border: 1px solid black;
+
+                tr {
+                    border: 1px solid black;
+
+                    th.right {
+                        border-right: 1px solid black;
+                    }
+
+                    th {
+                        border-bottom: 1px solid black;
+                    }
+                }
+            }
+
+            tbody {
+                border-right: 1px solid black;
+
+                tr {
+                    border-right: 1px solid black;
+
+                    td.right {
+                        border-right: 1px solid black;
+
+                    }
+
+                    td.upgrade {
+                        color: green;
+                        padding: 3px;
+
+                        a {
+                            border: 1px solid green;
+                            border-radius: 6px;
+                            padding: 2px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

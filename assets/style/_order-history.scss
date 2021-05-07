@@ -1,0 +1,23 @@
+a {
+    text-decoration: none;
+    color          : inherit;
+}
+
+ul li {
+    list-style: none;
+}
+
+.dashboard-order {
+    background-color: #EDE4BE;
+
+    .order-container {
+        font-family: Oswald;
+        height: 100%;
+        min-height: 700px;
+        width: 100%;
+
+        .title {
+            margin: 40px;
+        }
+    }
+}

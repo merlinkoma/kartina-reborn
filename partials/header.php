@@ -14,6 +14,8 @@ if (!isset($paths)) {
 
 require_once($path.'vendor/autoload.php');
 
+require_once($path.'vendor/autoload.php');
+
 
 ?>
 <!DOCTYPE html>
@@ -66,6 +68,11 @@ require_once($path.'vendor/autoload.php');
                             <div class="connexion">
                                 <div>
                                     <a href="<?= $paths; ?>administration-useraccount.php">Mon compte</a>
+                                </div>
+                                <div>
+                                    <?php if (isArtist()) { ?>
+                                        <a href="<?= $paths; ?>current-sales.php">Mes ventes</a>
+                                    <?php } ?>
                                 </div>
                                 <div>
                                     <?php if (isAdmin()) { ?>

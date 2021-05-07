@@ -23,18 +23,7 @@ if (isset($id) && $id != '') {
             <div class="authorname"><?= $author['artist_name'] ?></div>
             <div class="line"></div>
             <div class="authorcountry">France</div>
-            <div class="bio">Biographie de l'artiste. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore
-                vitae voluptas sint reiciendis laudantium, nemo in totam sunt soluta minus amet esse repellat, omnis
-                dolores aperiam, facilis architecto vel obcaecati.Lorem ipsum dolor sit amet consectetur, adipisicing
-                elit. Tempore vitae voluptas sint reiciendis laudantium, nemo in totam sunt soluta minus amet esse
-                repellat, omnis dolores aperiam, facilis architecto vel obcaecati.Lorem ipsum dolor sit amet
-                consectetur, adipisicing elit. Tempore vitae voluptas sint reiciendis laudantium, nemo in totam sunt
-                soluta minus amet esse repellat, omnis dolores aperiam, facilis architecto vel obcaecati.Lorem ipsum
-                dolor sit amet consectetur, adipisicing elit. Tempore vitae voluptas sint reiciendis laudantium, nemo in
-                totam sunt soluta minus amet esse repellat, omnis dolores aperiam, facilis architecto vel
-                obcaecati.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore vitae voluptas sint
-                reiciendis laudantium, nemo in totam sunt soluta minus amet esse repellat, omnis dolores aperiam,
-                facilis architecto vel obcaecati.</div>
+            <div class="bio"><?= $author['artist_description'] ?></div>
         </div>
 
         <div class="line"></div>

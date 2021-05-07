@@ -47,7 +47,6 @@ if (!empty($_POST)) {
         $query->execute();
 
         header('Location: data-editing.php?success');
-        echo "<div class='validation'>Vos données ont été modifiées.</div>";
     }
 }
 ?>
