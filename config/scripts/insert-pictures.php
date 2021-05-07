@@ -154,7 +154,8 @@ $pictures = [
 ['Sophie','2020-12-16',12,50,50,3],
 ['Still a cat','2020-12-16',12,50,50,2],
 ['Touffu','2020-12-11',12,50,50,2],
-['Toujours par trois','2020-07-21',12,50,50,2]
+['Toujours par trois','2020-07-21',12,50,50,2],
+['Kungshögarna','2015-01-01',1,1,1,2]
 ];
 
 $db->query('SET FOREIGN_KEY_CHECKS = 0');
@@ -174,8 +175,9 @@ foreach ($pictures as $picture){
     $cover = str_replace('…', 'x', $cover);
     $cover = strtolower($cover).'.jpg';
 
-    $price = rand(20, 100);
+    $price = rand(20, 550);
     $quantity = rand(30, 300);
+    $sold = rand(0, ($quantity-1));
 
-    $db->query("INSERT INTO picture (title, creation_date, user_iduser, price, quantity, orientation_idorientation, cover) VALUES ('$picture[0]', '$picture[1]', $picture[2], $price, $quantity, $picture[5], '$cover')");
+    $db->query("INSERT INTO picture (title, creation_date, user_iduser, price, quantity, orientation_idorientation, cover, sold) VALUES ('$picture[0]', '$picture[1]', $picture[2], $price, $quantity, $picture[5], '$cover', $sold)");
 }
