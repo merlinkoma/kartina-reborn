@@ -12,6 +12,8 @@ if (!isset($paths)) {
 }
 
 
+require_once($path.'vendor/autoload.php');
+
 
 ?>
 <!DOCTYPE html>

@@ -20,17 +20,17 @@ $users = $db->query('SELECT * FROM user WHERE request = 1')->fetchAll();
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Email</th>
+                    <th class="right">ID</th>
+                    <th class="right">Email</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($users as $user) { ?>
                     <tr>
-                        <td><?= $user['iduser']; ?></td>
-                        <td><?= $user['email']; ?></td>
-                        <td>
+                        <td class="right"><?= $user['iduser']; ?></td>
+                        <td class="right"><?= $user['email']; ?></td>
+                        <td class="upgrade">
                             <a href="traitement-promotion.php?id=<?= $user['iduser']; ?>">
                                 Promouvoir en <?= $user['role'] === 'user' ? 'artist' : 'utilisateur' ?>
                             </a>

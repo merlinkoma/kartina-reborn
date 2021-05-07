@@ -84,10 +84,12 @@ if (!empty($_POST)) {
 
 <div class="dashboard-new-sales" style="display : flex">
     <?php require_once './../partials/dashboard.php'; ?>
-
+    
     <div class="container-new-sales">
+        <h1>Bonjour <?= $_SESSION['user']['artist_name']; ?></h1>
+        
         <div class="titre">
-            <h1>Nouvelle vente :</h1>
+            <h2>Nouvelle vente :</h2>
         </div>
 
         <div class="formulaire">

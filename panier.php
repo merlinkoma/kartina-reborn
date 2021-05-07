@@ -6,36 +6,37 @@ $title = 'Panier';
 require_once './partials/header.php';
 require_once './partials/ariane.php';
 require './Parcours.php';
+require './payement.php';
 
 global $db;
 
 $clear = isset($_GET['clear']) ? true : false;
 
-// if ($clear) {
-//     unset($_SESSION['panier']);
-
-//     header('Location: panier.php');
-// }
-
-
-// $_SESSION['panier'] = [
-//     [
-//         'name' => 'Produit 1',
-//         'picture' => 'Cover 1',
-//         'price' => '1000'
-//     ],
-//     [
-//         'name' => 'Produit 2',
-//         'picture' => 'Cover 2',
-//         'price' => '2000'
-//     ]
-// ];
-
-
-
 function panier()
 {
     return $_SESSION['paniers'] ?? [];
+}
+
+
+\Stripe\Stripe::setApiKey($sk);
+
+if (!empty($_POST)) {
+    $token  = $_POST['stripeToken'];
+    $email  = $_POST['stripeEmail'];
+
+    $customer = \Stripe\Customer::create(array(
+        'email' => $email,
+        'source'  => $token
+    ));
+
+    $charge = \Stripe\Charge::create(array(
+        'customer' => $customer->id,
+        'amount'   => $prixStripe,
+        'currency' => 'eur',
+        'description' => 'Test Kartina',
+        'receipt_email' => $email
+    ));
+    echo '<h1>Payment accepté</h1>';
 }
 
 
@@ -56,7 +57,7 @@ function panier()
     <?php if (!empty(panier())) { ?>
         <?php foreach (panier() as $panier) {
 
-            
+
             $panier = unserialize($panier);
             var_dump($panier);
 
@@ -64,7 +65,7 @@ function panier()
             $id = $panier->pictureid;
             $query->execute([':id' => $id]);
             $picture = $query->fetch(); ?>
-            
+
             <div class="main">
 
                 <div class="cart-product">
@@ -148,7 +149,7 @@ function panier()
                     </div>
                     <div class="finalprix">
                         <h2 id="totalPriceElement">
-                        €
+                            €
                         </h2>
                         <p id="tva">dont tva 20% :
                         </p>
@@ -156,7 +157,20 @@ function panier()
                 </div>
 
                 <div>
-                    <button type="submit"><a href="">Valider ma commande</a></button>
+                    <form action="" method="POST">
+                        <script src="https://checkout.stripe.com/checkout.js" 
+                            class="stripe-button" 
+                            data-key= "<?= $pk; ?> "
+                            data-amount="<?= $prixStripe; ?>" 
+                            data-name="Kartina" 
+                            data-description="Valider mon panier" 
+                            data-image="./assets/icons/002-box.svg" 
+                            data-locale="auto" 
+                            data-currency="eur" 
+                            data-label="Payer">
+                        </script>
+                    </form>
+                    <!-- <button type="submit"><a href="">Valider ma commande</a></button> -->
                 </div>
 
                 <div class="securise">
@@ -193,9 +207,11 @@ function panier()
     let productElements = document.getElementsByClassName("main");
     let quantitiesElement = document.getElementsByClassName("quantity");
     let totalProductPriceElement = document.getElementsByClassName("totalProductPrice");
-    let totalPriceElement = document.getElementById("totalPriceElement");
+    var totalPriceElement = document.getElementById("totalPriceElement");
     let tvaElement = document.getElementById("tva");
-    let totalPrice = 0;
+    var totalPrice = 0;
+
+    
 
     // JS pour l'initialisation.
 
@@ -236,7 +252,8 @@ function panier()
             totalPrice += tva;
             totalPriceElement.innerHTML = totalPrice.toFixed(2).replace('.', ',') + '€';
             tvaElement.innerHTML = 'DONT TVA 20% : ' + tva.toFixed(2) + '€';
-        })
+
+        });
     }
 </script>
 
