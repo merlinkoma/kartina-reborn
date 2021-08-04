@@ -59,7 +59,6 @@ if (!empty($_POST)) {
 
 
             $panier = unserialize($panier);
-            var_dump($panier);
 
             $query = $db->prepare('SELECT * FROM picture WHERE idpicture = :id');
             $id = $panier->pictureid;

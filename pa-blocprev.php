@@ -28,7 +28,7 @@ $pictureprice = $picture['price'];
 $errors = [];
 
 if (!empty($_POST)) {
-    //@TODO sécuriser le formulaire 
+
     $parcours = new Parcours($id, $pictureprice);
     $parcours->format = $_POST['format'];
     $parcours->finition = $_POST['finition'];
@@ -122,7 +122,7 @@ if (!empty($_POST)) {
         $serial = serialize($parcours);
         //@TODO à la place du dump : ajout de l'oeuvre dans la session->pannier
         $_SESSION['paniers'][] = $serial;
-        var_dump($_SESSION['paniers']);
+
         header('Location: panier.php');
     }else{
         var_dump($parcours);
